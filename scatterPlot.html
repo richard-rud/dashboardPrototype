@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>MFA dashboard</title>
+
+    <script type="text/javascript" src="js/d3.v3.js"></script>
+
+    <script src="js/d3Tip.js"></script>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- Load c3.css stylesheet --> 
+    <link href="css/c3.css" rel="stylesheet" type="text/css">
+
+<!--Start style sheet-->
+
+<style type="text/css">
+
+#barChart div {
+  font: 10px sans-serif;
+  background-color: grey;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
+
+.chartTitle {
+     font-size: 40px;
+}
+
+.chartSubTitle {
+    font-size: 20px;
+}
+
+
+
+        </style>
+
+        <!--End style sheet-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="sankey.html">Sankey diagram</a>
+                </li>
+                <li>
+                    <a href="stackedBar.html">Stacked bar chart</a>
+                </li>
+                <li>
+                    <a href="parallel.html">Parallel coordinates</a>
+                </li>
+                <li>
+                    <a href="treemap.html">Treemap</a>
+                </li>
+                <li>
+                    <a href="chord.html">Chord diagram</a>
+                </li>
+                <li>
+                    <a href="barChart.html">Bar chart</a>
+                </li>
+                <li>
+                    <a href="scatterPlot.html">ScatterPlot</a>
+                </li>
+                <li>
+                    <a href="heatmap.html">Heatmap</a>
+                </li>
+                <li>
+                    <a href="help.html">Help</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span> Menu</a>
+                        <h1 class="chartTitle">Scatter Plot</h1>
+                        <h2 class="chartSubTitle">Some info here</h2>
+
+                        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="js/c3.js"></script>
+
+
+
+
+            <div id="chart"></div>                        
+
+            <script>
+
+
+var chart = c3.generate({
+    data: {
+        xs: {
+            Scenario0 : 'Scenario_0',
+            Scenario1 : 'Scenario_1',
+            Scenario2 : 'Scenario_2'
+        },
+        // iris data from R
+        columns: [
+            
+            ["Scenario_0",375977533333,10271867310000,3372072054666,22288816173058,637440300000,1101395166666,99689333333,20641572795344,40499475620833,132217527833,16860910588000,4304459608622,26449371293575,10901154906945,29117055459001,454894988668,13210003618934,982461344331,618084073333,7197383597542,28282190997617,19245196833,14881342922210,492360479000,5331831467000,11787395058666,2872454733333,5009300744331,506504166666,2365950566666,2075645525000,2584265729328,936282961846,3854702619822,0,226800000000,0,0,518115862559,0,960292716847,0,2953200000000,2324400000000,870000000000,1064400000000,2232000000000,438000000000,1347600000000,1964400000000,7134041349],
+            ["Scenario_1",375977533333,10271867310000,3372072054666,22288816173058,637440300000,1101395166666,99689333333,20641572795344,40499475620833,132217527833,16860910588000,4304459608622,26449371293575,10901154906945,29117055459001,454894988668,13210003618934,982461344331,618084073333,7197383597542,28282190997617,19245196833,14881342922210,492360479000,5331831467000,11787395058666,2872454733333,13550821960498,506504166666,2365950566666,2075645525000,2584265729328,7397804178013,3854702619822,0,4554562500000,518115862559,0,960292716847,0,2953200000000,2324400000000,870000000000,1064400000000,2232000000000,438000000000,1347600000000,1964400000000,1494808164021],
+            ["Scenario_2",375977533333,6274507365406,3372072054666,22288816173058,637440300000,1101395166666,60276568717,12480805512861,28952261553761,132217527833,12053526271516,951076642622,18908124213594,7793016656778,20182611498566,325195289310,6748482402768,982461344331,0,7197383597542,28282190997617,0,14881342922210,0,0,11787395058666,2872454733333,5009300744331,506504166666,2365950566666,17136680381,2584265729328,7730020213,380243189908,0,113113558879,518115862559,0,804285746304,0,2111183355089,1661666866643,728661778860,1064400000000,2232000000000,438000000000,1347600000000,1964400000000,7134041349],
+        ],
+        type: 'scatter'
+    },
+    axis: {
+        x: {
+            label: 'Scenario',
+            tick: {
+                fit: false
+            }
+        },
+        y: {
+            label: 'Ton'
+        }
+    }
+});
+
+
+
+
+
+        </script>
+
+          </div>
+
+        </div>
+
+        </div>
+
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>

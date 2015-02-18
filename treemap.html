@@ -24,6 +24,17 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <style>
+
+   
+
+    #viz {
+        height: 400px;
+        width: 700px;
+    }
+
+    </style>
+
 </head>
 
 <body>
@@ -57,6 +68,9 @@
                     <a href="barChart.html">Bar chart</a>
                 </li>
                 <li>
+                    <a href="scatterPlot.html">ScatterPlot</a>
+                </li>
+                <li>
                     <a href="help.html">Help</a>
                 </li>
             </ul>
@@ -70,6 +84,9 @@
                     <div class="col-lg-12">
 <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span> Menu</a>
                         <h1>Treemap</h1>
+
+
+ 
                         
                     </div>
 
@@ -78,6 +95,39 @@
                 </div>
             </div>
             
+
+<script src="http://www.d3plus.org/js/d3.js"></script>
+<script src="http://www.d3plus.org/js/d3plus.js"></script>
+ 
+<div id="viz"></div>
+ 
+<script>
+
+  var sample_data = [
+    {"value": 100, "name": "alpha", "group": "group 1"},
+    {"value": 70, "name": "beta", "group": "group 2"},
+    {"value": 40, "name": "gamma", "group": "group 2"},
+    {"value": 15, "name": "delta", "group": "group 2"},
+    {"value": 5, "name": "epsilon", "group": "group 1"},
+    {"value": 1, "name": "zeta", "group": "group 1"}
+  ]
+
+  var attributes = [
+    {"group": "group 1", "hex": "#fb8072"},
+    {"group": "group 2", "hex": "#ffffb3"}
+  ]
+
+  var visualization = d3plus.viz()
+    .container("#viz")
+    .data(sample_data)
+    .type("tree_map")
+    .id(["group","name"])
+    .size("value")
+    .attrs(attributes)
+    .color("hex")
+    .draw()
+
+</script>
 
         </div>
         <!-- /#page-content-wrapper -->
