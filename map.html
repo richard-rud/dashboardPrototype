@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>MFA dashboard</title>
+
+    <script type="text/javascript" src="js/d3.v3.js"></script>
+
+    <script src="js/d3Tip.js"></script>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!--D3 script-->
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="http://d3js.org/topojson.v0.min.js"></script>
+
+
+<!--Start style sheet-->
+
+<style type="text/css">
+
+.country {
+  fill: #b8b8b8;
+  stroke: #fff;
+  stroke-width: .5px;
+  stroke-linejoin: round;
+}
+
+.graticule {
+  fill: none;
+  stroke: #000;
+  stroke-opacity: .3;
+  stroke-width: .5px;
+}
+
+.graticule-outline {
+  fill: none;
+  stroke: #333;
+  stroke-width: 1.5px;
+}
+
+text {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  text-anchor: middle;
+}
+
+body {
+        background-color: #3b3b3c;
+    }
+
+h1 {
+    color: white;
+}
+
+ text {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 24px;
+    }
+
+h2 {
+  color: white;
+}
+
+#button-large {
+  width: 140px;
+}
+
+
+
+.chartTitle {
+     font-size: 40px;
+}
+
+.chartSubTitle {
+    font-size: 20px;
+}
+
+
+
+        </style>
+
+        <!--End style sheet-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+             <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="sankey.html">Sankey diagram</a>
+                </li>
+                <li>
+                    <a href="stackedBar.html">Stacked bar chart</a>
+                </li>
+                <li>
+                    <a href="parallel.html">Problem shifting</a>
+                </li>
+                <li>
+                    <a href="treemap.html">Treemap</a>
+                </li>
+                <li>
+                    <a href="chord.html">Chord diagram</a>
+                </li>
+                <li>
+                    <a href="barChart.html">Bar chart</a>
+                </li>
+                <li>
+                    <a href="scatterPlot.html">ScatterPlot</a>
+                </li>
+                <li>
+                    <a href="heatmap.html">Heatmap</a>
+                </li>
+                <li>
+                    <a href="circleDiagram.html">Biogas production</a>
+                </li>
+                <li>
+                    <a href="map.html">Phopshate reserves: Top 10 states</a>
+                </li>
+                 <li>
+                    <a href="areaChart.html">Is the food too cheap?</a>
+                </li>
+                 <li>
+                    <a href="PE_use_baseline.html">PE use</a>
+                </li>
+
+                <li>
+                    <a href="help.html">Help</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span> Menu</a>
+                        
+                        <h1 class="chartTitle">Phosphate rock reserves</h1>
+                        
+                        <h2 class="chartSubTitle">Top 10 reserves in the world sorted by states</h2>
+                      
+                        <div id="map" class="col-md-8"></div>
+
+                        <div class="col-md-4">
+                            
+                          <button class="btn btn-default btn-lg" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" id="button-large"><span class="glyphicon glyphicon-info-sign"></span> More info</button>
+                    
+                          <div class="collapse" id="collapseExample">
+                
+                            <div class="well">
+                            <h3>Phosphate rock reserves</h3>
+                            </br>
+
+                            Phosphorus (P) is a vital nutrient for food production and the linearity of anthropogenic P processes makes the use of P unsustainable. Current practices go from extraction to consumption to waste without a reuse phase, eventually leading to P accumulation in land and aquatic systems. It is expected that current practices will lead to depletion, unless P is used in a more circular way (Schmid Neset, Bader, Scheidegger & Lohm, 2008; Cordell, Drangert & White, 2009). While P losses aggravates scarcity issues, if accumulated in the wrong environmental compartments, P also acts as a pollutant (Yuan, Shi, Wu, Zhang & Bi, 2011).
+                            Furthermore, Europe, including Norway, is dependent on the import of phosphate, as 90 % of the P reserves are concentrated in five countries (USA, China, Russia, Morocco and Western Sahara). This makes P trade dependent on geopolitical relations, leaving import dependent countries vulnerable (Ott & Rechberger 2012; Hamilton et al. 2014).
+                             </br>
+                              </br>
+                            <b>World Resources:</b> Some world reserves were reported only in terms of ore and grade. Phosphate rock resources occur principally as sedimentary marine phosphorites. The largest sedimentary deposits are found in northern Africa, China, the Middle East, and the United States. Significant igneous occurrences are found in Brazil, Canada, Finland, Russia, and South Africa. Large phosphate resources have been identified on the continental shelves and on seamounts in the Atlantic Ocean and the Pacific Ocean. Dredge mining of phosphate rock deposits offshore of Namibia and New Zealand were planned to start before 2020. World resources of phosphate rock are more than 300 billion tons.
+                            </br>
+                            </br>
+                            <b>Substitutes:</b> There are no substitutes for phosphorus in agriculture.
+                            </br>
+                            </br>
+                            <b>Source:</b> USGS 2015
+                            </div>
+                          
+                          </div>
+
+                      </div>
+           
+
+            <script>
+            
+
+var width = 960,
+    height = 500;
+
+var centroid = d3.geo.path()
+    .projection(function(d) { return d; })
+    .centroid;
+
+var projection = d3.geo.orthographic()
+    .scale(248)
+    .clipAngle(90);
+
+var path = d3.geo.path()
+    .projection(projection);
+
+var graticule = d3.geo.graticule()
+    .extent([[-180, -90], [180 - .1, 90 - .1]]);
+
+var svg = d3.select("#map").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+var line = svg.append("path")
+    .datum(graticule)
+    .attr("class", "graticule")
+    .attr("d", path);
+
+svg.append("circle")
+    .attr("class", "graticule-outline")
+    .attr("cx", width / 2)
+    .attr("cy", height / 2)
+    .attr("r", projection.scale());
+
+var title = svg.append("text")
+    .attr("x", width / 2)
+    .attr("y", height * 3 / 5);
+
+var rotate = d3_geo_greatArcInterpolator();
+
+d3.json("data/mapData.json", function(error, world) {
+  var countries = topojson.object(world, world.objects.countries).geometries,
+      i = -1,
+      n = countries.length;
+
+  var country = svg.selectAll(".country")
+      .data(countries)
+    .enter().insert("path", ".graticule")
+      .attr("class", "country")
+      .attr("d", path);
+
+  step();
+
+  function step() {
+    if (++i >= n) i = 0;
+
+    title.text(countries[i].id);
+
+    country.transition()
+        .style("fill", function(d, j) { return j === i ? "#00441b" : "#99d8c9"; });
+
+    d3.transition()
+        .delay(250)
+        .duration(1250)
+        .tween("rotate", function() {
+          var point = centroid(countries[i]);
+          rotate.source(projection.rotate()).target([-point[0], -point[1]]).distance();
+          return function(t) {
+            projection.rotate(rotate(t));
+            country.attr("d", path);
+            line.attr("d", path);
+          };
+        })
+      .transition()
+        .each("end", step);
+  }
+});
+
+var d3_radians = Math.PI / 180;
+
+function d3_geo_greatArcInterpolator() {
+  var x0, y0, cy0, sy0, kx0, ky0,
+      x1, y1, cy1, sy1, kx1, ky1,
+      d,
+      k;
+
+  function interpolate(t) {
+    var B = Math.sin(t *= d) * k,
+        A = Math.sin(d - t) * k,
+        x = A * kx0 + B * kx1,
+        y = A * ky0 + B * ky1,
+        z = A * sy0 + B * sy1;
+    return [
+      Math.atan2(y, x) / d3_radians,
+      Math.atan2(z, Math.sqrt(x * x + y * y)) / d3_radians
+    ];
+  }
+
+  interpolate.distance = function() {
+    if (d == null) k = 1 / Math.sin(d = Math.acos(Math.max(-1, Math.min(1, sy0 * sy1 + cy0 * cy1 * Math.cos(x1 - x0)))));
+    return d;
+  };
+
+  interpolate.source = function(_) {
+    var cx0 = Math.cos(x0 = _[0] * d3_radians),
+        sx0 = Math.sin(x0);
+    cy0 = Math.cos(y0 = _[1] * d3_radians);
+    sy0 = Math.sin(y0);
+    kx0 = cy0 * cx0;
+    ky0 = cy0 * sx0;
+    d = null;
+    return interpolate;
+  };
+
+  interpolate.target = function(_) {
+    var cx1 = Math.cos(x1 = _[0] * d3_radians),
+        sx1 = Math.sin(x1);
+    cy1 = Math.cos(y1 = _[1] * d3_radians);
+    sy1 = Math.sin(y1);
+    kx1 = cy1 * cx1;
+    ky1 = cy1 * sx1;
+    d = null;
+    return interpolate;
+  };
+
+  return interpolate;
+}
+
+        </script>
+
+
+
+          </div>
+
+        </div>
+
+        </div>
+
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>

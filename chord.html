@@ -11,28 +11,99 @@
 
     <title>MFA dashboard</title>
 
+    <script type="text/javascript" src="js/d3.v3.js"></script>
+
+    <script src="js/d3Tip.js"></script>
+
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <!-- Load c3.css stylesheet --> 
+    <link href="css/c3.css" rel="stylesheet" type="text/css">
+
+    <!-- D3 script -->
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+     <script src="js/underscore.js"></script>
+    <script src="js/mapper.js"></script>
+
+<!--Start style sheet-->
+
+<style type="text/css">
+
+ #tooltip {
+        color: white;
+        opacity: .9;
+        background: #333;
+        padding: 5px;
+        border: 1px solid lightgrey;
+        border-radius: 5px;
+        position: absolute;
+        z-index: 10;
+        visibility: hidden;
+        white-space: nowrap;
+        pointer-events: none;
+      }
+      #circle circle {
+        fill: none;
+        pointer-events: all;
+      }
+      path.group {
+        fill-opacity: .8;
+      }
+      path.chord {
+        fill-opacity: .8;
+        stroke: #000;
+        stroke-width: .25px;
+      }
+      #circle:hover path.fade {
+        display: none;
+      }
+
+body {
+        background-color: #3b3b3c;
+    }
+
+h1 {
+    color: white;
+}
+
+h2 {
+  color: white;
+}
+
+h3 {
+    color: white;
+}
+
+.chartTitle {
+     font-size: 40px;
+}
+
+.chartSubTitle {
+    font-size: 20px;
+}
+
+
+
+        </style>
+
+        <!--End style sheet-->
 
 </head>
 
 <body>
 
+        <div id="tooltip"></div>
+
     <div id="wrapper">
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
+             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="index.html">
                         Home
@@ -45,7 +116,7 @@
                     <a href="stackedBar.html">Stacked bar chart</a>
                 </li>
                 <li>
-                    <a href="parallel.html">Parallel coordinates</a>
+                    <a href="parallel.html">Problem shifting</a>
                 </li>
                 <li>
                     <a href="treemap.html">Treemap</a>
@@ -60,28 +131,182 @@
                     <a href="scatterPlot.html">ScatterPlot</a>
                 </li>
                 <li>
-                    <a href="help.html">Help</a>
+                    <a href="heatmap.html">Heatmap</a>
+                </li>
+                <li>
+                    <a href="circleDiagram.html">Biogas production</a>
+                </li>
+                <li>
+                    <a href="map.html">Phopshate reserves: Top 10 states</a>
+                </li>
+                 <li>
+                    <a href="areaChart.html">Is the food too cheap?</a>
+                </li>
+                 <li>
+                    <a href="PE_use_baseline.html">PE use</a>
                 </li>
 
+                <li>
+                    <a href="help.html">Help</a>
+                </li>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
+
             <div class="container-fluid">
+
                 <div class="row">
+
                     <div class="col-lg-12">
-<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span> Menu</a>
-                        <h1>Chord diagram</h1>
                         
-                    </div>
-
-
-
-                </div>
-            </div>
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span> Menu</a>
+                        <h1 class="chartTitle">Chord diagram</h1>
+                        <h2 class="chartSubTitle">This chord diagram creates a structure for comparing the relationship between the processes, plant production, animal husbandry and food processing. This visualisation tries to explain the connection that exist between these processes using size and colour. Hopefully this could help in analyszing the interconnected relationship between the processes. </h2>
+                        
+                        <div class="row">
+                        <h3 class="col-md-4"></h3>
+                        </div>
             
+            <div class="row">
+            <div id="diagram" class="col-md-4"></div>   
+               
+            <script>
+
+//*******************************************************************
+      //  CREATE MATRIX AND MAP
+      //*******************************************************************
+      d3.csv('data/flows.csv', function (error, data) {
+        var mpr = chordMpr(data);
+
+        mpr
+          .addValuesToMap('from')
+          .setFilter(function (row, a, b) {
+            return (row.from === a.name && row.to === b.name)
+          })
+          .setAccessor(function (recs, a, b) {
+            if (!recs[0]) return 0;
+            return +recs[0].value;
+          });
+        drawChords(mpr.getMatrix(), mpr.getMap());
+      });
+      //*******************************************************************
+      //  DRAW THE CHORD DIAGRAM
+      //*******************************************************************
+      function drawChords (matrix, mmap) {
+        var w = 980, h = 800, r1 = h / 2, r0 = r1 - 100;
+
+        var fill = d3.scale.ordinal()
+            .domain(d3.range(4))
+            .range(["#d53e4f", "#fee08b", "#3288bd"]);
+
+        var chord = d3.layout.chord()
+            .padding(.02)
+            .sortSubgroups(d3.descending)
+            .sortChords(d3.descending);
+
+        var arc = d3.svg.arc()
+            .innerRadius(r0)
+            .outerRadius(r0 + 20);
+
+        var svg = d3.select("#diagram").append("svg:svg")
+            .attr("width", w)
+            .attr("height", h)
+          .append("svg:g")
+            .attr("id", "circle")
+            .attr("transform", "translate(" + w / 2 + "," + h / 2 + ")");
+
+            svg.append("circle")
+                .attr("r", r0 + 20);
+
+        var rdr = chordRdr(matrix, mmap);
+        chord.matrix(matrix);
+
+        var g = svg.selectAll("g.group")
+            .data(chord.groups())
+          .enter().append("svg:g")
+            .attr("class", "group")
+            .on("mouseover", mouseover)
+            .on("mouseout", function (d) { d3.select("#tooltip").style("visibility", "hidden") });
+
+        g.append("svg:path")
+            .style("stroke", "black")
+            .style("fill", function(d) { return fill(d.index); })
+            .attr("d", arc);
+
+        g.append("svg:text")
+            .each(function(d) { d.angle = (d.startAngle + d.endAngle) / 2; })
+            .attr("dy", ".35em")
+            .style("font-family", "helvetica, arial, sans-serif")
+            .style("font-size", "15px")
+            .style("fill", "white")
+            .attr("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
+            .attr("transform", function(d) {
+              return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")"
+                  + "translate(" + (r0 + 26) + ")"
+                  + (d.angle > Math.PI ? "rotate(180)" : "");
+            })
+            .text(function(d) { return rdr(d).gname; });
+
+          var chordPaths = svg.selectAll("path.chord")
+                .data(chord.chords())
+              .enter().append("svg:path")
+                .attr("class", "chord")
+                .style("stroke", function(d) { return d3.rgb(fill(d.target.index)).darker(); })
+                .style("fill", function(d) { return fill(d.target.index); })
+                .attr("d", d3.svg.chord().radius(r0))
+                .on("mouseover", function (d) {
+                  d3.select("#tooltip")
+                    .style("visibility", "visible")
+                    .html(chordTip(rdr(d)))
+                    .style("top", function () { return (d3.event.pageY - 100)+"px"})
+                    .style("left", function () { return (d3.event.pageX - 100)+"px";})
+                })
+                .on("mouseout", function (d) { d3.select("#tooltip").style("visibility", "hidden") });
+
+          function chordTip (d) {
+            var p = d3.format(".2%"), q = d3.format(",.3r")
+            return "Chord Info:<br/>"
+              + p(d.svalue/d.stotal) + " (" + q(d.svalue) + " t) of P from "
+              + d.sname + " flows to " + d.tname
+              + (d.sname === d.tname ? "": ("<br/>while...<br/>"
+              + p(d.tvalue/d.ttotal) + " (" + q(d.tvalue) + " t) of P from "
+              + d.tname + " flows to " + d.sname))
+          }
+
+          function groupTip (d) {
+            var p = d3.format(".1%"), q = d3.format(",.3r")
+            return "Group Info:<br/>"
+                + d.gname + " : " + q(d.gvalue) + "<br/>"
+                + p(d.gvalue/d.mtotal) + " of Matrix Total (" + q(d.mtotal) + ")"
+          }
+
+          function mouseover(d, i) {
+            d3.select("#tooltip")
+              .style("visibility", "visible")
+              .html(groupTip(rdr(d)))
+              .style("top", function () { return (d3.event.pageY - 80)+"px"})
+              .style("left", function () { return (d3.event.pageX - 130)+"px";})
+
+            chordPaths.classed("fade", function(p) {
+              return p.source.index != i
+                  && p.target.index != i;
+            });
+          }
+      }
+
+            </script>
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+        </div>
 
         </div>
         <!-- /#page-content-wrapper -->

@@ -1,0 +1,10 @@
+from,to,value
+"Plant Production","Animal Husbandry",20
+"Animal Husbandry","Plant Production",30
+"Food Processing","Plant Production",10
+"Plant Production","Food Processing",10
+"Food Processing","Animal Husbandry",2
+"Animal Husbandry","Food Processing",10
+"Plant Production","Food Processing",5
+
+

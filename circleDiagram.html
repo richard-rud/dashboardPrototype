@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>MFA dashboard</title>
+
+    <script type="text/javascript" src="js/d3.v3.js"></script>
+
+    <script src="js/d3Tip.js"></script>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- Load c3.css stylesheet --> 
+    <link href="css/c3.css" rel="stylesheet" type="text/css">
+
+    <!--D3 script-->
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+
+<!--Start style sheet-->
+
+<style type="text/css">
+
+
+body {
+        background-color: #3b3b3c;
+    }
+
+h1 {
+    color: white;
+}
+
+ text {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 24px;
+    }
+
+h2 {
+  color: white;
+}
+
+#button-large {
+  width: 140px;
+}
+
+
+
+.chartTitle {
+     font-size: 40px;
+}
+
+.chartSubTitle {
+    font-size: 20px;
+}
+
+
+
+        </style>
+
+        <!--End style sheet-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+             <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="sankey.html">Sankey diagram</a>
+                </li>
+                <li>
+                    <a href="stackedBar.html">Stacked bar chart</a>
+                </li>
+                <li>
+                    <a href="parallel.html">Problem shifting</a>
+                </li>
+                <li>
+                    <a href="treemap.html">Treemap</a>
+                </li>
+                <li>
+                    <a href="chord.html">Chord diagram</a>
+                </li>
+                <li>
+                    <a href="barChart.html">Bar chart</a>
+                </li>
+                <li>
+                    <a href="scatterPlot.html">ScatterPlot</a>
+                </li>
+                <li>
+                    <a href="heatmap.html">Heatmap</a>
+                </li>
+                <li>
+                    <a href="circleDiagram.html">Biogas production</a>
+                </li>
+                <li>
+                    <a href="map.html">Phopshate reserves: Top 10 states</a>
+                </li>
+                 <li>
+                    <a href="areaChart.html">Is the food too cheap?</a>
+                </li>
+                 <li>
+                    <a href="PE_use_baseline.html">PE use</a>
+                </li>
+
+                <li>
+                    <a href="help.html">Help</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span> Menu</a>
+                        
+                        <h1 class="chartTitle">Biogas production in Norway</h1>
+                        
+                        <h2 class="chartSubTitle">This diagram shows the current production compared with both the theoretical and realistic potential</h2>
+                      
+                        <div id="diagram" class="col-md-8"></div>
+
+                        <div class="col-md-4">
+                            
+                          <button class="btn btn-default btn-lg" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" id="button-large"><span class="glyphicon glyphicon-info-sign"></span> More info</button>
+                    
+                          <div class="collapse" id="collapseExample">
+                
+                            <div class="well">
+                            
+                            <b>Biogas production in Norway: </b>
+                            Biogas production in Norway has a current production equal to 0,5 TWh. Calculations predict that it is possible to increase biogas production. The realistic potential equals 2,3 TWh, while the theoretical potential equals as much as 5,8 TWh.
+                          </br>
+                        </br>
+                        <b>Source: </b>Norwegian Environment Agency 
+
+
+                            </div>
+                          
+                          </div>
+
+                      </div>
+           
+
+            <script>
+            
+var color = d3.scale.category20();
+
+
+var dataset = [{label:"Current production", value:5},{label:"Realistic potential",value:23},{label:"Teoretical potential", value:58}];
+
+/*
+var arc = d3.svg.arc()
+  .innerRadius(function(d,i){return (5-i)*35;})
+  .outerRadius(function(d,i){return (5-i)*35+1;})
+  .startAngle(0)
+  .endAngle(2*Math.PI);
+  */
+
+
+  var arc = d3.svg.arc()
+  //.innerRadius(function(d,i){return (4-i)*d.value*4;})
+  .outerRadius(function(d,i){return (4-i)*d.value*2+4;})
+  .startAngle(0)
+  .endAngle(2*Math.PI);
+
+var svg = d3.select("#diagram").append("svg")
+  .attr("width", 1200)
+  .attr("height", 800)
+  .selectAll("g")
+  .data(dataset)
+  .enter()
+  .append("g")
+  .attr("transform", "translate(300,290)");
+
+  var circle = svg.selectAll("circle").data([0, 1])
+    .enter().append("circle")
+    .attr("r", 46)
+    .attr("cx", 0)
+    .attr("cy", 0)
+    .style("fill","#1f77b4")
+    .each(pulse);
+
+var LineCircle = svg.append("g")
+  .attr("id","LineCircle")
+  .style("fill","white")
+  .attr("class", "label")
+
+
+var arcs = svg.append("path")
+  .attr("stroke", function(d, i) { return color(i); })
+  .attr("stroke-width", 2)
+  .attr("fill", "none")
+  .attr("id", function(d,i){return "s"+i;})
+  .style("stroke-dasharray", "20, 10")
+  .attr("d",arc);
+
+
+
+LineCircle.append("text")
+  //.attr("x", 8)
+  .attr("dy", -10)
+  .style("font-size",12)
+  .style("text-anchor","middle")
+  .append("textPath")
+  .attr("xlink:href",function(d,i){return "#s"+i;})
+  .attr("startOffset",function(d,i){return "50%";})
+  .text(function(d){return d.label.toUpperCase();})
+
+  function pulse() {
+            var circle = svg.select("circle");
+            
+                circle = circle.transition()
+                    .duration(1000)
+                    .attr("stroke-width", 20)
+                    .attr("r", 20)
+                    .transition()
+                    .duration(5000)
+                    .attr('stroke-width', 5)
+                    .attr("r", 238)
+                    .style("opacity", .2)
+                    .style("fill", "orange")
+                    .ease('sine');
+            };
+
+        </script>
+
+
+
+          </div>
+
+        </div>
+
+        </div>
+
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>

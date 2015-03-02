@@ -39,7 +39,7 @@ h2 {
 }
 
 h3 {
-    color: white;
+    color: black;
 }
 
 .chartTitle {
@@ -119,19 +119,35 @@ h3 {
                     <div class="col-lg-12">
                         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span> Menu</a>
 
-                        <h1 class="chartTitle">Stacked bar chart: Avoidable food waste</h1>
-                        <h2 class="chartSubTitle">This bar chart shows avoidable food waste for the baseline scenario (S0) amount of tons of avoidable food waste for the different processes filtered by category.</h2>
-                    
-                        
+                        <h1 class="chartTitle">Food production is driving energy use</h1>
+                        <h2 class="chartSubTitle">This figure shows the process energy use for the agriculture sector and biogas production using the average from the years 2009 - 2011.</h2>
+
                     </div>
 
                      <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
                     <script src="js/c3.js"></script>
 
-            <div class="row">
-            <div id="stackedBar" class="col-md-4"></div>       
-            </div>
+            <div id="stackedBar" class="col-md-8"></div>       
 
+            <div class="col-md-4">
+                            
+                          <button class="btn btn-default btn-lg" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" id="button-large"><span class="glyphicon glyphicon-info-sign"></span> More info</button>
+                    
+                          <div class="collapse" id="collapseExample">
+                
+                            <div class="well">
+                            <h3>Energy use in agriculture production</h3>
+                            </br>
+                            Increased food production leads to increased use of energy. By reducing overall food waste we also reduce food production, reducing the energy demand. We can from this figure especially see that producing meat ("PE for feed production" and "PE for meat processing") and dairy products ("PE dairy products manufacturing") leads to a high demand for energy
+                            <img src="agri.png" alt="Smiley face" height="360" width="340">
+                            </br>
+                            </br>
+                            <b>Source:</b> Hamilton et al. 2015
+                            </div>
+                          
+                          </div>
+
+                      </div>
  
 
     <script>
@@ -141,25 +157,30 @@ h3 {
 /////////////////////////////////////////////////////////////////////////////////////////////////
 var chart = c3.generate({
     size: {
-        height: 600,
-        width: 1000
+        height: 400,
+        width: 700
     },
     bindto: '#stackedBar',
     data: {
         columns: [
-            ['Frozen food',5441,116,423,62375],
-            ['Fresh fruit and vegetables',10600,0,24258,70359],
-            ['Fresk bakery goods',24275,714,22275,0],
-            ['Fresh finished food and sausages',1380,0,3954,0],
-            ['Fresh fish',377,60,1479,19960],
-            ['Fresh meat',2474,275,3644,0],
-            ['Egg',0,0,967,15469],
-            ['Dairy',1442,607,7851,0],
-            ['Dried food',14334,194,3060,86327],
+            ['PE for fertilizer production (natural gas and electricity)',518115862559],
+            ['Inputs to plants',0],
+            ['PE for plant production',960292716847],
+            ['PE for animal husbandry',0],
+            ['PE for feed production',2953200000000],
+            ['PE Meat processing',2324400000000],
+            ['PE Fruit and vegetable processing',870000000000],
+            ['PE animal and vegetable fat production',1064400000000],
+            ['PE Dairy product manufacturing',2232000000000],
+            ['PE Starch product manufacturing',438000000000],
+            ['PE Bakery product manufacturing',1347600000000],
+            ['PE Beverage and other food products production',1964400000000],
+            ['PE Biogas',7134041349]  
+
         ],
         type: 'bar',
         groups: [
-            ['Frozen food', 'Fresh fruit and vegetables','Fresk bakery goods','Fresh finished food and sausages','Fresh fish','Fresh meat','Egg','Dairy','Dried food']
+            ['PE for fertilizer production (natural gas and electricity)','Inputs to plants','PE for plant production','PE for animal husbandry','PE for feed production','PE Meat processing','PE Fruit and vegetable processing','PE animal and vegetable fat production','PE Dairy product manufacturing','PE Starch product manufacturing','PE Bakery product manufacturing','PE Beverage and other food products production','PE Biogas']
         ]
     },
     axis: {
@@ -182,7 +203,7 @@ var chart = c3.generate({
         }
     },
     color: {
-        pattern: ['#a6cee3', '#1f78b4', '#b2df8a','#33a02c','#fb9a99', '#e31a1c', '#fdbf6f','#ff7f00','#cab2d6']
+        pattern: ['#1f77b4', '#aec7e8', '#ff7f0e', '#ffbb78', '#2ca02c', '#98df8a', '#d62728', '#ff9896', '#9467bd', '#c5b0d5', '#8c564b', '#c49c94', '#e377c2', '#f7b6d2', '#7f7f7f', '#c7c7c7', '#bcbd22', '#dbdb8d', '#17becf', '#9edae5']
     },
 });
 

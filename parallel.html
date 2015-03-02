@@ -17,12 +17,99 @@
     <!-- Custom CSS -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <!--Start style sheet-->
+
+        <link rel="stylesheet" type="text/css" href="css/d3.parcoords.css">
+
+
+
+    <script src="js/d3.min.js"></script>
+    <script src="js/d3.parcoords.js"></script>
+    <script src="js/divgrid.js"></script>
+
+<style type="text/css">
+
+body {
+        background-color: #3b3b3c;
+    }
+
+h1 {
+    color: white;
+}
+
+h2 {
+  color: white;
+}
+
+/*
+.cell {
+    color: white;
+}
+
+*/
+
+.chartTitle {
+     font-size: 40px;
+}
+
+.chartSubTitle {
+    font-size: 20px;
+}
+
+/* data table styles */
+#grid { 
+    height: 198px; 
+}
+
+.row, .header { 
+    clear: left; 
+    font-size: 12px; 
+    line-height: 18px; 
+    height: 18px; 
+}
+
+.row:nth-child(odd) { 
+    background: rgba(0,0,0,0.2); 
+}
+
+.header { 
+    font-weight: bold; 
+}
+
+.cell { 
+    float: left; 
+    overflow: hidden; 
+    white-space: nowrap; 
+    width: 170px; 
+    height: 18px; 
+    color: white;}
+
+.col-0 { 
+    width: 180px; 
+}
+
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.header {
+    background-color: grey;
+}
+
+.header.cell, .header .cell {
+    color: black;
+}
+
+#example {
+    background-color: grey;
+}
+
+
+
+        </style>
+
+        <!--End style sheet-->
 
 </head>
 
@@ -32,7 +119,7 @@
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
+             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="index.html">
                         Home
@@ -45,7 +132,7 @@
                     <a href="stackedBar.html">Stacked bar chart</a>
                 </li>
                 <li>
-                    <a href="parallel.html">Parallel coordinates</a>
+                    <a href="parallel.html">Problem shifting</a>
                 </li>
                 <li>
                     <a href="treemap.html">Treemap</a>
@@ -60,6 +147,22 @@
                     <a href="scatterPlot.html">ScatterPlot</a>
                 </li>
                 <li>
+                    <a href="heatmap.html">Heatmap</a>
+                </li>
+                <li>
+                    <a href="circleDiagram.html">Biogas production</a>
+                </li>
+                <li>
+                    <a href="map.html">Phopshate reserves: Top 10 states</a>
+                </li>
+                 <li>
+                    <a href="areaChart.html">Is the food too cheap?</a>
+                </li>
+                 <li>
+                    <a href="PE_use_baseline.html">PE use</a>
+                </li>
+
+                <li>
                     <a href="help.html">Help</a>
                 </li>
             </ul>
@@ -71,9 +174,91 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span> Menu</a>
-                        <h1>Parallel coordinates</h1>
+
+
+                    <button href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span> Menu</button>
+                        <h1 class="chartTitle">Problem shifting (Multidimensional analysis)</h1>             
+                        <h2 class="chartSubTitle">This diagram uses parallel coordinates trying to show problem shifting for the different scenarios comparing multiple dimensions</h2>
+
+                        <div class="col-md-12">
+ 
+
+                        <div id="example" class="parcoords" style="height:400px;"></div>
                         
+                        </div>
+
+                        <div class="col-md-12">
+                        </br>
+                    </br>
+ 
+                        <div id="grid"></div>
+                        
+                        </div>
+                 
+
+
+        
+
+
+                        
+
+
+<script>
+
+var colorScale = d3.scale.linear()
+  .domain([9, 50])
+  .range(["#33a02c", "#ff7f00"])
+  .interpolate(d3.interpolateLab);
+
+var color = function(d) { return colorScale(d['economy (mpg)']); };
+
+var parcoords = d3.parcoords()("#example")
+  .color("#49006a")
+  .alpha(0.4);
+
+// load csv file and create the chart
+d3.csv('data/parallelData.csv', function(data) {
+  parcoords
+    .data(data)
+    //.hideAxis(["name"])
+    .margin({
+        top: 40,
+        left: 40,
+        bottom: 40,
+        right: 40
+      })
+    .render()
+    .brushMode("1D-axes");  // enable brushing
+
+
+
+  // create data table, row hover highlighting
+  var grid = d3.divgrid();
+  d3.select("#grid")
+    .datum(data)
+    .call(grid)
+    .selectAll(".row")
+    .on({
+      "mouseover": function(d) { parcoords.highlight([d]) },
+      "mouseout": parcoords.unhighlight
+    });
+
+  // update data table on brush event
+  parcoords.on("brush", function(d) {
+    d3.select("#grid")
+      .datum(data)
+      .call(grid)
+      .selectAll(".row")
+      .on({
+        "mouseover": function(d) { parcoords.highlight([d]) },
+        "mouseout": parcoords.unhighlight
+      });
+  });
+});
+
+</script>
+
+
                     </div>
 
 
