@@ -24,16 +24,9 @@
     <!-- Load c3.css stylesheet --> 
     <link href="css/c3.css" rel="stylesheet" type="text/css">
 
-    <!--D3 script-->
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <style>
 
-
-<!--Start style sheet-->
-
-<style type="text/css">
-
-
-body {
+    body {
         background-color: #3b3b3c;
     }
 
@@ -41,20 +34,13 @@ h1 {
     color: white;
 }
 
- text {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 24px;
-    }
-
 h2 {
   color: white;
 }
 
-#button-large {
-  width: 140px;
+h3 {
+    color: black;
 }
-
-
 
 .chartTitle {
      font-size: 40px;
@@ -62,13 +48,11 @@ h2 {
 
 .chartSubTitle {
     font-size: 20px;
+    margin-bottom: 50px;
 }
 
 
-
-        </style>
-
-        <!--End style sheet-->
+    </style>
 
 </head>
 
@@ -88,7 +72,7 @@ h2 {
                     <a href="sankey.html">Sankey diagram</a>
                 </li>
                 <li>
-                    <a href="AvoidableFoodWaste.html">Avoidable Food Waste</a>
+                    <a href="stackedBar.html">Stacked bar chart</a>
                 </li>
                 <li>
                     <a href="parallel.html">Problem shifting</a>
@@ -130,133 +114,105 @@ h2 {
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-
             <div class="container-fluid">
-
                 <div class="row">
-
                     <div class="col-lg-12">
-                        
                         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span> Menu</a>
-                        
-                        <h1 class="chartTitle">Biogas production in Norway</h1>
-                        
-                        <h2 class="chartSubTitle">This diagram shows the current production compared with both the theoretical and realistic potential</h2>
-                      
-                        <div id="diagram" class="col-md-8"></div>
 
-                        <div class="col-md-4">
+                        <h1 class="chartTitle">Avoidable food waste</h1>
+                        <h2 class="chartSubTitle">This bar chart shows avoidable food waste for the baseline scenario (S0).</h2>
+                    
+                        
+                    </div>
+
+                     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+                    <script src="js/c3.js"></script>
+
+            <div id="stackedBar" class="col-md-8"></div>       
+            
+             <div class="col-md-4">
                             
                           <button class="btn btn-default btn-lg" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" id="button-large"><span class="glyphicon glyphicon-info-sign"></span> More info</button>
                     
                           <div class="collapse" id="collapseExample">
                 
                             <div class="well">
-                            
-                            <b>Biogas production in Norway: </b>
-                            Biogas production in Norway has a current production equal to 0,5 TWh. Calculations predict that it is possible to increase biogas production. The realistic potential equals 2,3 TWh, while the theoretical potential equals as much as 5,8 TWh.
-                          </br>
-                        </br>
-                        <b>Source: </b>Norwegian Environment Agency 
-
-
+                            <h3>Avoidable food waste in Norway</h3>
+                            This bar chart shows avoidable food waste for the baseline scenario (S0) using amount of food waste from 2010 in Norway (Matsvinn i Norge (2011)). The avoidable food waste is split into amount of tons of avoidable food waste for the different processes filtered by content for each process. The total amount of avoidable food waste for the Norwegian system is 384 693 tons
+                            </br>
+                            </br>
+                            <b>Source:</b> Matsvinn i Norge (2011)
                             </div>
                           
                           </div>
 
                       </div>
-           
+ 
 
-            <script>
+    <script>
+
+    //////////////////////////////////////////////////////////////////////////////////////////////
+//The following shows the chart generator stacked bar chart for dry matter, avoidable food waste//
+/////////////////////////////////////////////////////////////////////////////////////////////////
+var chart = c3.generate({
+    size: {
+        height: 600,
+        width: 700
+    },
+    bindto: '#stackedBar',
+    data: {
+        columns: [
+            ['Frozen food',5441,116,423,62375],
+            ['Fresh fruit and vegetables',10600,0,24258,70359],
+            ['Fresk bakery goods',24275,714,22275,0],
+            ['Fresh finished food and sausages',1380,0,3954,0],
+            ['Fresh fish',377,60,1479,19960],
+            ['Fresh meat',2474,275,3644,0],
+            ['Egg',0,0,967,15469],
+            ['Dairy',1442,607,7851,0],
+            ['Dried food',14334,194,3060,86327],
+        ],
+        type: 'bar',
+        groups: [
+            ['Frozen food', 'Fresh fruit and vegetables','Fresk bakery goods','Fresh finished food and sausages','Fresh fish','Fresh meat','Egg','Dairy','Dried food']
+        ]
+    },
+    axis: {
+        y: {
+            label: 'Amount',
+            tick: {
+                format: function(d) { return d + ' (ton)'; }, //Determine unit of measure 
+
+            }
+        },
+        x: {
+            type: 'category',
+            categories: ['Food Processing', 'Wholesale', 'Retail', 'HC']
             
-var color = d3.scale.category20();
-
-
-var dataset = [{label:"Current production", value:5},{label:"Realistic potential",value:23},{label:"Teoretical potential", value:58}];
-
-/*
-var arc = d3.svg.arc()
-  .innerRadius(function(d,i){return (5-i)*35;})
-  .outerRadius(function(d,i){return (5-i)*35+1;})
-  .startAngle(0)
-  .endAngle(2*Math.PI);
-  */
-
-
-  var arc = d3.svg.arc()
-  //.innerRadius(function(d,i){return (4-i)*d.value*4;})
-  .outerRadius(function(d,i){return (4-i)*d.value*2+4;})
-  .startAngle(0)
-  .endAngle(2*Math.PI);
-
-var svg = d3.select("#diagram").append("svg")
-  .attr("width", 1200)
-  .attr("height", 800)
-  .selectAll("g")
-  .data(dataset)
-  .enter()
-  .append("g")
-  .attr("transform", "translate(300,290)");
-
-  var circle = svg.selectAll("circle").data([0, 1])
-    .enter().append("circle")
-    .attr("r", 46)
-    .attr("cx", 0)
-    .attr("cy", 0)
-    .style("fill","#1f77b4")
-    .each(pulse);
-
-var LineCircle = svg.append("g")
-  .attr("id","LineCircle")
-  .style("fill","white")
-  .attr("class", "label")
-
-
-var arcs = svg.append("path")
-  .attr("stroke", function(d, i) { return color(i); })
-  .attr("stroke-width", 2)
-  .attr("fill", "none")
-  .attr("id", function(d,i){return "s"+i;})
-  .style("stroke-dasharray", "20, 10")
-  .attr("d",arc);
+        },
+    },
+    grid: {
+        y: {
+            lines: [{value:0}]
+        }
+    },
+    color: {
+        //pattern: ['#a6cee3', '#1f78b4', '#b2df8a','#33a02c','#fb9a99', '#e31a1c', '#fdbf6f','#ff7f00','#cab2d6']
+        //pattern: ['#fff5eb','#fee6ce','#fdd0a2','#fdae6b','#fd8d3c','#f16913','#d94801','#a63603','#7f2704']
+        pattern: ['#ffffe5','#f7fcb9','#d9f0a3','#addd8e','#78c679','#41ab5d','#238443','#006837','#004529']
+    },
+});
 
 
 
-LineCircle.append("text")
-  //.attr("x", 8)
-  .attr("dy", -10)
-  .style("font-size",12)
-  .style("text-anchor","middle")
-  .append("textPath")
-  .attr("xlink:href",function(d,i){return "#s"+i;})
-  .attr("startOffset",function(d,i){return "50%";})
-  .text(function(d){return d.label.toUpperCase();})
 
-  function pulse() {
-            var circle = svg.select("circle");
+    </script> 
+
+
+
+                </div>
+            </div>
             
-                circle = circle.transition()
-                    .duration(1000)
-                    .attr("stroke-width", 20)
-                    .attr("r", 20)
-                    .transition()
-                    .duration(5000)
-                    .attr('stroke-width', 5)
-                    .attr("r", 238)
-                    .style("opacity", .2)
-                    .style("fill", "orange")
-                    .ease('sine');
-            };
-
-        </script>
-
-
-
-          </div>
-
-        </div>
-
-        </div>
 
         </div>
         <!-- /#page-content-wrapper -->
