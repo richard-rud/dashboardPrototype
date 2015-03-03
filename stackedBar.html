@@ -39,7 +39,7 @@ h2 {
 }
 
 h3 {
-    color: white;
+    color: black;
 }
 
 .chartTitle {
@@ -119,8 +119,8 @@ h3 {
                     <div class="col-lg-12">
                         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span> Menu</a>
 
-                        <h1 class="chartTitle">Stacked bar chart: Avoidable food waste</h1>
-                        <h2 class="chartSubTitle">This bar chart shows avoidable food waste for the baseline scenario (S0) amount of tons of avoidable food waste for the different processes filtered by category.</h2>
+                        <h1 class="chartTitle">Avoidable food waste</h1>
+                        <h2 class="chartSubTitle">This bar chart shows avoidable food waste for the baseline scenario (S0).</h2>
                     
                         
                     </div>
@@ -128,10 +128,25 @@ h3 {
                      <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
                     <script src="js/c3.js"></script>
 
-            <div class="row">
-            <div id="stackedBar" class="col-md-4"></div>       
-            </div>
+            <div id="stackedBar" class="col-md-8"></div>       
+            
+             <div class="col-md-4">
+                            
+                          <button class="btn btn-default btn-lg" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" id="button-large"><span class="glyphicon glyphicon-info-sign"></span> More info</button>
+                    
+                          <div class="collapse" id="collapseExample">
+                
+                            <div class="well">
+                            <h3>Avoidable food waste in Norway</h3>
+                            This bar chart shows avoidable food waste for the baseline scenario (S0) using amount of food waste from 2010 in Norway (Matsvinn i Norge (2011)). The avoidable food waste is split into amount of tons of avoidable food waste for the different processes filtered by content for each process. The total amount of avoidable food waste for the Norwegian system is 384 693 tons
+                            </br>
+                            </br>
+                            <b>Source:</b> Matsvinn i Norge (2011)
+                            </div>
+                          
+                          </div>
 
+                      </div>
  
 
     <script>
@@ -142,7 +157,7 @@ h3 {
 var chart = c3.generate({
     size: {
         height: 600,
-        width: 1000
+        width: 700
     },
     bindto: '#stackedBar',
     data: {
@@ -182,7 +197,9 @@ var chart = c3.generate({
         }
     },
     color: {
-        pattern: ['#a6cee3', '#1f78b4', '#b2df8a','#33a02c','#fb9a99', '#e31a1c', '#fdbf6f','#ff7f00','#cab2d6']
+        //pattern: ['#a6cee3', '#1f78b4', '#b2df8a','#33a02c','#fb9a99', '#e31a1c', '#fdbf6f','#ff7f00','#cab2d6']
+        //pattern: ['#fff5eb','#fee6ce','#fdd0a2','#fdae6b','#fd8d3c','#f16913','#d94801','#a63603','#7f2704']
+        pattern: ['#ffffe5','#f7fcb9','#d9f0a3','#addd8e','#78c679','#41ab5d','#238443','#006837','#004529']
     },
 });
 
