@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Biogas production",
+    "x": "s0",
+    "y": 226800
+  },
+  {
+    "name": "Biogas production",
+    "x": "s1",
+    "y": 4554562
+  },
+  {
+    "name": "Biogas production",
+    "x": "s2",
+    "y": 113113
+  },
+  {
+    "name": "Phosphorus in manure",
+    "x": "s0",
+    "y": 12111
+  },
+  {
+    "name": "Phosphorus in manure",
+    "x": "s1",
+    "y": 12111
+  },
+  {
+    "name": "Phosphorus in manure",
+    "x": "s2",
+    "y": 10477
+  },
+  {
+    "name": "Total organic waste",
+    "x": "s0",
+    "y": 5009300
+  },
+  {
+    "name": "Total organic waste",
+    "x": "s1",
+    "y": 13550821
+  },
+  {
+    "name": "Total organic waste",
+    "x": "s2",
+    "y": 5009300
+  }
+]

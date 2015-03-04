@@ -1,0 +1,38 @@
+{
+ "name": "bubbles_P",
+ "children": [
+  {
+   "name": "bubble1",
+   "children": [
+    {"name": "Left on the plate after a meal ", "size": 1225700,"colorType":"red"}
+   ]
+  },
+  {
+   "name": "bubble2",
+   "children": [
+    {"name": "Passed it's date", "size": 808000,"colorType":"red"}
+   ]
+  },
+  {
+   "name": "bubble3",
+   "children": [
+    {"name": "Looked, smelt or tasted bad", "size": 750500,"colorType":"blue"}
+   ]
+  },
+  {
+   "name": "bubble4",
+   "children": [
+    {"name": "Went mouldy", "size": 465700,"colorType":"red"}
+   ]
+  },
+  {
+   "name": "bubble5",
+   "children": [
+    {"name": "Left over from cooking", "size": 360600,"colorType":"red"}
+   ]
+  } 
+  
+     ]
+}
+ 
+

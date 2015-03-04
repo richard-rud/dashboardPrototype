@@ -1,0 +1,69 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="pykih-charts/pykcharts.1.0.0.min.css">
+    <script src="pykih-charts/pykcharts.1.0.0.min.js"></script>
+</head>
+<body>
+
+    <div id="my_chart_E"></div>
+    
+    <div id="my_chart_P"></div>
+    
+    <div id="my_chart_DM"></div>
+    
+    <script>
+  window.PykChartsInit = function (e) {
+    var k = new PykCharts.multiD.panelsOfLine({
+      selector: "#my_chart_E",
+      data: "data/panel-of-lines.json",
+      "color_mode": "saturation",
+    "saturation_color": "grey",
+      "chart_width": 300,
+    "chart_height": 300,
+    "axis_x_enable": "yes",
+  "axis_y_enable": "yes",
+  "title_text": "Energy",
+  "title_color": "black",
+  "title_size": 1,
+  "title_weight": "normal",
+  "title_family": "Helvetica"
+  
+
+      });
+
+    var g = new PykCharts.multiD.panelsOfLine({
+      selector: "#my_chart_P",
+      data: "data/panel-of-lines.json",
+      "chart_width": 300,
+    "chart_height": 300,
+    "axis_x_enable": "yes",
+  "axis_y_enable": "no",
+  "title_text": "Phosphorus",
+  "title_color": "black",
+  "title_size": 1,
+  "title_weight": "normal",
+  "title_family": "Helvetica"
+      });
+
+    var b = new PykCharts.multiD.panelsOfLine({
+      selector: "#my_chart_DM",
+      data: "data/panel-of-lines.json",
+      "chart_width": 300,
+    "chart_height": 300,
+    "axis_x_enable": "yes",
+  "axis_y_enable": "no",
+  "title_text": "Dry matter",
+  "title_color": "black",
+  "title_size": 1,
+  "title_weight": "normal",
+  "title_family": "Helvetica"
+      });
+
+    k.execute();
+    g.execute();
+    b.execute();
+
+  }
+</script>
+
+</body>
+
