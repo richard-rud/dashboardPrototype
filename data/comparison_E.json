@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Biogas production",
+    "x": "s0",
+    "y": 226800000000
+  },
+  {
+    "name": "Biogas production",
+    "x": "s1",
+    "y": 469804349084
+  },
+  {
+    "name": "Biogas production",
+    "x": "s2",
+    "y": 1872477291
+  },
+  {
+    "name": "PE meat processing",
+    "x": "s0",
+    "y": 2324400000000
+  },
+  {
+    "name": "PE meat processing",
+    "x": "s1",
+    "y": 2324400000000
+  },
+  {
+    "name": "PE meat processing",
+    "x": "s2",
+    "y": 1661666866643
+  },
+  {
+    "name": "PE for feed production",
+    "x": "s0",
+    "y": 2953200000000
+  },
+  {
+    "name": "PE for feed production",
+    "x": "s1",
+    "y": 2953200000000
+  },
+  {
+    "name": "PE for feed production",
+    "x": "s2",
+    "y": 2111183355089
+  }
+]

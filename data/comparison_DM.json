@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Organic waste",
+    "x": "s0",
+    "y": 245689
+  },
+  {
+    "name": "Organic waste",
+    "x": "s1",
+    "y": 0
+  },
+  {
+    "name": "Organic waste",
+    "x": "s2",
+    "y": 0
+  },
+  {
+    "name": "Food to retail",
+    "x": "s0",
+    "y": 1107196
+  },
+  {
+    "name": "Food to retail",
+    "x": "s1",
+    "y": 0
+  },
+  {
+    "name": "Food to retail",
+    "x": "s2",
+    "y": 0
+  },
+  {
+    "name": "Organic waste for bioenergy",
+    "x": "s0",
+    "y": 50381
+  },
+  {
+    "name": "Organic waste for bioenergy",
+    "x": "s1",
+    "y": 0
+  },
+  {
+    "name": "Organic waste for bioenergy",
+    "x": "s2",
+    "y": 0
+  }
+]

@@ -24,16 +24,10 @@
     <!-- Load c3.css stylesheet --> 
     <link href="css/c3.css" rel="stylesheet" type="text/css">
 
-    <!--D3 script-->
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
+    <style>
 
-<!--Start style sheet-->
-
-<style type="text/css">
-
-
-body {
+    body {
         background-color: #ece2f0;
     }
 
@@ -45,11 +39,9 @@ h2 {
   color: black;
 }
 
-#button-large {
-  width: 140px;
+h3 {
+    color: black;
 }
-
-
 
 .chartTitle {
      font-size: 40px;
@@ -57,13 +49,32 @@ h2 {
 
 .chartSubTitle {
     font-size: 20px;
+    margin-bottom: 50px;
+}
+
+/*CSS styling for the bubble diagram*/
+
+#bubbleDiagram {
+    top: -100px;
+}
+
+/* Styling for the tooltip */
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+.node:hover {
+  opacity: .3;
 }
 
 
-
-        </style>
-
-        <!--End style sheet-->
+    </style>
 
 </head>
 
@@ -139,133 +150,120 @@ h2 {
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-
             <div class="container-fluid">
-
                 <div class="row">
-
                     <div class="col-lg-12">
-                        
                         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span> Menu</a>
-                        
-                        <h1 class="chartTitle">Biogas production in Norway</h1>
-                        
-                        <h2 class="chartSubTitle">This diagram shows the current production compared with both the theoretical and realistic potential</h2>
-                      
-                        <div id="diagram" class="col-md-8"></div>
 
-                        <div class="col-md-4">
+                        <h1 class="chartTitle">Most to least favoured option</h1>
+                        <h2 class="chartSubTitle">Showing the most to least favoured option when handling food waste. The bigger the size, the more favourable the option is.</h2>                    
+                        
+                    </div>
+
+                     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+                    <script src="js/c3.js"></script>
+                    
+                    <!-- THIS IS THE REFERENCE FOR ACCESSING THE D3-TOOLTIP-->
+                    <script type="text/javascript" src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+            <div id="bubbleDiagram" class="col-md-8"></div>       
+            
+             <div class="col-md-4">
                             
                           <button class="btn btn-default btn-lg" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" id="button-large"><span class="glyphicon glyphicon-info-sign"></span> More info</button>
                     
                           <div class="collapse" id="collapseExample">
                 
                             <div class="well">
-                            
-                            <b>Biogas production in Norway: </b>
-                            Biogas production in Norway has a current production equal to 0,5 TWh. Calculations predict that it is possible to increase biogas production. The realistic potential equals 2,3 TWh, while the theoretical potential equals as much as 5,8 TWh.
-                          </br>
-                        </br>
-                        <b>Source: </b>Norwegian Environment Agency 
-
-
+                            <h3>Wood waste "pyramid"</h3>
+                            The EU’s Waste Framework Directive sets out a ‘waste hierarchy’ (see Figure 4), from prevention through to disposal via minimisation, reuse, recycling and recovery.242 In this chapter, we consider how practical application of the waste hierarchy to the food supply chain may have implications for food waste prevention throughout the chain (Source: House of lords)
+                            </br>
+                            </br>
+                            <b>Source:</b> House of lords
                             </div>
                           
                           </div>
 
                       </div>
-           
+ 
 
-            <script>
+    <script>
+
+//Following code creates the layout for the bubble chart (phosphorus)
+
+var diameter = 700,
+    format = d3.format(",d"),
+    //color = d3.scale.category10();
+    color = d3.scale.ordinal()
+      .range(["#238443", "#bdbdbd", "#bdbdbd", "#bdbdbd", "#bdbdbd"]);
+
+
+
+var bubble = d3.layout.pack()
+    .sort(null)
+    .size([diameter, diameter])
+    .padding(1.5);
+
+var svg_P = d3.select("#bubbleDiagram").append("svg")
+    .attr("width", diameter)
+    .attr("height", diameter)
+    .attr("class", "bubble");
+
+d3.json("data/pyramid.json", function(error, root) {
+  var node = svg_P.selectAll(".node")
+      .data(bubble.nodes(classes(root))
+      .filter(function(d) { return !d.children; }))
+    .enter().append("g")
+      .attr("class", "node")
+      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+      .on('mouseover', toolTip_bubbles_P.show)
+      .on('mouseout', toolTip_bubbles_P.hide);
+
+  node.append("circle")
+      .attr("r", function(d) { return d.r; })
+      .style("fill", function(d) { return color(d.packageName); });
+      //.style("fill", "grey");
+
+  node.append("text")
+      .attr("dy", ".3em")
+      .style("text-anchor", "middle")
+      .text(function(d) { return d.className.substring(0, d.r / 3); });
+});
+
+function classes(root) {
+  var classes = [];
+
+  function recurse(name, node) {
+    if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
+    else classes.push({packageName: name, className: node.name, value: node.size});
+  }
+
+  recurse(null, root);
+  return {children: classes};
+}
+
+d3.select(self.frameElement).style("height", diameter + "px");
+
+//Start tooltip
+
+var toolTip_bubbles_P = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+    return "<p><span style='color:white'>" + d.className + "</p>" + "</span>";
+  });
+
+  svg_P.call(toolTip_bubbles_P);
+
+  // End tooltip
+
+    </script> 
+
+
+
+                </div>
+            </div>
             
-var color = d3.scale.category20();
-
-
-var dataset = [{label:"Current production", value:5},{label:"Realistic potential",value:23},{label:"Teoretical potential", value:58}];
-
-/*
-var arc = d3.svg.arc()
-  .innerRadius(function(d,i){return (5-i)*35;})
-  .outerRadius(function(d,i){return (5-i)*35+1;})
-  .startAngle(0)
-  .endAngle(2*Math.PI);
-  */
-
-
-  var arc = d3.svg.arc()
-  //.innerRadius(function(d,i){return (4-i)*d.value*4;})
-  .outerRadius(function(d,i){return (4-i)*d.value*2+4;})
-  .startAngle(0)
-  .endAngle(2*Math.PI);
-
-var svg = d3.select("#diagram").append("svg")
-  .attr("width", 1200)
-  .attr("height", 800)
-  .selectAll("g")
-  .data(dataset)
-  .enter()
-  .append("g")
-  .attr("transform", "translate(300,290)");
-
-  var circle = svg.selectAll("circle").data([0, 1])
-    .enter().append("circle")
-    .attr("r", 46)
-    .attr("cx", 0)
-    .attr("cy", 0)
-    .style("fill","#1f77b4")
-    .each(pulse);
-
-var LineCircle = svg.append("g")
-  .attr("id","LineCircle")
-  .style("fill","black")
-  .attr("class", "label")
-
-
-var arcs = svg.append("path")
-  .attr("stroke", function(d, i) { return color(i); })
-  .attr("stroke-width", 2)
-  .attr("fill", "none")
-  .attr("id", function(d,i){return "s"+i;})
-  .style("stroke-dasharray", "20, 10")
-  .attr("d",arc);
-
-
-
-LineCircle.append("text")
-  //.attr("x", 8)
-  .attr("dy", -10)
-  .style("font-size",12)
-  .style("text-anchor","middle")
-  .append("textPath")
-  .attr("xlink:href",function(d,i){return "#s"+i;})
-  .attr("startOffset",function(d,i){return "50%";})
-  .text(function(d){return d.label.toUpperCase();})
-
-  function pulse() {
-            var circle = svg.select("circle");
-            
-                circle = circle.transition()
-                    .duration(1000)
-                    .attr("stroke-width", 20)
-                    .attr("r", 20)
-                    .transition()
-                    .duration(5000)
-                    .attr('stroke-width', 5)
-                    .attr("r", 238)
-                    .style("opacity", .2)
-                    .style("fill", "orange")
-                    .ease('sine');
-            };
-
-        </script>
-
-
-
-          </div>
-
-        </div>
-
-        </div>
 
         </div>
         <!-- /#page-content-wrapper -->

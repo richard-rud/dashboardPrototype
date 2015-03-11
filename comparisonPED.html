@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>MFA dashboard</title>
+
+    <script type="text/javascript" src="js/d3.v3.js"></script>
+
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+    <script src="js/d3Tip.js"></script>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- Load c3.css stylesheet --> 
+    <link href="css/c3.css" rel="stylesheet" type="text/css">
+
+    <!-- Pykchart stylesheet and javascript reference -->
+    <link rel="stylesheet" type="text/css" href="pykih-charts/pykcharts.1.0.0.min.css">
+    <script src="pykih-charts/pykcharts.1.0.0.min.js"></script>
+
+<!--Start style sheet-->
+
+<style type="text/css">
+
+body {
+        background-color: #F0F0E0;
+    }
+
+h1 {
+    color: black;
+}
+
+h2 {
+  color: black;
+}
+
+h3 {
+    color: black;
+}
+
+#barChartEnergy {
+    width: 33%;
+}
+
+#barChartPhosphorus {
+    width: 33%;
+}
+
+#barChartDryMatter {
+    width: 33%;
+}
+
+.chartTitle {
+     font-size: 40px;
+}
+
+.chartSubTitle {
+    font-size: 20px;
+}
+
+#export {
+    float: right;
+}
+
+
+
+        </style>
+
+        <!--End style sheet-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+             <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="sankey.html">Sankey diagram</a>
+                </li>
+                <li>
+                    <a href="AvoidableFoodWaste.html">Avoidable Food Waste</a>
+                </li>
+                <li>
+                    <a href="parallel.html">Problem shifting</a>
+                </li>
+                <li>
+                    <a href="energyUse.html">Energy use</a>
+                </li>
+                <li>
+                    <a href="chord.html">Chord diagram</a>
+                </li>
+                <li>
+                    <a href="barChartFlows.html">P, E and DM flows</a>
+                </li>
+                <li>
+                    <a href="scatterPlot.html">ScatterPlot</a>
+                </li>
+                <li>
+                    <a href="heatmap.html">Heatmap</a>
+                </li>
+                <li>
+                    <a href="circleDiagram.html">Biogas production</a>
+                </li>
+                <li>
+                    <a href="map.html">Phopshate reserves: Top 10 states</a>
+                </li>
+                 <li>
+                    <a href="areaChart.html">Is the food too cheap?</a>
+                </li>
+                 <li>
+                    <a href="PE_use_baseline.html">PE use</a>
+                </li>
+                <li>
+                    <a href="whyWeWaste.html">Why we waste food</a>
+                </li>
+                <li>
+                    <a href="wastePyramid.html">Favourable options</a>
+                </li>
+                <li>
+                    <a href="comparisonPED.html">Comparison of P, E and DM</a>
+                </li>
+                <li>
+                    <a href="emissionsSector.html">Norwegian GHG emissions</a>
+                </li>
+                <li>
+                    <a href="help.html">Help</a>
+                </li>
+                <li>
+                    <a href="credits.html">Credits</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <div class="col-lg-12">
+<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span> Menu</a>
+                        <h1 class="chartTitle">Comparison of phosphorus, energy and dry matter scenarios</h1>
+                        <h2 class="chartSubTitle"></h2>
+                        </br>
+                        </br>
+
+            <div class="row">
+            <div id="my_chart_E" class=""></div>
+            </div>
+            
+            <div class="row">
+            <div id="my_chart_P" class=""></div>
+            </div>
+            
+            <div class="row">
+            <div id="my_chart_DM" class=""></div>
+            </div>
+
+
+<script>
+
+    window.PykChartsInit = function (e) {
+        var energyDiagram = new PykCharts.multiD.panelsOfLine({
+            
+            selector: "#my_chart_E",
+            data: "data/comparison_E.json",
+            color_mode: "color",
+            chart_color: ["black","black","black"],
+            chart_width: 380,
+            chart_height: 200,
+            axis_x_enable: "yes",
+            axis_y_enable: "yes",
+            title_text: "Energy",
+            title_color: "black",
+            title_size: 1,
+            title_weight: "normal",
+            title_family: "Helvetica",
+            chart_margin_top: 20, 
+            chart_margin_right: 30, 
+            chart_margin_bottom: 30, 
+            chart_margin_left: 130,
+            chart_grid_x_enable: "yes",
+            chart_grid_y_enable: "yes",
+            axis_x_pointer_color: "black",
+            axis_y_pointer_color: "black"
+    
+    });
+
+        var phosphorusDiagram = new PykCharts.multiD.panelsOfLine({
+            
+            selector: "#my_chart_P",
+            data: "data/comparison_P.json",
+            color_mode: "color",
+            chart_color: ["black","black","black"],
+            chart_width: 380,
+            chart_height: 200,
+            axis_x_enable: "yes",
+            axis_y_enable: "yes",
+            title_text: "Phosphorus",
+            title_color: "black",
+            title_size: 1,
+            title_weight: "normal",
+            title_family: "Helvetica",
+            chart_margin_top: 20, 
+            chart_margin_right: 30, 
+            chart_margin_bottom: 30, 
+            chart_margin_left: 130,
+            chart_grid_x_enable: "yes",
+            chart_grid_y_enable: "yes",
+            axis_x_pointer_color: "black",
+            axis_y_pointer_color: "black"
+    
+    });
+
+        var dryMatterDiagram = new PykCharts.multiD.panelsOfLine({
+            
+            selector: "#my_chart_DM",
+            data: "data/comparison_DM.json",
+            color_mode: "color",
+            chart_color: ["black","black","black"],
+            chart_width: 380,
+            chart_height: 200,
+            axis_x_enable: "yes",
+            axis_y_enable: "yes",
+            title_text: "Dry matter",
+            title_color: "black",
+            title_size: 1,
+            title_weight: "normal",
+            title_family: "Helvetica",
+            chart_margin_top: 20, 
+            chart_margin_right: 30, 
+            chart_margin_bottom: 30, 
+            chart_margin_left: 130,
+            chart_grid_x_enable: "yes",
+            chart_grid_y_enable: "yes",
+            axis_x_pointer_color: "black",
+            axis_y_pointer_color: "black"
+    
+    });
+
+    energyDiagram.execute();
+    phosphorusDiagram.execute();
+    dryMatterDiagram.execute();
+
+  }
+
+        </script>
+
+<h2 class="chartSubTitle">This is a comparison of phosphorus, energy and dry matter for the different scenarios (Hamilton, 2015). With comparing effects of different scenarios for the selected flows, we will try to higlight the importance of being aware of the fact that problemshifting may occur. If you want to select a certain process, press and hold the line, and it will get a dark color. That way you can compare this process more clearly with other processes.</h2>
+
+          </div>
+
+        </div>
+
+        </div>
+
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>

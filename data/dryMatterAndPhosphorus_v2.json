@@ -1,0 +1,22 @@
+{"nodes":[
+{"name":"1. Fertilizer production","stock":"N/A","nodeColor":"#2ca25f"},          
+{"name":"2. Agriculture and greening soils","stock":"N/A","nodeColor":"#2ca25f"},  
+{"name":"3. Agriculture","stock":"N/A","nodeColor":"#2ca25f"},                  
+{"name":"4. Husbandry feed","stock":"N/A","nodeColor":"#2ca25f"}
+],
+"links":[
+{"source":0,"target":1,"value":19032,"type":"Dry Matter","colorType":"#b22200","flowName":"Organic fertilizer"},
+{"source":0,"target":1,"value":373275,"type":"Dry Matter","colorType":"#b22200","flowName":"Mineral fertilizer"},
+{"source":0,"target":1,"value":250000,"type":"Phosphorus","colorType":"#EACE3F","flowName":"Organic fertilizer"},
+{"source":0,"target":1,"value":840000,"type":"Phosphorus","colorType":"#EACE3F","flowName":"Mineral fertilizer"},
+{"source":1,"target":2,"value":3347273,"type":"Dry Matter","colorType":"#b22200","flowName":"Plant uptake, grazing & green fodder"},
+{"source":1,"target":2,"value":1200000,"type":"Phosphorus","colorType":"#EACE3F","flowName":"Plant uptake"},
+{"source":2,"target":3,"value":908824,"type":"Dry Matter","colorType":"#b22200","flowName":"No name"},
+{"source":2,"target":3,"value":420000,"type":"Phosphorus","colorType":"#EACE3F","flowName":"Plant products for feed"},
+{"source":2,"target":1,"value":1200000,"type":"Phosphorus","colorType":"#EACE3F","flowName":"Manure (Feedback loop)"},
+{"source":2,"target":1,"value":1662577,"type":"Dry Matter","colorType":"#b22200","flowName":"Manure (Feedback loop)"},
+{"source":3,"target":2,"value":960000,"type":"Phosphorus","colorType":"#EACE3F","flowName":"Husbandry and fur feed (Feedback loop)"}
+]}
+
+
+

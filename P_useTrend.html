@@ -24,14 +24,7 @@
     <!-- Load c3.css stylesheet --> 
     <link href="css/c3.css" rel="stylesheet" type="text/css">
 
-    <!--D3 script-->
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-
-
-<!--Start style sheet-->
-
-<style type="text/css">
-
+    <style>
 
 body {
         background-color: #ece2f0;
@@ -45,11 +38,9 @@ h2 {
   color: black;
 }
 
-#button-large {
-  width: 140px;
+h3 {
+    color: black;
 }
-
-
 
 .chartTitle {
      font-size: 40px;
@@ -57,13 +48,11 @@ h2 {
 
 .chartSubTitle {
     font-size: 20px;
+    margin-bottom: 50px;
 }
 
 
-
-        </style>
-
-        <!--End style sheet-->
+    </style>
 
 </head>
 
@@ -139,133 +128,128 @@ h2 {
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-
             <div class="container-fluid">
-
                 <div class="row">
-
                     <div class="col-lg-12">
-                        
                         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span> Menu</a>
-                        
-                        <h1 class="chartTitle">Biogas production in Norway</h1>
-                        
-                        <h2 class="chartSubTitle">This diagram shows the current production compared with both the theoretical and realistic potential</h2>
-                      
-                        <div id="diagram" class="col-md-8"></div>
 
-                        <div class="col-md-4">
+                        <h1 class="chartTitle">Phosphorus and Nitrogen use in Norway from 2008 - 2014 </h1>
+                        <h2 class="chartSubTitle">This chart shows the use of mineralfertilizer in Norway over time.</h2>
+                        
+                    </div>
+
+                     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+                    <script src="js/c3.js"></script>
+
+            <div class="row">
+            <div id="lineChart_Phosphorus" class="col-md-4"></div>       
+            <div id="lineChart_Nitrogen" class="col-md-4"></div>  
+            <div class="col-md-4">
                             
                           <button class="btn btn-default btn-lg" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" id="button-large"><span class="glyphicon glyphicon-info-sign"></span> More info</button>
                     
                           <div class="collapse" id="collapseExample">
                 
                             <div class="well">
-                            
-                            <b>Biogas production in Norway: </b>
-                            Biogas production in Norway has a current production equal to 0,5 TWh. Calculations predict that it is possible to increase biogas production. The realistic potential equals 2,3 TWh, while the theoretical potential equals as much as 5,8 TWh.
-                          </br>
-                        </br>
-                        <b>Source: </b>Norwegian Environment Agency 
-
-
+                            <h3>Mineralfertilizer use in Norway over time (Showing total turnover)</h3>
+                            This data is based on the total turnover for mineralfertilizer used in agriculture. The data is based on rapporting from the retailers selling mineral fertilier. With this we see a general upward trend in phosphorus and nitrogen use. Incresing amounts of food waste might also contribute to increasing this even more.
+                            </br>
+                            </br>
+                            <b>Source:</b> Mattilsynet (2008-2014)
                             </div>
                           
                           </div>
 
-                      </div>
-           
+            </div>
+            </div>
+ 
+    <script>
 
-            <script>
+    var chart = c3.generate({
+    size: {
+        height: 400,
+        width: 400
+    },
+    bindto: '#lineChart_Phosphorus',
+    data: {
+        columns: [
+            ['Phosphorus', 7071, 7669, 8901, 8565, 8573, 8836]
+        ]
+    },
+    color: {
+        pattern: ['#7f2704']
+    },
+    axis: {
+        x: {
+            type: 'category',
+            categories: ['2008/2009','2009/2010', '2010/2011', '2011/2012', '2012/2013', '2013/2014'],
+            label: 'year'
+        },
+        y: {
+            label: 'tons'
+        }
+    },
+    grid: {
+        x: {
+            show: true
+        },
+        y: {
+            show: true
+        }
+    },
+    transition: {
+        duration: 1000
+    }
+});
+
+    </script> 
+
+        <script>
+
+    var chart = c3.generate({
+    size: {
+        height: 400,
+        width: 400
+    },
+    bindto: '#lineChart_Nitrogen',
+    data: {
+        columns: [
+            ['Nitrogen', 79772, 83081, 96851, 95767, 97010, 102238]
+        ]
+    },
+    color: {
+        pattern: ['#4d004b']
+    },
+    axis: {
+        x: {
+            type: 'category',
+            categories: ['2008/2009','2009/2010', '2010/2011', '2011/2012', '2012/2013', '2013/2014'],
+            label: 'year'
+        },
+        y: {
+            label: 'tons'
+        }
+    },
+    grid: {
+        x: {
+            show: true
+        },
+        y: {
+            show: true
+        }
+    },
+    transition: {
+        duration: 1000
+    }
+});
+
+    </script> 
+
+
+
+                </div>
+            </div>
             
-var color = d3.scale.category20();
-
-
-var dataset = [{label:"Current production", value:5},{label:"Realistic potential",value:23},{label:"Teoretical potential", value:58}];
-
-/*
-var arc = d3.svg.arc()
-  .innerRadius(function(d,i){return (5-i)*35;})
-  .outerRadius(function(d,i){return (5-i)*35+1;})
-  .startAngle(0)
-  .endAngle(2*Math.PI);
-  */
-
-
-  var arc = d3.svg.arc()
-  //.innerRadius(function(d,i){return (4-i)*d.value*4;})
-  .outerRadius(function(d,i){return (4-i)*d.value*2+4;})
-  .startAngle(0)
-  .endAngle(2*Math.PI);
-
-var svg = d3.select("#diagram").append("svg")
-  .attr("width", 1200)
-  .attr("height", 800)
-  .selectAll("g")
-  .data(dataset)
-  .enter()
-  .append("g")
-  .attr("transform", "translate(300,290)");
-
-  var circle = svg.selectAll("circle").data([0, 1])
-    .enter().append("circle")
-    .attr("r", 46)
-    .attr("cx", 0)
-    .attr("cy", 0)
-    .style("fill","#1f77b4")
-    .each(pulse);
-
-var LineCircle = svg.append("g")
-  .attr("id","LineCircle")
-  .style("fill","black")
-  .attr("class", "label")
-
-
-var arcs = svg.append("path")
-  .attr("stroke", function(d, i) { return color(i); })
-  .attr("stroke-width", 2)
-  .attr("fill", "none")
-  .attr("id", function(d,i){return "s"+i;})
-  .style("stroke-dasharray", "20, 10")
-  .attr("d",arc);
-
-
-
-LineCircle.append("text")
-  //.attr("x", 8)
-  .attr("dy", -10)
-  .style("font-size",12)
-  .style("text-anchor","middle")
-  .append("textPath")
-  .attr("xlink:href",function(d,i){return "#s"+i;})
-  .attr("startOffset",function(d,i){return "50%";})
-  .text(function(d){return d.label.toUpperCase();})
-
-  function pulse() {
-            var circle = svg.select("circle");
-            
-                circle = circle.transition()
-                    .duration(1000)
-                    .attr("stroke-width", 20)
-                    .attr("r", 20)
-                    .transition()
-                    .duration(5000)
-                    .attr('stroke-width', 5)
-                    .attr("r", 238)
-                    .style("opacity", .2)
-                    .style("fill", "orange")
-                    .ease('sine');
-            };
-
-        </script>
-
-
-
-          </div>
-
-        </div>
-
-        </div>
 
         </div>
         <!-- /#page-content-wrapper -->

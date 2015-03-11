@@ -27,15 +27,15 @@
     <style>
 
     body {
-        background-color: #3b3b3c;
+        background-color: #ece2f0;
     }
 
 h1 {
-    color: white;
+    color: black;
 }
 
 h2 {
-  color: white;
+  color: black;
 }
 
 h3 {
@@ -78,13 +78,13 @@ h3 {
                     <a href="parallel.html">Problem shifting</a>
                 </li>
                 <li>
-                    <a href="treemap.html">Treemap</a>
+                    <a href="energyUse.html">Energy use</a>
                 </li>
                 <li>
                     <a href="chord.html">Chord diagram</a>
                 </li>
                 <li>
-                    <a href="barChart.html">Bar chart</a>
+                    <a href="barChartFlows.html">P, E and DM flows</a>
                 </li>
                 <li>
                     <a href="scatterPlot.html">ScatterPlot</a>
@@ -106,6 +106,15 @@ h3 {
                 </li>
                 <li>
                     <a href="whyWeWaste.html">Why we waste food</a>
+                </li>
+                <li>
+                    <a href="wastePyramid.html">Favourable options</a>
+                </li>
+                <li>
+                    <a href="comparisonPED.html">Comparison of P, E and DM</a>
+                </li>
+                <li>
+                    <a href="emissionsSector.html">Norwegian GHG emissions</a>
                 </li>
                 <li>
                     <a href="help.html">Help</a>
@@ -179,40 +188,41 @@ var chart = c3.generate({
             ['PE Starch product manufacturing',438000000000],
             ['PE Bakery product manufacturing',1347600000000],
             ['PE Beverage and other food products production',1964400000000],
-            ['PE Biogas',7134041349]  
-
+            ['PE Biogas',7134041349],
+            ['Losses biogas production',1786633951],
+            ['Waste for incineration/construction/landfill',3854702619822],
+            ['Exported organic waste',2075645525000] ,
+            ['Exported sewage sludge from waste water treatment',506504166666]
         ],
         type: 'bar',
         groups: [
-            ['PE for fertilizer production (natural gas and electricity)','Inputs to plants','PE for plant production','PE for animal husbandry','PE for feed production','PE Meat processing','PE Fruit and vegetable processing','PE animal and vegetable fat production','PE Dairy product manufacturing','PE Starch product manufacturing','PE Bakery product manufacturing','PE Beverage and other food products production','PE Biogas']
-        ]
+            ['PE for fertilizer production (natural gas and electricity)','Inputs to plants','PE for plant production','PE for animal husbandry','PE for feed production','PE Meat processing','PE Fruit and vegetable processing','PE animal and vegetable fat production','PE Dairy product manufacturing','PE Starch product manufacturing','PE Bakery product manufacturing','PE Beverage and other food products production','PE Biogas','Losses biogas production','Waste for incineration/construction/landfill','Exported organic waste','Exported sewage sludge from waste water treatment']
+        ],
+        order: 'none'
+    },
+    grid: {
+        y: {
+            show: true
+        }
     },
     axis: {
         y: {
             label: 'Amount',
             tick: {
-                format: function(d) { return d + ' (ton)'; }, //Determine unit of measure 
+                format: function(d) { return d + ' (kj/yr)'; }, //Determine unit of measure 
 
             }
         },
         x: {
             type: 'category',
-            categories: ['Food Processing', 'Wholesale', 'Retail', 'HC']
+            categories: ['PE and losses']
             
         },
     },
-    grid: {
-        y: {
-            lines: [{value:0}]
-        }
-    },
     color: {
-        pattern: ['#1f77b4', '#aec7e8', '#ff7f0e', '#ffbb78', '#2ca02c', '#98df8a', '#d62728', '#ff9896', '#9467bd', '#c5b0d5', '#8c564b', '#c49c94', '#e377c2', '#f7b6d2', '#7f7f7f', '#c7c7c7', '#bcbd22', '#dbdb8d', '#17becf', '#9edae5']
+        pattern: ['#80b1d3', '#80b1d3', '#80b1d3', '#80b1d3', '#80b1d3', '#80b1d3', '#80b1d3', '#80b1d3', '#80b1d3', '#80b1d3', '#80b1d3', '#80b1d3', '#80b1d3', '#fdb462', '#fdb462', '#fdb462', '#fdb462', '#fdb462', '#fdb462', '#fdb462']
     },
 });
-
-
-
 
     </script> 
 

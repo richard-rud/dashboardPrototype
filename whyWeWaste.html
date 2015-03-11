@@ -28,15 +28,15 @@
     <style>
 
     body {
-        background-color: #3b3b3c;
+        background-color: #ece2f0;
     }
 
 h1 {
-    color: white;
+    color: black;
 }
 
 h2 {
-  color: white;
+  color: black;
 }
 
 h3 {
@@ -100,13 +100,13 @@ h3 {
                     <a href="parallel.html">Problem shifting</a>
                 </li>
                 <li>
-                    <a href="treemap.html">Treemap</a>
+                    <a href="energyUse.html">Energy use</a>
                 </li>
                 <li>
                     <a href="chord.html">Chord diagram</a>
                 </li>
                 <li>
-                    <a href="barChart.html">Bar chart</a>
+                    <a href="barChartFlows.html">P, E and DM flows</a>
                 </li>
                 <li>
                     <a href="scatterPlot.html">ScatterPlot</a>
@@ -128,6 +128,15 @@ h3 {
                 </li>
                 <li>
                     <a href="whyWeWaste.html">Why we waste food</a>
+                </li>
+                <li>
+                    <a href="wastePyramid.html">Favourable options</a>
+                </li>
+                <li>
+                    <a href="comparisonPED.html">Comparison of P, E and DM</a>
+                </li>
+                <li>
+                    <a href="emissionsSector.html">Norwegian GHG emissions</a>
                 </li>
                 <li>
                     <a href="help.html">Help</a>
@@ -184,7 +193,8 @@ h3 {
 
 var diameter = 700,
     format = d3.format(",d"),
-    color = d3.scale.category10();
+    color = d3.scale.ordinal()
+      .range(["#238443", "#bdbdbd", "#bdbdbd", "#bdbdbd", "#bdbdbd"]);
 
 
 var bubble = d3.layout.pack()
@@ -210,6 +220,7 @@ d3.json("data/whyWeWasteData.json", function(error, root) {
   node.append("circle")
       .attr("r", function(d) { return d.r; })
       .style("fill", function(d) { return color(d.packageName); });
+ 
 
   node.append("text")
       .attr("dy", ".3em")

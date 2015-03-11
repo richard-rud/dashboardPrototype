@@ -24,16 +24,9 @@
     <!-- Load c3.css stylesheet --> 
     <link href="css/c3.css" rel="stylesheet" type="text/css">
 
-    <!--D3 script-->
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <style>
 
-
-<!--Start style sheet-->
-
-<style type="text/css">
-
-
-body {
+    body {
         background-color: #ece2f0;
     }
 
@@ -45,11 +38,9 @@ h2 {
   color: black;
 }
 
-#button-large {
-  width: 140px;
+h3 {
+    color: black;
 }
-
-
 
 .chartTitle {
      font-size: 40px;
@@ -57,13 +48,11 @@ h2 {
 
 .chartSubTitle {
     font-size: 20px;
+    margin-bottom: 50px;
 }
 
 
-
-        </style>
-
-        <!--End style sheet-->
+    </style>
 
 </head>
 
@@ -139,22 +128,26 @@ h2 {
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-
             <div class="container-fluid">
-
                 <div class="row">
-
                     <div class="col-lg-12">
-                        
                         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span> Menu</a>
-                        
-                        <h1 class="chartTitle">Biogas production in Norway</h1>
-                        
-                        <h2 class="chartSubTitle">This diagram shows the current production compared with both the theoretical and realistic potential</h2>
-                      
-                        <div id="diagram" class="col-md-8"></div>
 
-                        <div class="col-md-4">
+                        <h1 class="chartTitle">Emissions from Norwegian territory</h1>
+                        <h2 class="chartSubTitle">Source: http://ssb.no/klimagassn/</h2>
+                    
+                        
+                    </div>
+
+                     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+                    <script src="js/c3.js"></script>
+
+            <div class="row">
+            
+            <div id="emissionsPie" class="col-md-8"></div>  
+
+
+            <div class="col-md-4">
                             
                           <button class="btn btn-default btn-lg" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" id="button-large"><span class="glyphicon glyphicon-info-sign"></span> More info</button>
                     
@@ -162,11 +155,11 @@ h2 {
                 
                             <div class="well">
                             
-                            <b>Biogas production in Norway: </b>
-                            Biogas production in Norway has a current production equal to 0,5 TWh. Calculations predict that it is possible to increase biogas production. The realistic potential equals 2,3 TWh, while the theoretical potential equals as much as 5,8 TWh.
+                            <b>Emissions from Norwegian territory: </b>
+                            Norwegian agriculture is estimated to contribute to around 4.7 ton co2 eqv (SSB 2015). This is emissions directly linked to the agriculture sector and amounts to around 9% of the total emissions coming from Norwegian territory. Further on, NILF together with MiSA has estimated that total emissions linked to agriculture to be close up to 15% Universitetet for miljø og biovitenskap (Trømborg, Nielsen og Hoen (red) 2008) if additional estimates are measured. Further on of the total emissions, using lifecycle analysis as a methodology, could also increase this amount, as the indirect GHG emissions from producing food, all the way from the soli to the table (NILF and MiSA report).
                           </br>
                         </br>
-                        <b>Source: </b>Norwegian Environment Agency 
+                        <b>Source: </b>http://ssb.no/klimagassn/ + NILF + MiSA
 
 
                             </div>
@@ -174,98 +167,59 @@ h2 {
                           </div>
 
                       </div>
-           
 
-            <script>
+
+            </div>
+
+
+
             
-var color = d3.scale.category20();
 
-
-var dataset = [{label:"Current production", value:5},{label:"Realistic potential",value:23},{label:"Teoretical potential", value:58}];
-
-/*
-var arc = d3.svg.arc()
-  .innerRadius(function(d,i){return (5-i)*35;})
-  .outerRadius(function(d,i){return (5-i)*35+1;})
-  .startAngle(0)
-  .endAngle(2*Math.PI);
-  */
-
-
-  var arc = d3.svg.arc()
-  //.innerRadius(function(d,i){return (4-i)*d.value*4;})
-  .outerRadius(function(d,i){return (4-i)*d.value*2+4;})
-  .startAngle(0)
-  .endAngle(2*Math.PI);
-
-var svg = d3.select("#diagram").append("svg")
-  .attr("width", 1200)
-  .attr("height", 800)
-  .selectAll("g")
-  .data(dataset)
-  .enter()
-  .append("g")
-  .attr("transform", "translate(300,290)");
-
-  var circle = svg.selectAll("circle").data([0, 1])
-    .enter().append("circle")
-    .attr("r", 46)
-    .attr("cx", 0)
-    .attr("cy", 0)
-    .style("fill","#1f77b4")
-    .each(pulse);
-
-var LineCircle = svg.append("g")
-  .attr("id","LineCircle")
-  .style("fill","black")
-  .attr("class", "label")
-
-
-var arcs = svg.append("path")
-  .attr("stroke", function(d, i) { return color(i); })
-  .attr("stroke-width", 2)
-  .attr("fill", "none")
-  .attr("id", function(d,i){return "s"+i;})
-  .style("stroke-dasharray", "20, 10")
-  .attr("d",arc);
+            </div>
 
 
 
-LineCircle.append("text")
-  //.attr("x", 8)
-  .attr("dy", -10)
-  .style("font-size",12)
-  .style("text-anchor","middle")
-  .append("textPath")
-  .attr("xlink:href",function(d,i){return "#s"+i;})
-  .attr("startOffset",function(d,i){return "50%";})
-  .text(function(d){return d.label.toUpperCase();})
+    <script>
 
-  function pulse() {
-            var circle = svg.select("circle");
+    var chart = c3.generate({
+    size: {
+        height: 500,
+        width: 1000
+    },
+    bindto: '#emissionsPie',
+    data: {
+        
+        columns: [
+            ['Oil and gas extraction', 13.8],
+            ['Industry and mining', 12.1],
+            ['Energy supply', 1.8],
+            ['Heating in other industries and households', 1.5],
+            ['Road traffic', 10.1],
+            ['Aviation, marine, fishing, motorized equipment and more', 7],
+            ['Agriculture', 4.7],
+            ['Other sources', 2.9],
+        ],
+        type : 'pie',
+        onclick: function (d, i) { console.log("onclick", d, i); },
+        onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+        onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+    },
+    legend: {
+        position: 'bottom'
+    },
+    color: {
+        //pattern: ['#993404','#004529','#cc4c02','#ec7014','#fe9929','#fec44f','#fee391','#fff7bc']
+        pattern: ['#bdbdbd','#bdbdbd','#bdbdbd','#bdbdbd','#bdbdbd','#bdbdbd','#e31a1c','#bdbdbd']
+    }
+});
+
+    </script> 
+
+
+
+                </div>
+            </div>
             
-                circle = circle.transition()
-                    .duration(1000)
-                    .attr("stroke-width", 20)
-                    .attr("r", 20)
-                    .transition()
-                    .duration(5000)
-                    .attr('stroke-width', 5)
-                    .attr("r", 238)
-                    .style("opacity", .2)
-                    .style("fill", "orange")
-                    .ease('sine');
-            };
-
-        </script>
-
-
-
-          </div>
-
-        </div>
-
-        </div>
 
         </div>
         <!-- /#page-content-wrapper -->

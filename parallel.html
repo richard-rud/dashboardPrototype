@@ -30,15 +30,15 @@
 <style type="text/css">
 
 body {
-        background-color: #3b3b3c;
+        background-color: #ece2f0;
     }
 
 h1 {
-    color: white;
+    color: black;
 }
 
 h2 {
-  color: white;
+  color: black;
 }
 
 /*
@@ -82,7 +82,7 @@ h2 {
     white-space: nowrap; 
     width: 170px; 
     height: 18px; 
-    color: white;}
+    color: black ;}
 
 .col-0 { 
     width: 180px; 
@@ -102,7 +102,7 @@ h2 {
 }
 
 #example {
-    background-color: grey;
+    background-color: none ;
 }
 
 
@@ -135,13 +135,13 @@ h2 {
                     <a href="parallel.html">Problem shifting</a>
                 </li>
                 <li>
-                    <a href="treemap.html">Treemap</a>
+                    <a href="energyUse.html">Energy use</a>
                 </li>
                 <li>
                     <a href="chord.html">Chord diagram</a>
                 </li>
                 <li>
-                    <a href="barChart.html">Bar chart</a>
+                    <a href="barChartFlows.html">P, E and DM flows</a>
                 </li>
                 <li>
                     <a href="scatterPlot.html">ScatterPlot</a>
@@ -165,6 +165,15 @@ h2 {
                     <a href="whyWeWaste.html">Why we waste food</a>
                 </li>
                 <li>
+                    <a href="wastePyramid.html">Favourable options</a>
+                </li>
+                <li>
+                    <a href="comparisonPED.html">Comparison of P, E and DM</a>
+                </li>
+                <li>
+                    <a href="emissionsSector.html">Norwegian GHG emissions</a>
+                </li>
+                <li>
                     <a href="help.html">Help</a>
                 </li>
                 <li>
@@ -177,7 +186,7 @@ h2 {
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <div class="row">
+               
                     <div class="col-lg-12">
 
 
@@ -192,13 +201,12 @@ h2 {
                         
                         </div>
 
-                        <div class="col-md-12">
-                        </br>
-                    </br>
- 
-                        <div id="grid"></div>
-                        
+                        <div id="grid" class="col-md-12">
+                            </br>
+                            </br> 
                         </div>
+
+
                  
 
 
@@ -218,8 +226,8 @@ var colorScale = d3.scale.linear()
 var color = function(d) { return colorScale(d['economy (mpg)']); };
 
 var parcoords = d3.parcoords()("#example")
-  .color("#49006a")
-  .alpha(0.4);
+  .color("#d95f0e")
+  .alpha(0.9);
 
 // load csv file and create the chart
 d3.csv('data/parallelData.csv', function(data) {
@@ -268,7 +276,7 @@ d3.csv('data/parallelData.csv', function(data) {
 
 
 
-                </div>
+             
             </div>
             
 

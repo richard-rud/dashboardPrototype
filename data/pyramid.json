@@ -1,0 +1,36 @@
+{
+ "name": "bubbles_P",
+ "children": [
+  {
+   "name": "bubble1",
+   "children": [
+    {"name": "Prevention ", "size": 5,"colorType":"test","dataInfo": "Test"}
+   ]
+  },
+  {
+   "name": "bubble2",
+   "children": [
+    {"name": "Preparation for reuse", "size": 4,"colorType":"red","dataInfo": "Test"}
+   ]
+  },
+  {
+   "name": "bubble3",
+   "children": [
+    {"name": "Recycling", "size": 3,"colorType":"blue","dataInfo": "Test"}
+   ]
+  },
+  {
+   "name": "bubble4",
+   "children": [
+    {"name": "Recovery", "size": 2,"colorType":"red","dataInfo": "Test"}
+   ]
+  },
+  {
+   "name": "bubble5",
+   "children": [
+    {"name": "Disposal", "size": 1,"colorType":"red","dataInfo": "Test"}
+   ]
+  } 
+  
+     ]
+}

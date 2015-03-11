@@ -26,16 +26,16 @@
 
     <style>
 
-    body {
-        background-color: #3b3b3c;
+body {
+        background-color: #ece2f0;
     }
 
 h1 {
-    color: white;
+    color: black;
 }
 
 h2 {
-  color: white;
+  color: black;
 }
 
 h3 {
@@ -78,13 +78,13 @@ h3 {
                     <a href="parallel.html">Problem shifting</a>
                 </li>
                 <li>
-                    <a href="treemap.html">Treemap</a>
+                    <a href="energyUse.html">Energy use</a>
                 </li>
                 <li>
                     <a href="chord.html">Chord diagram</a>
                 </li>
                 <li>
-                    <a href="barChart.html">Bar chart</a>
+                    <a href="barChartFlows.html">P, E and DM flows</a>
                 </li>
                 <li>
                     <a href="scatterPlot.html">ScatterPlot</a>
@@ -106,6 +106,15 @@ h3 {
                 </li>
                 <li>
                     <a href="whyWeWaste.html">Why we waste food</a>
+                </li>
+                <li>
+                    <a href="wastePyramid.html">Favourable options</a>
+                </li>
+                <li>
+                    <a href="comparisonPED.html">Comparison of P, E and DM</a>
+                </li>
+                <li>
+                    <a href="emissionsSector.html">Norwegian GHG emissions</a>
                 </li>
                 <li>
                     <a href="help.html">Help</a>
@@ -180,7 +189,8 @@ var chart = c3.generate({
         type: 'bar',
         groups: [
             ['Frozen food', 'Fresh fruit and vegetables','Fresk bakery goods','Fresh finished food and sausages','Fresh fish','Fresh meat','Egg','Dairy','Dried food']
-        ]
+        ],
+        order: 'desc'
     },
     axis: {
         y: {

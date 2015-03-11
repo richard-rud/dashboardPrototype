@@ -1,18 +1,18 @@
 [
   {
-    "name": "Biogas production",
+    "name": "Imported phosphates",
     "x": "s0",
-    "y": 226800
+    "y": 94203
   },
   {
-    "name": "Biogas production",
+    "name": "Imported phosphates",
     "x": "s1",
-    "y": 4554562
+    "y": 94203
   },
   {
-    "name": "Biogas production",
+    "name": "Imported phosphates",
     "x": "s2",
-    "y": 113113
+    "y": 92577
   },
   {
     "name": "Phosphorus in manure",
@@ -30,18 +30,18 @@
     "y": 10477
   },
   {
-    "name": "Total organic waste",
+    "name": "Mineral fertilizer",
     "x": "s0",
-    "y": 5009300
+    "y": 7880
   },
   {
-    "name": "Total organic waste",
+    "name": "Mineral fertilizer",
     "x": "s1",
-    "y": 13550821
+    "y": 7142
   },
   {
-    "name": "Total organic waste",
+    "name": "Mineral fertilizer",
     "x": "s2",
-    "y": 5009300
+    "y": 6254
   }
 ]

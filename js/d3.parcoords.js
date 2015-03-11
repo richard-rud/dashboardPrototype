@@ -558,7 +558,7 @@ pc.createAxes = function() {
         "x": 0,
         "class": "label"
       })
-      .style("fill", "white")
+      .style("fill", "#000000")
       .text(function(d) {
         return d in __.dimensionTitles ? __.dimensionTitles[d] : d;  // dimension display names
       })
