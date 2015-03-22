@@ -233,6 +233,15 @@ opacity: .5;
                     <a href="emissionsSector.html">Norwegian GHG emissions</a>
                 </li>
                 <li>
+                    <a href="budgetPriorities.html">Budget priorities</a>
+                </li>
+                <li>
+                    <a href="wetWasteUsage.html">Wet organic waste</a>
+                </li>
+                <li>
+                    <a href="P_useTrend.html">P and N use in Norway</a>
+                </li>
+                <li>
                     <a href="help.html">Help</a>
                 </li>
                 <li>
@@ -378,9 +387,11 @@ svg.append("pattern")
 .attr('patternUnits', 'userSpaceOnUse')
 .attr('width', '25')
 .attr('height', '25')
-.style("stroke", "#b22200")
+.style("stroke", "#1a9850")
 .style("stroke-width", 30)
-.append("path").attr("d", "M0,0 L0,2 L2,2 L2,0 L0,0");
+//.append("path").attr("d", "M0,0 L0,2 L2,2 L2,0 L0,0");
+.append("path").attr("d", "M0,0 L0,9 L9,9 L9,0 L0,0");
+
 
 //Creates the pattern for feedback loops Phosphorus
 svg.append("pattern")
@@ -388,9 +399,10 @@ svg.append("pattern")
 .attr('patternUnits', 'userSpaceOnUse')
 .attr('width', '25')
 .attr('height', '25')
-.style("stroke", "#EACE3F")
+.style("stroke", "#4d004b")
 .style("stroke-width", 30)
-.append("path").attr("d", "M0,0 L0,2 L2,2 L2,0 L0,0");
+//.append("path").attr("d", "M0,0 L0,2 L2,2 L2,0 L0,0");
+.append("path").attr("d", "M0,0 L0,9 L9,9 L9,0 L0,0");
 
 
   //Following code creates the links
@@ -456,7 +468,7 @@ link.filter( function(d) { return !d.causesCycle} )
   node.append("rect")
       .attr("height", function(d) { return d.dy; })
       .attr("width", sankey.nodeWidth())
-      .style("fill", "black")
+      .style("fill", "white")
       .style("pointer-events", "all")
       .on("mouseover", function(d){  
       
@@ -508,6 +520,18 @@ link.filter( function(d) { return !d.causesCycle} )
         .attr("fill", "black")
         .text(function(d) { return d.name; });
 
+// the function for moving the nodes
+  function dragmove(d) {
+    d3.select(this).attr("transform", 
+        "translate(" + d.x + "," + (
+                d.y = Math.max(0, Math.min(height - d.dy, d3.event.y))
+            ) + ")");
+    sankey.relayout();
+    link.attr("d", path);
+
+  }
+  
+/*
   function dragmove(d) {
 
           d3.select(this).attr("transform", "translate(" + (d.x = Math.max(0, Math.min(width - d.dx, d3.event.x))) + "," + (d.y = Math.max(0, Math.min(height - d.dy, d3.event.y))) + ")");
@@ -516,6 +540,8 @@ link.filter( function(d) { return !d.causesCycle} )
 
           link.attr("d", path);
     }
+
+    */
 
   var numCycles = 0;
   for( var i = 0; i< sankey.links().length; i++ ) {
@@ -554,7 +580,7 @@ link.filter( function(d) { return !d.causesCycle} )
 
 d3.select("#dataset_S0").on("click", function() {
 
-  var jsonFile1 = "data/dryMatterAndPhosphorus_v2.json" 
+  var jsonFile1 = "data/PhosphorusLayer3.json" 
 
   readFile(jsonFile1);
 
@@ -562,7 +588,7 @@ d3.select("#dataset_S0").on("click", function() {
 
 d3.select("#dataset_S1").on("click", function() {
 
-  var jsonFile2 = "data/dryMatterAndPhosphorus_v2.json"  
+  var jsonFile2 = "data/PhosphorusLayer2.json"  
 
   readFile(jsonFile2);
 
@@ -570,7 +596,7 @@ d3.select("#dataset_S1").on("click", function() {
 
 d3.select("#dataset_S2").on("click", function() {
 
-  var jsonFile3 = "data/dryMatterAndPhosphorus_v2.json"
+  var jsonFile3 = "data/PhosphorusLayer2.json"
 
   readFile(jsonFile3);
 

@@ -1,0 +1,27 @@
+{"nodes":[
+{"name":"Fertilizer Production","stock":"N/A","nodeColor":"#2ca25f"},          
+{"name":"Plant Production","stock":"N/A","nodeColor":"#2ca25f"},  
+{"name":"Animal Husbandry","stock":"N/A","nodeColor":"#2ca25f"},                  
+{"name":"Food Processing","stock":"N/A","nodeColor":"#2ca25f"},
+{"name":"Human Consumption","stock":"N/A","nodeColor":"#2ca25f"},
+{"name":"Waste Management","stock":"N/A","nodeColor":"#FFFFFF"},
+{"name":"Biogas Production","stock":"N/A","nodeColor":"#FFFFFF"}
+],
+"links":[
+{"source":0,"target":1,"value":190320,"type":"Phosphorus","colorType":"#88419d","flowName":"Organic fertilizer"},
+{"source":1,"target":2,"value":190320,"type":"Phosphorus","colorType":"#88419d","flowName":"Organic fertilizer"},
+{"source":2,"target":3,"value":190320,"type":"Phosphorus","colorType":"#88419d","flowName":"Organic fertilizer"},
+{"source":2,"target":3,"value":190320,"type":"Phosphorus","colorType":"#b22200","flowName":"Organic fertilizer"},
+{"source":2,"target":3,"value":190320,"type":"Phosphorus","colorType":"#b22200","flowName":"Organic fertilizer"},
+{"source":3,"target":4,"value":190320,"type":"Phosphorus","colorType":"#b22200","flowName":"Organic fertilizer"},
+{"source":5,"target":6,"value":190320,"type":"Phosphorus","colorType":"#b22200","flowName":"Organic fertilizer"},
+{"source":0,"target":3,"value":190320,"type":"Phosphorus","colorType":"#b22200","flowName":"Organic fertilizer"},
+{"source":0,"target":5,"value":190320,"type":"Phosphorus","colorType":"#b22200","flowName":"Organic fertilizer"},
+{"source":0,"target":5,"value":190320,"type":"Phosphorus","colorType":"#b22200","flowName":"Organic fertilizer"},
+{"source":3,"target":2,"value":190320,"type":"Phosphorus","colorType":"#b22200","flowName":"Organic fertilizer"},
+{"source":4,"target":3,"value":190320,"type":"Phosphorus","colorType":"#b22200","flowName":"Organic fertilizer"},
+{"source":6,"target":2,"value":190320,"type":"Phosphorus","colorType":"#b22200","flowName":"Organic fertilizer"}
+]}
+
+
+

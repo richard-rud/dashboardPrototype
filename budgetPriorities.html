@@ -142,8 +142,8 @@ h3 {
                     <div class="col-lg-12">
                         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span> Menu</a>
 
-                        <h1 class="chartTitle">Avoidable food waste</h1>
-                        <h2 class="chartSubTitle">This bar chart shows avoidable food waste for the baseline scenario (S0).</h2>
+                        <h1 class="chartTitle">Budget priorities</h1>
+                        <h2 class="chartSubTitle">Budget priorities, comparing biogas with food waste. Money granted by the parliament directly to reduce avoidable food waste vs. money granted by the parlimant in further developing the Norwegian biogas strategy.</h2>
                     
                         
                     </div>
@@ -151,7 +151,7 @@ h3 {
                      <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
                     <script src="js/c3.js"></script>
 
-            <div id="stackedBar" class="col-md-8"></div>       
+            <div id="barChartBudget" class="col-md-8"></div>       
             
              <div class="col-md-4">
                             
@@ -160,11 +160,12 @@ h3 {
                           <div class="collapse" id="collapseExample">
                 
                             <div class="well">
-                            <h3>Avoidable food waste in Norway</h3>
-                            This bar chart shows avoidable food waste for the baseline scenario (S0) using amount of food waste from 2010 in Norway (Matsvinn i Norge (2011)). The avoidable food waste is split into amount of tons of avoidable food waste for the different processes filtered by content for each process. The total amount of avoidable food waste for the Norwegian system is 384 693 tons
+                            <h3>Budget priorities</h3>
+                            Sylvig Listhaug, matsvinn: https://www.regjeringen.no/nb/aktuelt/Vil-redusere-matsvinnet/id764629/
+                            Forslag til statsbudsjett biogas: http://www.statsbudsjettet.no/Statsbudsjettet-2015/Statsbudsjettet-fra-A-til-A/Biogass/#artikkel
                             </br>
                             </br>
-                            <b>Source:</b> Matsvinn i Norge (2011)
+                            <b>Source:</b> regjeringen.no (2015)
                             </div>
                           
                           </div>
@@ -179,52 +180,48 @@ h3 {
 /////////////////////////////////////////////////////////////////////////////////////////////////
 var chart = c3.generate({
     size: {
-        height: 600,
+        height: 400,
         width: 700
     },
-    bindto: '#stackedBar',
+    bindto: '#barChartBudget',
     data: {
         columns: [
-            ['Frozen food',5441,116,423,62375],
-            ['Fresh fruit and vegetables',10600,0,24258,70359],
-            ['Fresk bakery goods',24275,714,22275,0],
-            ['Fresh finished food and sausages',1380,0,3954,0],
-            ['Fresh fish',377,60,1479,19960],
-            ['Fresh meat',2474,275,3644,0],
-            ['Egg',0,0,967,15469],
-            ['Dairy',1442,607,7851,0],
-            ['Dried food',14334,194,3060,86327],
+            ['Biogas strategy', 10000000],
+            ['Food waste prevention strategy', 700000]
         ],
-        type: 'bar',
-        groups: [
-            ['Frozen food', 'Fresh fruit and vegetables','Fresk bakery goods','Fresh finished food and sausages','Fresh fish','Fresh meat','Egg','Dairy','Dried food']
-        ],
-        order: 'desc'
+        type: 'bar'
+    },
+    bar: {
+        width: {
+            ratio: 0.5 
+        }
+        
+    },
+    color: {
+        pattern: ['#1a9850','#f46d43']
     },
     axis: {
+        x: {
+            show: false
+        },
         y: {
-            label: 'Amount',
+            show: true,
             tick: {
-                format: function(d) { return d + ' (ton)'; }, //Determine unit of measure 
+                format: function(d) { return d + ' (NOK)'; }, //Determine unit of measure 
 
             }
-        },
-        x: {
-            type: 'category',
-            categories: ['Food Processing', 'Wholesale', 'Retail', 'HC']
-            
-        },
+        }
+    },
+    tooltip: {
+        format: {
+            title: function (d) { return 'Budget priorities'; }
+        }
     },
     grid: {
         y: {
-            lines: [{value:0}]
-        }
-    },
-    color: {
-        //pattern: ['#a6cee3', '#1f78b4', '#b2df8a','#33a02c','#fb9a99', '#e31a1c', '#fdbf6f','#ff7f00','#cab2d6']
-        //pattern: ['#fff5eb','#fee6ce','#fdd0a2','#fdae6b','#fd8d3c','#f16913','#d94801','#a63603','#7f2704']
-        pattern: ['#ffffe5','#f7fcb9','#d9f0a3','#addd8e','#78c679','#41ab5d','#238443','#006837','#004529']
-    },
+    show: true
+  }
+}
 });
 
 

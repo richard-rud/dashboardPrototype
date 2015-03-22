@@ -1,0 +1,37 @@
+{"nodes":[
+{"name":"1. Fertilizer production: ","stock":"N/A","nodeColor":"#2ca25f"},          
+{"name":"2. Agriculture and greening soils: ","stock":"N/A","nodeColor":"#2ca25f"},  
+{"name":"3. Agriculture: ","stock":"N/A","nodeColor":"#2ca25f"},                  
+{"name":"4. Husbandry feed: ","stock":"N/A","nodeColor":"#2ca25f"},
+{"name":"Export: ","stock":"N/A","nodeColor":"#FFFFFF"},
+{"name":"Import: ","stock":"N/A","nodeColor":"#FFFFFF"}
+],
+"links":[
+{"source":0,"target":1,"value":392307,"type":"Dry Matter","colorType":"#1a9850","flowName":"Organic fertilizer + Mineral fertilizer"},
+{"source":1,"target":2,"value":3347273,"type":"Dry Matter","colorType":"#1a9850","flowName":"Plant uptake, grazing & green fodder"},
+{"source":2,"target":3,"value":908824,"type":"Dry Matter","colorType":"#1a9850","flowName":"No name"},
+{"source":2,"target":4,"value":728052,"type":"Dry Matter","colorType":"#1a9850","flowName":"Manure to forest + Animal products + Plant products"},
+{"source":3,"target":4,"value":5519,"type":"Dry Matter","colorType":"#1a9850","flowName":"No name"},
+{"source":2,"target":1,"value":1668558,"type":"Dry Matter","colorType":"1a9850","flowName":"Manure + Seeds and planting potatoes (Feedback loop)"},
+{"source":5,"target":3,"value":206696,"type":"Dry Matter","colorType":"#1a9850","flowName":"Fish silage and meal + Imported feed ingredients + Waste-based fertilizer"},
+
+{"source":5,"target":0,"value":940010,"type":"Phosphorus","colorType":"#4d004b","flowName":"Waste based fertilizer? + Imported phosphate"},
+{"source":0,"target":1,"value":109000,"type":"Phosphorus","colorType":"#4d004b","flowName":"Organic fertilizer + Mineral fertilizer"},
+{"source":0,"target":4,"value":860000,"type":"Phosphorus","colorType":"#4d004b","flowName":"Exported fertilizer"},
+{"source":5,"target":1,"value":2000,"type":"Phosphorus","colorType":"#4d004b","flowName":"Athmospheric deposition"},
+{"source":1,"target":4,"value":12000,"type":"Phosphorus","colorType":"#4d004b","flowName":"Runoff"},
+{"source":1,"target":2,"value":120000,"type":"Phosphorus","colorType":"#4d004b","flowName":"Plant uptake"},
+{"source":2,"target":1,"value":123000,"type":"Phosphorus","colorType":"4d004b","flowName":"Manure + Seeds and planting potatos (Feedback loop)"},
+{"source":2,"target":4,"value":65000,"type":"Phosphorus","colorType":"#4d004b","flowName":"Manure to forest + Husbandry products + Plant products"},
+{"source":2,"target":3,"value":42000,"type":"Phosphorus","colorType":"#4d004b","flowName":"Plant products for feed"},
+{"source":3,"target":2,"value":96000,"type":"Phosphorus","colorType":"4d004b","flowName":"Husbandry and fur feed (Feedback loop)"},
+{"source":5,"target":3,"value":50000,"type":"Phosphorus","colorType":"#4d004b","flowName":"Fish meal and slag + Imported feed + MBM"},
+{"source":3,"target":4,"value":1000,"type":"Phosphorus","colorType":"#4d004b","flowName":"Pet food"}
+]}
+
+
+
+
+
+
+

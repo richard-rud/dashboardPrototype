@@ -1,69 +1,430 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
 <head>
-    <link rel="stylesheet" type="text/css" href="pykih-charts/pykcharts.1.0.0.min.css">
-    <script src="pykih-charts/pykcharts.1.0.0.min.js"></script>
+
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+
+  <script type="text/javascript" src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+      
+  <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+
+<style>
+
+#showInfo {
+  height: 160px;
+  width: 410px;
+  margin: 20px;
+  background-color: white;
+  border: none;
+  border-style: groove;
+
+  /*Positioning the sankey*/
+  position: absolute;
+  left: 1000px;
+  top: 0px;
+}
+
+line {
+  stroke-opacity: .6;
+}
+
+path {
+  stroke-opacity: .6;
+}
+
+path:hover {
+  stroke-opacity: .1;
+}
+
+line:hover {
+  stroke-opacity: .1;
+}
+
+#sankeyContent {
+  margin-top: 200px;
+  margin-left: 20px;
+  padding: 10px;
+  border-style: groove;
+}
+
+#processText {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+</style>
+
 </head>
+
 <body>
 
-    <div id="my_chart_E"></div>
-    
-    <div id="my_chart_P"></div>
-    
-    <div id="my_chart_DM"></div>
-    
-    <script>
-  window.PykChartsInit = function (e) {
-    var k = new PykCharts.multiD.panelsOfLine({
-      selector: "#my_chart_E",
-      data: "data/panel-of-lines.json",
-      "color_mode": "saturation",
-    "saturation_color": "grey",
-      "chart_width": 300,
-    "chart_height": 300,
-    "axis_x_enable": "yes",
-  "axis_y_enable": "yes",
-  "title_text": "Energy",
-  "title_color": "white",
-  "title_size": 1,
-  "title_weight": "normal",
-  "title_family": "Helvetica"
-  
+<button id="s1_p" class="btn btn-success btn-lg" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Recycling Phosphorus</button>
 
-      });
+<button id="s1_phosphorus" class="btn btn-success btn-lg" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Energy (Recycling food waste)</button>
 
-    var g = new PykCharts.multiD.panelsOfLine({
-      selector: "#my_chart_P",
-      data: "data/panel-of-lines.json",
-      "chart_width": 300,
-    "chart_height": 300,
-    "axis_x_enable": "yes",
-  "axis_y_enable": "no",
-  "title_text": "Phosphorus",
-  "title_color": "white",
-  "title_size": 1,
-  "title_weight": "normal",
-  "title_family": "Helvetica"
-      });
+<button id="" class="btn btn-success btn-lg" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Phosphorus (Recycling food waste)</button>
 
-    var b = new PykCharts.multiD.panelsOfLine({
-      selector: "#my_chart_DM",
-      data: "data/panel-of-lines.json",
-      "chart_width": 300,
-    "chart_height": 300,
-    "axis_x_enable": "yes",
-  "axis_y_enable": "no",
-  "title_text": "Dry matter",
-  "title_color": "white",
-  "title_size": 1,
-  "title_weight": "normal",
-  "title_family": "Helvetica"
-      });
+<button id="" class="btn btn-success btn-lg" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Phosphorus (Recycling food waste)</button>
 
-    k.execute();
-    g.execute();
-    b.execute();
+<button id="" class="btn btn-success btn-lg" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Energy (Baseline scenario)</button>
 
-  }
-</script>
+<!--
+<button id="" class="btn btn-success btn-lg" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Phosphorus (Baseline scenario)</button>
+-->
+
+  <div id="sankeyContent">
+  </div>
+
+  <div id="showInfo">
+  <p><span id="infoText"></span></p>
+  </div>
 
 </body>
 
+<script>
+
+//Canvas for rendering the sankey diagram//
+
+var content = d3.select("#sankeyContent")
+            .append("svg")
+            .attr("width", 1800)
+            .attr("height", 500);
+           
+
+// The following variables create the processes in the sankey/mfa diagram, 7 in total
+
+var processData = [
+
+  {"p_id": "P1", "p_x1": 100, "p_y1": 60, "p_x2": 100, "p_y2": 400, "p_strokeWidth": 20, "p_stroke": "grey", "p_name": "Fertilizer Production", "p_stock": 0, "p_type": "Phosphorus"},
+
+  {"p_id": "P2", "p_x1": 300, "p_y1": 60, "p_x2": 300, "p_y2": 400, "p_strokeWidth": 20, "p_stroke": "grey", "p_name": "Plant Production", "p_stock": 0, "p_type": "Phosphorus"},
+
+  {"p_id": "P3", "p_x1": 500, "p_y1": 60, "p_x2": 500, "p_y2": 400, "p_strokeWidth": 20, "p_stroke": "grey", "p_name": "Animal Husbandry", "p_stock": 0, "p_type": "Phosphorus"},
+
+  {"p_id": "P4", "p_x1": 700, "p_y1": 60, "p_x2": 700, "p_y2": 400, "p_strokeWidth": 20, "p_stroke": "grey", "p_name": "Food Processing", "p_stock": 0, "p_type": "Phosphorus"},
+
+  {"p_id": "P5", "p_x1": 900, "p_y1": 60, "p_x2": 900, "p_y2": 400, "p_strokeWidth": 20, "p_stroke": "grey", "p_name": "Human Consumption", "p_stock": 0, "p_type": "Phosphorus"},
+
+  {"p_id": "P6", "p_x1": 1100, "p_y1": 60, "p_x2": 1100, "p_y2": 400, "p_strokeWidth": 20, "p_stroke": "grey", "p_name": "Waste Management", "p_stock": 0, "p_type": "Phosphorus"},
+
+  {"p_id": "P7", "p_x1": 1300, "p_y1": 60, "p_x2": 1300, "p_y2": 400, "p_strokeWidth": 20, "p_stroke": "grey", "p_name": "Biogas Production", "p_stock": 0, "p_type": "Phosphorus"}
+];
+
+var processes = content.selectAll(".line")
+                          .data(processData)
+                          .enter()
+                          .append("line");
+
+var mfaProcesses = processes
+            .attr("id", function (d) { return d.p_id; })
+            .attr("x1",function (d) { return d.p_x1; })
+            .attr("y1",function (d) { return d.p_y1; })
+            .attr("x2",function (d) { return d.p_x2; })
+            .attr("y2",function (d) { return d.p_y2; })
+            .attr("stroke-width", function (d) { return d.p_strokeWidth; })
+            .attr("stroke", function (d) { return d.p_stroke; })
+            .on("mouseover", function(d) {d3.select("#showInfo").select("#infoText").html("<p><span style='color:black'>" + d.p_name + "</p></span>").style("display", null);})
+            .on("mouseout", function(d) { d3.select("#infoText").style("display", "none");});
+
+//The following variables renders the flows in the system
+
+var linearFlowData = [
+    
+    //More here
+    {"f_id": "Flow1", "f_x1": 110, "f_y1": 300, "f_x2": 290, "f_y2": 300, "f_strokeWidth": 5, "f_stroke": "green", "f_name": "Mineral Fertilizer", "f_type": "Phosphorus", "strokeDasharray": "none", "value":0},
+
+    //More here
+    {"f_id": "Flow2", "f_x1": 310, "f_y1": 300, "f_x2": 490, "f_y2": 300, "f_strokeWidth": 5, "f_stroke": "green", "f_name": "Plants for feed", "f_type": "Phosphorus", "strokeDasharray": "none", "value":0},
+    
+    {"f_id": "Flow3", "f_x1": 310, "f_y1": 250, "f_x2": 490, "f_y2": 250, "f_strokeWidth": 5, "f_stroke": "green", "f_name": "Grazing", "f_type": "Phosphorus", "strokeDasharray": "none", "value":0},
+
+    {"f_id": "Flow4", "f_x1": 310, "f_y1": 200, "f_x2": 690, "f_y2": 200, "f_strokeWidth": 5, "f_stroke": "green", "f_name": "Plants for food", "f_type": "Phosphorus", "strokeDasharray": "none", "value":0},
+
+    //More here
+    {"f_id": "Flow4", "f_x1": 310, "f_y1": 150, "f_x2": 490, "f_y2": 150, "f_strokeWidth": 5, "f_stroke": "blue", "f_name": "Manure", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2","value":0},
+
+    //More here
+    {"f_id": "Flow5", "f_x1": 510, "f_y1": 300, "f_x2": 690, "f_y2": 300, "f_strokeWidth": 5, "f_stroke": "green", "f_name": "Animal products", "f_type": "Phosphorus", "strokeDasharray": "none","value":0},
+
+    //this is flows between HC and waste treatment
+    {"f_id": "Flow6", "f_x1": 710, "f_y1": 300, "f_x2": 890, "f_y2": 300, "f_strokeWidth": 5, "f_stroke": "green", "f_name": "Animal and plant products", "f_type": "Phosphorus", "strokeDasharray": "none","value":0},
+
+    //More here
+    {"f_id": "Flow7", "f_x1": 510, "f_y1": 150, "f_x2": 690, "f_y2": 150, "f_strokeWidth": 5, "f_stroke": "blue", "f_name": "Secondary Feed", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2","value":0},
+
+    //More here
+    {"f_id": "Flow8", "f_x1": 910, "f_y1": 150, "f_x2": 1090, "f_y2": 150, "f_strokeWidth": 5, "f_stroke": "red", "f_name": "Organic waste", "f_type": "Phosphorus", "strokeDasharray": "none","value":0},
+
+    //More here
+    {"f_id": "Flow9", "f_x1": 910, "f_y1": 200, "f_x2": 1090, "f_y2": 200, "f_strokeWidth": 5, "f_stroke": "red", "f_name": "Wastewater", "f_type": "Phosphorus", "strokeDasharray": "none","value":0},
+
+     //More here
+    {"f_id": "Flow10", "f_x1": 1110, "f_y1": 200, "f_x2": 1290, "f_y2": 200, "f_strokeWidth": 5, "f_stroke": "grey", "f_name": "Waste to biofuel", "f_type": "Phosphorus", "strokeDasharray": "none","value":0},
+
+    //More here
+    {"f_id": "Flow11", "f_x1": 310, "f_y1": 225, "f_x2": 1090, "f_y2": 225, "f_strokeWidth": 5, "f_stroke": "blue", "f_name": "Secondary Fertilizer", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2","value":0},
+
+    //More here
+    {"f_id": "Flow12", "f_x1": 310, "f_y1": 275, "f_x2": 1290, "f_y2": 275, "f_strokeWidth": 5, "f_stroke": "blue", "f_name": "Residuals", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2","value":0}
+    
+];
+
+//creating the lines for the linear flows
+var linearFlows = content.selectAll(".line")
+                          .data(linearFlowData)
+                          .enter()
+                          .append("line");
+
+var mfaFlowsLinear = linearFlows
+            .attr("id", function (d) { return d.f_id })
+            .attr("x1", function (d) { return d.f_x1 })
+            .attr("y1", function (d) { return d.f_y1 })
+            .attr("x2", function (d) { return d.f_x2 })
+            .attr("y2", function (d) { return d.f_y2 })
+            .attr("stroke-width", function (d) { return d.f_strokeWidth })
+            .attr("stroke", function (d) { return d.f_stroke })
+            .attr("stroke-dasharray", function (d) { return d.strokeDasharray })
+            .on("mouseover", function(d) {d3.select("#showInfo").select("#infoText").html("<p><span style='color:black'>" + d.f_name + "</p></span>").style("display", null);})
+            .on("mouseout", function(d) { d3.select("#infoText").style("display", "none");});
+
+//Adding text to the MFA diagram
+
+content.selectAll("text.process")
+        .data(processData)
+        .enter()
+        .append("text")
+        .attr("id", "processText")
+        .attr("x", function(d) { return d.p_x1 - 70; })
+        .attr("y", function(d) { return d.p_y1 - 10; })
+        .text(function(d) { return d.p_name; });
+
+content.selectAll("text.flow")
+        .data(linearFlowData)
+        .enter()
+        .append("text")
+        .attr("x", function(d) { return d.f_x1 + 5; })
+        .attr("y", function(d) { return d.f_y1 - 10; })
+        .text(function(d) { return d.f_name; });
+
+var imported_P_data = [{ "x": 10,   "y": 20},  { "x": 10,  "y": 100}, { "x": 90,  "y": 100, "Name":"Imported P"}];
+
+var deposition_data = [{ "x": 200,   "y": 20},  { "x": 200,  "y": 100}, { "x": 290,  "y": 100, "Name":"Deposition"}];
+
+var importFeedIngredients_data = [{ "x": 400,   "y": 20},  { "x": 400,  "y": 100}, { "x": 490,  "y": 100, "Name":"Imp. Feed Ingredients"}];
+
+var importFood_data = [{ "x": 800,   "y": 20},  { "x": 800,  "y": 100}, { "x": 890,  "y": 100, "Name":"Imp. food"}];
+
+
+var output_P_Accumulation_data = [ { "x": 310, "y": 340}, {"x":370, "y": 340}, {"x": 370, "y": 420, "Name":"P accumulation"}];
+
+var output_runoff_data = [ { "x": 310, "y": 310}, {"x":460, "y": 310}, {"x": 460, "y": 440, "Name":"Runoff"}];
+
+
+var output_ProcessingWaste_data = [ { "x": 710, "y": 310}, {"x":760, "y": 310}, {"x": 760, "y": 420, "Name":"Processing Waste"}];
+
+var output_discharge_data = [ { "x": 1110, "y": 370}, {"x":1130, "y": 370}, {"x": 1130, "y": 420, "Name":"Discharge"}];
+
+var output_exportWaste_data = [ { "x": 1110, "y": 350}, {"x":1170, "y": 350}, {"x": 1170, "y": 450, "Name":"Exported Waste"}];
+
+var output_waste_IL_data = [ { "x": 1110, "y": 330}, {"x":1250, "y": 330}, {"x": 1250, "y": 480, "Name":"Waste to incineration/landfill"}];
+
+var output_residuals_data = [ { "x": 1310, "y": 300}, {"x":1350, "y": 300}, {"x": 1350, "y": 420, "Name":"Residuals to incineration/landfill"}];
+
+var exportedFood_data = [ { "x": 710,   "y": 100},  { "x": 750,  "y": 100}, { "x": 750,  "y": 20, "Name":"Exported food"}];
+
+content.selectAll("text.accumulation")
+        .data(output_P_Accumulation_data)
+        .enter()
+        .append("text")
+        .attr("x", function(d) { return d.x -40; })
+        .attr("y", function(d) { return d.y + 15; })
+        .text(function(d) { return d.Name; });
+
+content.selectAll("text.runoff")
+        .data(output_runoff_data)
+        .enter()
+        .append("text")
+        .attr("x", function(d) { return d.x -40; })
+        .attr("y", function(d) { return d.y + 15; })
+        .text(function(d) { return d.Name; });
+
+content.selectAll("text.processingWaste")
+        .data(output_ProcessingWaste_data)
+        .enter()
+        .append("text")
+        .attr("x", function(d) { return d.x -40; })
+        .attr("y", function(d) { return d.y + 15; })
+        .text(function(d) { return d.Name; });
+
+content.selectAll("text.discharge")
+        .data(output_discharge_data)
+        .enter()
+        .append("text")
+        .attr("x", function(d) { return d.x -40; })
+        .attr("y", function(d) { return d.y + 15; })
+        .text(function(d) { return d.Name; });
+
+content.selectAll("text.waste_IL")
+        .data(output_waste_IL_data)
+        .enter()
+        .append("text")
+        .attr("x", function(d) { return d.x -40; })
+        .attr("y", function(d) { return d.y + 15; })
+        .text(function(d) { return d.Name; });
+
+content.selectAll("text.exportedWaste")
+        .data(output_exportWaste_data)
+        .enter()
+        .append("text")
+        .attr("x", function(d) { return d.x -40; })
+        .attr("y", function(d) { return d.y + 15; })
+        .text(function(d) { return d.Name; });
+
+content.selectAll("text.residuals")
+        .data(output_residuals_data)
+        .enter()
+        .append("text")
+        .attr("x", function(d) { return d.x -40; })
+        .attr("y", function(d) { return d.y + 15; })
+        .text(function(d) { return d.Name; });
+
+content.selectAll("text.exportedFood")
+        .data(exportedFood_data)
+        .enter()
+        .append("text")
+        .attr("x", function(d) { return d.x - 60; })
+        .attr("y", function(d) { return d.y - 5; })
+        .text(function(d) { return d.Name; });
+                  
+content.selectAll("text.imported_P")
+        .data(imported_P_data)
+        .enter()
+        .append("text")
+        .attr("x", function(d) { return d.x - 85; })
+        .attr("y", function(d) { return d.y - 85; })
+        .text(function(d) { return d.Name; });
+
+content.selectAll("text.deposition")
+        .data(deposition_data)
+        .enter()
+        .append("text")
+        .attr("x", function(d) { return d.x - 85; })
+        .attr("y", function(d) { return d.y - 85; })
+        .text(function(d) { return d.Name; });
+
+content.selectAll("text.importFeed")
+        .data(importFeedIngredients_data)
+        .enter()
+        .append("text")
+        .attr("x", function(d) { return d.x - 85; })
+        .attr("y", function(d) { return d.y - 85; })
+        .text(function(d) { return d.Name; });
+
+content.selectAll("text.importFood")
+        .data(importFood_data)
+        .enter()
+        .append("text")
+        .attr("x", function(d) { return d.x - 85; })
+        .attr("y", function(d) { return d.y - 85; })
+        .text(function(d) { return d.Name; });
+ 
+ //The accessor function 
+ var lineFunction = d3.svg.line()
+                          .x(function(d) { return d.x; })
+                          .y(function(d) { return d.y; })
+                         .interpolate("linear");
+
+var output = content.append("path")
+                            .attr("d", lineFunction(output_P_Accumulation_data))
+                            .attr("id", "Flow1")
+                            .attr("stroke", "red")
+                            .attr("stroke-width", 30)
+                            .attr("fill", "none");
+
+var output = content.append("path")
+                            .attr("d", lineFunction(output_runoff_data))
+                            .attr("stroke", "red")
+                            .attr("stroke-width", 10)
+                            .attr("fill", "none");
+
+var output = content.append("path")
+                            .attr("d", lineFunction(output_ProcessingWaste_data))
+                            .attr("stroke", "red")
+                            .attr("stroke-width", 10)
+                            .attr("fill", "none");
+
+var output = content.append("path")
+                            .attr("d", lineFunction(output_discharge_data))
+                            .attr("stroke", "red")
+                            .attr("stroke-width", 10)
+                            .attr("fill", "none");
+
+var output = content.append("path")
+                            .attr("d", lineFunction(output_waste_IL_data))
+                            .attr("stroke", "red")
+                            .attr("stroke-width", 10)
+                            .attr("fill", "none");
+
+var output = content.append("path")
+                            .attr("d", lineFunction(output_exportWaste_data))
+                            .attr("stroke", "red")
+                            .attr("stroke-width", 10)
+                            .attr("fill", "none");
+
+var output = content.append("path")
+                            .attr("d", lineFunction(output_residuals_data))
+                            .attr("stroke", "red")
+                            .attr("stroke-width", 10)
+                            .attr("fill", "none");
+
+var output = content.append("path")
+                            .attr("d", lineFunction(exportedFood_data))
+                            .attr("stroke", "green")
+                            .attr("stroke-width", 10)
+                            .attr("fill", "none");
+
+var inputFlowData = content.append("path")
+                            .attr("d", lineFunction(imported_P_data))
+                            .attr("stroke", "green")
+                            .attr("stroke-width", 30)
+                            .attr("fill", "none");
+
+var inputFlowData = content.append("path")
+                            .attr("d", lineFunction(deposition_data))
+                            .attr("stroke", "green")
+                            .attr("stroke-width", 30)
+                            .attr("fill", "none");
+
+var inputFlowData = content.append("path")
+                            .attr("d", lineFunction(importFeedIngredients_data))
+                            .attr("stroke", "green")
+                            .attr("stroke-width", 30)
+                            .attr("fill", "none");
+
+var inputFlowData = content.append("path")
+                            .attr("d", lineFunction(importFood_data))
+                            .attr("stroke", "green")
+                            .attr("stroke-width", 30)
+                            .attr("fill", "none");
+
+                            //Switching to the scenarios, increasing or decreasing the flows, look to automate this process
+
+d3.select("#s1_p").on("click", function() {
+
+d3.select("#Flow1").transition()
+        .attr("stroke-width",50)
+        .duration(1000);  
+
+d3.select("#Flow2").transition()
+        .attr("stroke-width",20)
+        .duration(1000);
+
+d3.select("#Flow4").transition()
+        .attr("stroke-width",100)
+        .duration(1000);
+
+  });
+
+
+</script>

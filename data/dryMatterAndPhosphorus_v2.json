@@ -1,8 +1,11 @@
 {"nodes":[
-{"name":"1. Fertilizer production","stock":"N/A","nodeColor":"#2ca25f"},          
-{"name":"2. Agriculture and greening soils","stock":"N/A","nodeColor":"#2ca25f"},  
-{"name":"3. Agriculture","stock":"N/A","nodeColor":"#2ca25f"},                  
-{"name":"4. Husbandry feed","stock":"N/A","nodeColor":"#2ca25f"}
+{"name":"1. Fertilizer Production","stock":"N/A","nodeColor":"#2ca25f"},          
+{"name":"2. Plant Production","stock":"N/A","nodeColor":"#2ca25f"},  
+{"name":"3. Animal Husbandry","stock":"N/A","nodeColor":"#2ca25f"},                  
+{"name":"4. Food Processing","stock":"N/A","nodeColor":"#2ca25f"},
+{"name":"5. Human Consumption","stock":"N/A","nodeColor":"#2ca25f"},
+{"name":"6. Waste Management","stock":"N/A","nodeColor":"#2ca25f"},
+{"name":"7. Biogas Production","stock":"N/A","nodeColor":"#2ca25f"},
 ],
 "links":[
 {"source":0,"target":1,"value":19032,"type":"Dry Matter","colorType":"#b22200","flowName":"Organic fertilizer"},
