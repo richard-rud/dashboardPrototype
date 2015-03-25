@@ -21,6 +21,10 @@
 
 <link href="css/c3.css" rel="stylesheet" type="text/css">
 
+
+
+
+
 <style>
 
 #showInfo {
@@ -161,7 +165,7 @@ line:hover {
   margin-top: 10px;
   margin-left: 5px;
   padding-left: 20px;
-  border: 2px solid black;
+  /*border: 2px solid black;*/
   background-color: none;
 }
 
@@ -171,7 +175,7 @@ line:hover {
   margin-top: 10px;
   margin-left: 5px;
   padding-left: 20px;
-  border: 2px solid black;
+  /*border: 2px solid black;*/
 }
 
 #containerBar {
@@ -182,6 +186,12 @@ line:hover {
   padding-left: 20px;
   /*border: 2px solid black;*/
 }
+
+#accordion {
+  width: 1450px;
+}
+
+
 
 </style>
 
@@ -212,20 +222,7 @@ line:hover {
 <div class="collapse" id="collapseFlows">
   <div class="well">
       
-     <div id="containerBar">
-
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8" defer></script>
-
-    <script src="js/c3.js" defer></script>
-
-    <!-- Following script renders the barChart of flows, principle- seperation of the logic-->
-    <script type="text/javascript" src="js/flowsBarChart.js" defer></script>
-
-            <div id="barChartEnergy" class="col-md-4"></div>   
-            <div id="barChartPhosphorus" class="col-md-4"></div> 
-            <div id="barChartDryMatter" class="col-md-4"></div>     
-
-    </div>
+     
 
   </div>
 </div>
@@ -233,31 +230,96 @@ line:hover {
   <div id="sankeyContent">
   </div>
 
-<div class="collapse" id="collapseProblemShifting">
-  <div class="well">
+<!--<div class="collapse" id="collapseProblemShifting">
+  <div class="well collapsing">
       
-   
+   <div id="testContainer">
+
+          <script src="js/d3.parcoords.js" defer></script>
+
+          <script src="js/divgrid.js" defer></script>
+
+          <script type="text/javascript" src="js/problemShifting.js" defer></script>
+          
+          <div id="problemShifting" class="parcoords" style="height:400px;"></div>
+      
+          <div id="grid"></div>
+
+        </div>
 
   </div>
-</div>
+</div>-->
 
-<div id="testContainer">
+</br>
 
 
-      <script src="js/d3.parcoords.js" defer></script>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="tabOne">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Problem shifting
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapsing" role="tabpanel" aria-labelledby="tabOne">
+      <div class="panel-body">
+              
+        <div id="testContainer">
 
-       <script src="js/divgrid.js" defer></script>
+          <script src="js/d3.parcoords.js" defer></script>
 
-        <!-- Following script renders the problem shifting, principle- seperation of the logic-->
-    <script type="text/javascript" src="js/problemShifting.js" defer></script>
+          <script src="js/divgrid.js" defer></script>
 
-      <div id="problemShifting" class="parcoords" style="height:400px;"></div>
+          <script type="text/javascript" src="js/problemShifting.js" defer></script>
+          
+          <div id="problemShifting" class="parcoords" style="height:400px;"></div>
       
-      <div id="grid"></div>
+          <div id="grid"></div>
 
+        </div>
+               
+      </div>
+    </div>
+
+  </div>
+
+    <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="tabTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Quantified flow scenarios
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapsing" role="tabpanel" aria-labelledby="tabTwo">
+      
+      <div class="panel-body">
+              
+       <div id="containerBar">
+
+          <script src="http://d3js.org/d3.v3.min.js" charset="utf-8" defer></script>
+
+          <script src="js/c3.js" defer></script>
+
+          <!-- Following script renders the barChart of flows, principle- seperation of the logic-->
+          <script type="text/javascript" src="js/flowsBarChart.js" defer></script>
+
+            <div id="barChartEnergy" class="col-md-4"></div>   
+            <div id="barChartPhosphorus" class="col-md-4"></div> 
+            <div id="barChartDryMatter" class="col-md-4"></div>     
+
+        </div>
+               
+      </div>
+
+    </div>
+
+  </div>
+  
 </div>
 
-    
+
 
 
 
