@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<head>
+
+<!-- JavaScript stylesheet -->
+
+<script src="js/d3.v3.min.js" defer></script>
+
+<script type="text/javascript" src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js" defer></script>
+      
+<script src="js/bootstrap.min.js" defer></script>
+
+<!-- Following script renders the sankey diagram, principle- seperation of the logic-->
+<script type="text/javascript" src="js/FW_sankey.js" defer></script>
+
+<!-- CSS stylesheets reference-->  
+<link rel="stylesheet" type="text/css" href="css/d3.parcoords.css">
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<link href="css/c3.css" rel="stylesheet" type="text/css">
+
+<style>
+
+#showInfo {
+  height: 160px;
+  width: 410px;
+  margin: 20px;
+  background-color: white;
+  border: none;
+  border-style: groove;
+
+  /*Positioning the sankey*/
+  position: absolute;
+  left: 1000px;
+  top: 0px;
+}
+
+.btn {
+margin-top: 10px;
+margin-bottom: 10px;
+margin-left:10px;
+}
+
+line {
+  stroke-opacity: .5;
+}
+
+path {
+  stroke-opacity: .6;
+}
+
+path:hover {
+  stroke-opacity: .1;
+}
+
+line:hover {
+  stroke-opacity: 1;
+}
+
+#sankeyContent {
+  width: 1450px;
+  height: 700px;
+  margin-top: 10px;
+  margin-left: 5px;
+  padding-left: 20px;
+  border: 2px solid black;
+}
+
+#processText {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.row {
+  float:left;
+}
+
+/* Styling for the tooltip */
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  /*background: rgba(0, 0, 0, 0.8);*/
+  background: black;
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+/*Styling for the parallel coordinates*/
+
+* data table styles */
+#grid { 
+    height: 198px; 
+}
+
+.row, .header { 
+    clear: left; 
+    font-size: 12px; 
+    line-height: 18px; 
+    height: 18px; 
+}
+
+.row:nth-child(odd) { 
+    background: rgba(0,0,0,0.2); 
+}
+
+.header { 
+    font-weight: bold; 
+}
+
+.cell { 
+    float: left; 
+    overflow: hidden; 
+    white-space: nowrap; 
+    width: 170px; 
+    height: 18px; 
+    color: black ;}
+
+.col-0 { 
+    width: 180px; 
+}
+
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.header {
+    background-color: grey;
+}
+
+.header.cell, .header .cell {
+    color: black;
+}
+
+#problemShifting {
+  width: 1450px;
+  height: 700px;
+  margin-top: 10px;
+  margin-left: 5px;
+  padding-left: 20px;
+  border: 2px solid black;
+  background-color: none;
+}
+
+#grid {
+  width: 1450px;
+  height: 100px;
+  margin-top: 10px;
+  margin-left: 5px;
+  padding-left: 20px;
+  border: 2px solid black;
+}
+
+#containerBar {
+  width: 1450px;
+  height: 2500px;
+  margin-top: 10px;
+  margin-left: 5px;
+  padding-left: 20px;
+  /*border: 2px solid black;*/
+}
+
+</style>
+
+</head>
+
+<body>
+
+<button id="s1_p" class="btn btn-success" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Recycling P</button>
+
+<button id="s2_p" class="btn btn-success" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Food waste prevention P</button>
+
+<button id="s1_p" class="btn btn-success" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Recycling E</button>
+
+<button id="s2_E" class="btn btn-success" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Food waste prevention E</button>
+
+<button id="baseline_P" class="btn btn-success" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Baseline scenario P</button>
+
+<button id="baseline_E" class="btn btn-success" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Baseline scenario E</button>
+
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseProblemShifting" aria-expanded="false" aria-controls="collapseProblemShifting">
+  Problem shifting
+</button>
+
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseFlows" aria-expanded="false" aria-controls="collapseFlows">
+  Quantified flows: s0, s1 and s2
+</button>
+
+<div class="collapse" id="collapseFlows">
+  <div class="well">
+      
+     <div id="containerBar">
+
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8" defer></script>
+
+    <script src="js/c3.js" defer></script>
+
+    <!-- Following script renders the barChart of flows, principle- seperation of the logic-->
+    <script type="text/javascript" src="js/flowsBarChart.js" defer></script>
+
+            <div id="barChartEnergy" class="col-md-4"></div>   
+            <div id="barChartPhosphorus" class="col-md-4"></div> 
+            <div id="barChartDryMatter" class="col-md-4"></div>     
+
+    </div>
+
+  </div>
+</div>
+
+  <div id="sankeyContent">
+  </div>
+
+<div class="collapse" id="collapseProblemShifting">
+  <div class="well">
+      
+   
+
+  </div>
+</div>
+
+<div id="testContainer">
+
+
+      <script src="js/d3.parcoords.js" defer></script>
+
+       <script src="js/divgrid.js" defer></script>
+
+        <!-- Following script renders the problem shifting, principle- seperation of the logic-->
+    <script type="text/javascript" src="js/problemShifting.js" defer></script>
+
+      <div id="problemShifting" class="parcoords" style="height:400px;"></div>
+      
+      <div id="grid"></div>
+
+</div>
+
+    
+
+
+
+    <script src="js/jquery.js">
+
+    $('.collapse').collapse()
+
+    </script>
+
+<dialog id="myDialog">
+  <h1>This is a dialog window:</h1>
+  [32] But I must explain to you how all this mistaken idea of denouncing of a pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
+
+[33] On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammeled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.
+
+                 
+</dialog>
+
+</body>
+
+
+   
