@@ -105,10 +105,10 @@ var mfaProcesses = processes
 var linearFlows = svg.append("g").attr("class", "MFA_flows").selectAll(".line")
             .data(graph.flows)
             .enter()
-            .append("line")
-            .on("click", function(d) {
-                return document.getElementById("myDialog").showModal(); 
-            });
+            .append("line");
+            //.on("click", function(d) {
+            //    return document.getElementById("myDialog").showModal(); 
+            //});
 
 var mfaFlows = linearFlows
             .attr("id", function (d) { return d.f_id })

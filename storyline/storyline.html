@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Addressing food waste</title>
+	<meta name="author" content="Alvaro Trigo Lopez" />
+	<meta name="description" content="fullPage full-screen navigation and sections control menu." />
+	<meta name="keywords"  content="fullpage,jquery,demo,screen,fullscreen,navigation,control arrows, dots" />
+	<meta name="Resource-type" content="Document" />
+
+	<link href="css/c3.css" rel="stylesheet" type="text/css">
+
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
+	<link rel="stylesheet" type="text/css" href="css/examples.css" />
+	<style>
+
+	/* Style for our header texts
+	* --------------------------------------- */
+	h1{
+		font-size: 6em;
+		font-family: arial,helvetica;
+		color: #fff;
+		margin:0;
+		font-weight: bold;
+	}
+
+	h2 {
+		font-size: 3em;
+		font-family: arial,helvetica;
+		color: #fff;
+		margin:0;
+	}
+
+	h3 {
+		font-size: 4em;
+		font-family: arial,helvetica;
+		color: #fff;
+		margin:0;
+		top: 1em;
+	}
+
+	button {
+		margin: 2em;
+		height: 4em;
+  		width: 20em;
+
+	}
+
+	.intro p{
+		color: #fff;
+	}
+
+	/* Centered texts in each section
+	* --------------------------------------- */
+
+
+	.section{
+		text-align:center;
+	}
+
+	/* Bottom menu
+	* --------------------------------------- */
+	#infoMenu li a {
+		color: #fff;
+	}
+
+	/* CSS styling for the tree layout
+	* --------------------------------------- */
+
+
+	.node {
+  		cursor: pointer;
+	}
+
+	.node circle {
+  		fill: #fff;
+  		stroke: #006837;
+  		stroke-width: 5px;
+	}
+
+	.node text {
+  		font: 15px sans-serif;
+	}
+
+	.link {
+  		fill: none;
+  		stroke: #006837;
+  		stroke-width: 5px;
+	}
+/* C3 content styling*/
+	
+	.c3 {
+		margin: 40px;
+	}
+
+/*Styling for the parallel coordinates*/
+/*---------------------------------------*/
+
+/* data table styles */
+#grid { 
+    height: 198px; 
+}
+
+.row, .header { 
+    clear: left; 
+    font-size: 12px; 
+    line-height: 18px; 
+    height: 18px; 
+}
+
+.row:nth-child(odd) { 
+    background: rgba(0,0,0,0.2); 
+}
+
+.header { 
+    font-weight: bold; 
+}
+
+.cell { 
+    float: left; 
+    overflow: hidden; 
+    white-space: nowrap; 
+    width: 170px; 
+    height: 18px; 
+    color: black ;}
+
+.col-0 { 
+    width: 180px; 
+}
+
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.header {
+    background-color: white;
+}
+
+.header.cell, .header .cell {
+    color: black;
+}
+
+
+#problemShifting {
+  width: 800px;
+  height: 500px;
+  margin-top: 20px;
+}
+
+#grid {
+  width: 1050px;
+  height: 100px;
+  margin-top: 10px;
+  position: fixed;
+  left: 200px;
+}
+
+/*CSS for the pyramid chart*/
+
+#funnelContainer {
+	margin: 2em;
+}
+
+/* Styling MFA systems picture */
+
+#img_mfa {
+	margin: 2em;
+}
+
+	</style>
+
+	<!--[if IE]>
+		<script type="text/javascript">
+			 var console = { log: function() {} };
+		</script>
+	<![endif]-->
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+
+	<script type="text/javascript" src="js/jquery.slimscroll.min.js"></script>
+
+	<script type="text/javascript" src="js/jquery.fullPage.js"></script>
+	<!--<script type="text/javascript" src="examples.js"></script>-->
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#fullpage').fullpage({
+				anchors: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O'],
+				sectionsColor: ['#d94801', '#d94801', '#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801'],
+				navigation: true,
+				navigationPosition: 'right',
+				navigationTooltips: ['First page', 'Second page', 'Third page', 'Fourth page','Fifth page','Sixth page', 'Seventh page', 'Eighth page', 'Ninth page', 'Tenth page', 'Eleventh page', 'Twelfth page','Thirteenth page', 'Fourteenth page', 'Fifteenth page'],
+				responsive: 900
+			});
+		});
+	</script>
+
+</head>
+<body>
+
+<div id="fullpage">
+	<div class="section " id="section0">
+		<div class="intro">
+			<h1>Addressing food waste</h1>
+			<h2>Food waste prevention versus recycling food waste</h2>
+		</div>
+	</div>
+
+	<div class="section" id="section1">
+		<div class="intro">
+			<h3>Is food waste an increasing problem?</h3>
+			<p>Food waste seems to be an increasing problem. About one third of all the food that is being produced is wasted. The developing world is leading the way, each year throwing away almost the same amount of food as is being produced in all of sub-Sharan Africa, nearly 230 million ton/yr</p>
+
+			<script src="http://d3js.org/d3.v3.min.js" charset="utf-8" defer></script>
+
+
+			<div id="diagram"></div>
+
+			<script src="js/FW_comparison.js" defer></script>
+
+		</div>
+	</div>
+
+	<div class="section" id="section2">
+		<div class="intro">
+			<h3>What are the effects</h3>
+			<p>Effects of increasing food waste. Click the nodes for more information. Source: Hamilton and UNEP</p>
+
+			<div id="treeDiagram"></div>
+
+			<script src="js/treeLayout.js" defer></script>
+
+
+		</div>
+	</div>
+
+	<div class="section" id="section3">
+		<div class="intro">
+			<h3>What are the current strategies?</h3>
+			<p>Traditionaly as seen from the pyramid, the EU focus has been on using the waste hierarchy principles, where prevention of food waste is top priority. In Norway strategies however tend to favor recycling solutions (grey).</p>
+
+			<div id="funnelContainer"></div>
+
+				<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+
+				<script type="text/javascript" src="js/d3-funnel-charts.js"></script>
+
+				<script type="text/javascript">
+    		
+    				var data = [['1. Prevention', 500], ['2. Reuse', 400], ['3. Recycling ', 300], ['4. Recovery', 200], ['5. Disposal',100]];
+    				var chart = new FunnelChart({
+    					data: data,
+    					width: 500, 
+    					height: 450, 
+    					bottomPct: 1/4
+    					});
+
+    					chart.draw('#funnelContainer', 2);
+
+				</script>
+
+		</div>
+	</div>
+
+
+	<div class="section" id="section4">
+		<div class="intro">
+			<h3>Why do we need systems-wide understanding?</h3>
+			<p>We do not blindly want to follow the waste hierarchy, since it lacks information about, mass, energy and critical material flows for food production. Since we are dealing with a multi-dimensional problem, we have to consider system-wide effects, since food waste affects multiple actors as well as environmental resources (Hamilton 2015). For this job, we use MFA (material flow anlysis), we quantifies the flows and stocks of a certain system (source: x), in this case the Norwegian food waste system.</p>
+
+			<img src="MFASystem.png" id="img_mfa" alt="MFA system" height="40%" width="40%">
+
+
+		</div>
+	</div>
+
+	<div class="section" id="section5">
+		<div class="intro">
+			<h3>Norway: Food waste quantified</h3>
+			<p>How much do we throw away where?</p>
+
+			<script src="http://d3js.org/d3.v3.min.js" charset="utf-8" defer></script>
+
+          			<script src="js/c3.js" defer></script>
+
+					<div id="avoidableFoodWasteContainer">				
+
+  					<script src="js/avoidableFoodWaste.js" defer></script>
+
+  					<div id="stackedBar"></div> 
+
+				</div> 
+
+		</div>
+	</div>
+
+	<div class="section" id="section6">
+		<div class="intro">
+			<h3>What dominates Norwegian policy?</h3>
+			<p>Budget priorities in Norway indicates that recycling food waste for biogas is getting larger focus and monetary incentives compared to food waste prevention. This is indicated by the new government budget (regjeringen.no budjsett forhandlinger) </p>
+
+			<script src="js/budgetPriorities.js" defer></script>
+
+			<div id="barChartBudget" class="c3"></div>       
+
+
+		</div>
+	</div>
+
+	<div class="section" id="section7">
+		<div class="intro">
+			<h3>What are the positive effects of recycling for biogas?</h3>
+			<p>More info here...</p>
+
+		</div>
+	</div>
+
+	<div class="section" id="section8">
+		<div class="intro">
+			<h3>What are the negative effects?</h3>
+			<p>More info here...</p>
+
+		</div>
+	</div>
+
+	<div class="section" id="section9">
+		<div class="intro">
+			<h3>What are the implications of this problem shift?</h3>
+			<p>More info here... What are the implications of this problem shift. What are the implications of this problem shift. What are the implications of this problem shift. What are the implications of this problem shift.</p>
+
+		<div id="testContainer">
+
+			<link rel="stylesheet" type="text/css" href="css/d3.parcoords.css">
+
+			<script src="js/d3.parcoords.js" defer></script>
+
+          	<script src="js/problemShifting.js" defer></script>
+          
+
+          	<div id="problemShifting" class="parcoords" style="height:400px;"></div>
+
+          	<script src="js/divgrid.js" defer></script>
+      
+          <div id="grid"></div>
+
+
+          	
+
+        </div>
+
+		</div>
+	</div>
+
+	<div class="section" id="section10">
+		<div class="intro">
+			<h3>So, should prevention strategies dominate policy?</h3>
+			<p>More info here...</p>
+
+		</div>
+	</div>
+
+	<div class="section" id="section11">
+		<div class="intro">
+			<h3>What are the benefits from food waste prevention, and how does it differ from food waste recycling?</h3>
+			<p>More info here...</p>
+
+		</div>
+	</div>
+
+	<div class="section" id="section12">
+		<div class="intro">
+			<h3>Does recycling provide climate improvements, alternatively are these benefits outweighed by the cost of P-losses</h3>
+			<p>More info here...</p>
+
+		</div>
+	</div>
+
+	<div class="section" id="section13">
+		<div class="intro">
+			<h3>Investigate the research behind this narrative</h3>
+			<p>To further investigate the research of Hamilton et al. (2015), follow the link below.</p>
+
+			<a href="http://folk.ntnu.no/richaror"><button class="btn btn-primary btn-lg" type="button">Food waste dashboard</button></a>
+
+
+		</div>
+	</div>
+
+	<div class="section" id="section14">
+		<div class="intro">
+			<h3>Test</h3>
+			<p>Test</p>
+
+
+
+		</div>
+	</div>
+
+
+
+
+
+</div>
+
+
+</body>
+</html>
