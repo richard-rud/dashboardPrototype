@@ -1,36 +1,11 @@
 {
  "name": "Impacts",
  "children": [
-  {
-   "name": "Land use",
-   "children": [
-      {"name": "Increased food waste means increased land use, 28% of the worlds agricultural land grows crops that are wasted."}
-   ]
-  },
-  {
-   "name": "Water",
-   "children": [
-      {"name": "Food waste increase water use, the water wasted could cover all of the worlds household needs."}
-   ]
-  },
-  {
-   "name": "Minerals",
-   "children": [
-      {"name": "Phosphorus is a critical and scarce mineral, increased food waste increases the use of this mineral."}
-   ]
-  },
-  {
-   "name": "Energy",
-   "children": [
-      {"name": "Increased use of energy as a result of food waste amounts to 3.300.000.000 gigatons of GHG each year."}
-   ]
-  },
-  {
-   "name": "Biodiversity",
-   "children": [
-      {"name": "Overexploiting natural resources leads to forrest and marine habitats being lost, along with their biodiversity."}
-   ]
-  }
+  {"name": "Land use"},
+  {"name": "Water"},
+  {"name": "Minerals"},
+  {"name": "Energy"},
+  {"name": "Biodiversity"}
    ]
   }
  

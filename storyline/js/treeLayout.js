@@ -1,7 +1,7 @@
 
-var margin = {top: 20, right: 120, bottom: 20, left: 120},
+var margin = {top: 60, right: 20, bottom: 20, left: 240},
     width = 1260 - margin.right - margin.left,
-    height = 500 - margin.top - margin.bottom;
+    height = 600 - margin.top - margin.bottom;
     
 var i = 0,
     duration = 750,
@@ -11,12 +11,14 @@ var tree = d3.layout.tree()
     .size([height, width]);
 
 var diagonal = d3.svg.diagonal()
-    .projection(function(d) { return [d.y, d.x]; }); //Changing this reverse the layout
+    .projection(function(d) { return [d.x, d.y]; }); //Changing this reverse the layout
 
 var svg = d3.select("#treeDiagram").append("svg")
     .attr("width", width + margin.right + margin.left)
     .attr("height", height + margin.top + margin.bottom)
-  .append("g")
+    //.attr("width", width )
+    //.attr("height", height )
+    .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 d3.json("data/impactsData.json", function(error, flare) {
@@ -71,7 +73,7 @@ function update(source) {
   // Transition nodes to their new position.
   var nodeUpdate = node.transition()
       .duration(duration)
-      .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });//Change the layout of the tree structure
+      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });//Change the layout of the tree structure
 
   nodeUpdate.select("circle")
       .attr("r", 10.5)

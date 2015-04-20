@@ -1,0 +1,14 @@
+<div class="section" id="section1">
+		<div class="wrap">
+			<div class="imgsContainer">
+				<img src="https://raw.githubusercontent.com/alvarotrigo/fullPage.js/master/examples/imgs/iphone2.png" alt="iphone" id="iphone2" />
+				<img src="https://raw.githubusercontent.com/alvarotrigo/fullPage.js/master/examples/imgs/iphone3.png" alt="iphone" id="iphone3" />
+				<img src="https://raw.githubusercontent.com/alvarotrigo/fullPage.js/master/examples/imgs/iphone4.png" alt="iphone" id="iphone4" />
+			</div>
+
+			<div class="box">
+				<h2>A powerful plugin</h2>
+				 <strong>fullPage.js</strong>  callbacks allow you to create amazing dynamic sites with a bit of imagination. This example tries to reproduce the Apple iPhone-5c website animations as an example of what fullPage.js is capable of.
+			</div>
+		</div>
+	</div>

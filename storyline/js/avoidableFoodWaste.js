@@ -42,7 +42,7 @@ var chart = c3.generate({
     },
     grid: {
         y: {
-            lines: [{value:0}]
+            show: true
         }
     },
     color: {

@@ -6,7 +6,7 @@ var dataset = [{label:"Food waste in the developed world: 222 million tons/yr", 
   .startAngle(0)
   .endAngle(2*Math.PI);
 
-var svg = d3.select("#diagram").append("svg")
+var svg = d3.select("#FW_Diagram").append("svg")
   .attr("width", 600)
   .attr("height", 600)
   .selectAll("g")
