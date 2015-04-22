@@ -36,18 +36,18 @@ var tipFlow_s2 = d3.tip()
 var width = 1450,
     height = 700;
 
-var svg = d3.select("#sankeyContent_P")
+var svg_E = d3.select("#sankeyContent_E")
             .append("svg")
             .attr("width", width)
             .attr("height", height);  
 
-svg.call(tipFlow_s2);
+svg_E.call(tipFlow_s2);
 
 function readFile(file) {
 
 d3.json(file, function(graph) {
 
-var processes = svg.append("g").selectAll(".line")
+var processes = svg_E.append("g").selectAll(".line")
                           .data(graph.processes)
                           .enter()
                           .append("line");
@@ -63,8 +63,8 @@ var mfaProcesses = processes
             //.on('mouseover', tipProcess.show)
             //.on('mouseout', tipProcess.hide);
             
-  svg.append('marker')   
-     .attr('id', "input-arrow")
+  svg_E.append('marker')   
+     .attr('id', "input-arrow_E")
      .attr('markerHeight', 2.5)
      .attr('markerWidth', 2,5)
      .attr('orient', 'auto')
@@ -74,10 +74,10 @@ var mfaProcesses = processes
      .append('path')
      .attr('d', 'M 5,0 m -5,-5 L 5,0 L 0,5 Z')
      .style("opacity", 0.5)
-     .style("fill", "green");
+     .style("fill", "#d95f0e");
 
-  svg.append('marker')
-     .attr('id', "output-arrow")
+  svg_E.append('marker')
+     .attr('id', "output-arrow_E")
      .attr('markerHeight', 2.5)
      .attr('markerWidth', 2,5)
      .attr('orient', 'auto')
@@ -89,8 +89,8 @@ var mfaProcesses = processes
      .style("opacity", 0.5)
      .style("fill", "red");
 
-  svg.append('marker')
-     .attr('id', "loop-arrow")
+  svg_E.append('marker')
+     .attr('id', "loop-arrow_E")
      .attr('markerHeight', 2.5)
      .attr('markerWidth', 2,5)
      .attr('orient', 'auto')
@@ -102,7 +102,7 @@ var mfaProcesses = processes
      .style("opacity", 0.5)
      .style("fill", "blue");
 
-var linearFlows = svg.append("g").attr("class", "MFA_flows").selectAll(".line")
+var linearFlows = svg_E.append("g").attr("class", "MFA_flows").selectAll(".line")
             .data(graph.flows)
             .enter()
             .append("line");
@@ -138,21 +138,21 @@ var mfaFlows = linearFlows
             .attr("marker-start", function (d) {
               if (d.flowDir == "loop") 
                 {
-                  return "url(#loop-arrow)";
+                  return "url(#loop-arrow_E)";
                 }
               })
             .attr("marker-end", function (d) { 
               if (d.flowDir == "output") 
                 {
-                  return "url(#output-arrow)";
+                  return "url(#output-arrow_E)";
                 }
               if (d.flowDir == "input") 
                 {
-                  return "url(#input-arrow)";
+                  return "url(#input-arrow_E)";
                 }
               if (d.flowDir == "linear")
               {
-                return "url(#input-arrow)"; 
+                return "url(#input-arrow_E)"; 
               }
               
             })
@@ -160,7 +160,7 @@ var mfaFlows = linearFlows
             .on('mouseover', tipFlow.show)
             .on('mouseout', tipFlow.hide);
             
-svg.selectAll("text.process")
+svg_E.selectAll("text.process")
         .data(graph.processes)
         .enter()
         .append("text")
@@ -169,7 +169,7 @@ svg.selectAll("text.process")
         .attr("y", function(d) { return d.p_y1 - 10; })
         .text(function(d) { return d.p_name; });
 
-var flowText = svg.selectAll("text.flow")
+var flowText = svg_E.selectAll("text.flow")
         .data(graph.flows)
         .enter()
         .append("text")
@@ -178,7 +178,7 @@ var flowText = svg.selectAll("text.flow")
         .attr("y", function(d) { return d.f_y1 - (d.value_s0/2); })
         .text(function(d) { return d.f_name; });
        
-d3.select("#s1_p").on("click", function() {
+d3.select("#s1_E").on("click", function() {
 
 scenarioVariable = 1;
 
@@ -220,7 +220,7 @@ scenarioVariable = 1;
 
   });
 
-d3.select("#s2_p").on("click", function() {
+d3.select("#s2_E").on("click", function() {
 
 scenarioVariable = 2;
 
@@ -265,9 +265,9 @@ scenarioVariable = 2;
 
 };
 
-var jsonFile1 = "data/dataPhosphorus.json" 
+var jsonFile2 = "data/dataEnergy.json" 
 
-  readFile(jsonFile1);
+  readFile(jsonFile2);
 
 
 

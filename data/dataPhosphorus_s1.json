@@ -16,7 +16,7 @@
 ],
 "flows":[
     
-    {"f_id": "Flow1", "f_x1": 110, "f_y1": 300, "f_x2": 290, "f_y2": 300, "f_strokeWidth": 5, "f_stroke": "green", "f_name": "Mineral Fertilizer", "f_type": "Phosphorus", "strokeDasharray": "none", "value_s0":30, "value_s1":7, "value_s2":6, "flowDir":"linear"},
+    {"f_id": "Flow1", "f_x1": 110, "f_y1": 300, "f_x2": 290, "f_y2": 300, "f_strokeWidth": 5, "f_stroke": "blue", "f_name": "Mineral Fertilizer", "f_type": "Phosphorus", "strokeDasharray": "none", "value_s0":30, "value_s1":7, "value_s2":6, "flowDir":"linear"},
 
     {"f_id": "Flow2", "f_x1": 310, "f_y1": 280, "f_x2": 490, "f_y2": 280, "f_strokeWidth": 5, "f_stroke": "green", "f_name": "Plants for feed", "f_type": "Phosphorus", "strokeDasharray": "none", "value_s0":5, "value_s1":4, "value_s2":4, "flowDir":"linear"},
     

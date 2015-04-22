@@ -16,8 +16,11 @@
 	<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
 	<link rel="stylesheet" type="text/css" href="css/examples.css" />
 
-				<script src="js/c3.js" defer></script>
+	<script src="js/c3.js" defer></script>
+	
+	<script src="http://d3js.org/topojson.v0.min.js" defer></script>
 
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
 	<style>
 
@@ -187,7 +190,12 @@
 /* Biogas diagram styling */
 
 #biogasDiagram {
-	margin: 40px;
+	/*margin: 80px;*/
+	margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 40%;
 }
 
 /* Map diagram styling */
@@ -224,6 +232,13 @@
 		margin-left: 120px;
 }
 
+#sourceTag {
+	float: left;
+	margin-left: 100px;
+	font-size: 1.5em;
+	font-family: arial,helvetica;
+	color: #fff;
+}
 
 
 	</style>
@@ -245,11 +260,11 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#fullpage').fullpage({
-				anchors: ['S1', 'S2', 'S3', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'S9', 'S10', 'S11', 'S12', 'S13', 'S14', 'S15', 'S16', 'S17', 'S18', 'S19', 'S20', 'S21', 'S22', 'S23'],
-				sectionsColor: ['#d94801', '#d94801', '#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801'],
+				anchors: ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'S9', 'S10', 'S11', 'S12', 'S13', 'S14', 'S15', 'S16', 'S17', 'S18', 'S19', 'S20', 'S21', 'S22', 'S23', 'S24', 'S25', 'S26','S27'],
+				sectionsColor: ['#d94801', '#d94801', '#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801','#d94801'],
 				navigation: true,
 				navigationPosition: 'right',
-				navigationTooltips: ['First page', 'Second page', 'Third page', 'Fourth page','Fifth page','Sixth page', 'Seventh page', 'Eighth page', 'Ninth page', 'Tenth page', 'Eleventh page', 'Twelfth page','Thirteenth page', 'Fourteenth page', 'Fifteenth page', 'Sixteenth page', 'Seventeenth page', 'Eighteenth page', 'Tweentiheth page', 'Twenthyfirst page', 'twenthy second page', 'twenthy third page'],
+				navigationTooltips: ['First page', 'Second page', 'Third page', 'Fourth page','Fifth page','Sixth page', 'Seventh page', 'Eighth page', 'Ninth page', 'Tenth page', 'Eleventh page', 'Twelfth page','Thirteenth page', 'Fourteenth page', 'Fifteenth page', 'Sixteenth page', 'Seventeenth page', 'Eighteenth page', 'Tweentiheth page', 'Twenthyfirst page', 'twenthy second page', 'twenthy third page', 'twentyfour', 'twentyfive', 'twentysix', 'twentyseven'],
 				responsive: 900
 			});
 		});
@@ -276,29 +291,42 @@
 			<div class="intro">
 				<p>Increasingly, food products are wasted, estimated to be around one-third of all food produced (FAO 2013). Reducing large amounts of food waste could decrease the carbon footprint, water footprint, land use, and loss of biodiversity, let alone the economic cost (FAO 2013).</p>
 
-				<script src="http://d3js.org/d3.v3.min.js" charset="utf-8" defer></script>
+				<script src="js/foodWasteGlobally.js" defer></script>
 
-				<script src="js/FW_comparison.js" defer></script>
+				<div id="foodWasteGlobally" class="c3"></div>
 
-				<div id="FW_Diagram"></div>
+				<a href="http://www.fao.org/docrep/018/i3347e/i3347e.pdf" id="sourceTag">Source: FAO 2013</a>
 
 			</div>
 	</div>
 
-	<div class="section " id="section3">
+	<div class="section" id="section3">
+		<div class="intro">
+			<h3>Norway: Food waste quantified</h3>
+			<p>How much do we throw away where?</p>
+
+
+  					<script src="js/avoidableFoodWaste.js" defer></script>
+  					<div id="stackedBar" class="c3"></div> 
+
+  					<a href="http://ostfoldforskning.no/publikasjon/nyttbart-matsvinn-i-norge-2011-analyser-av-status-og-utvikling-i-matsvinn-i-norge-2010-11-rapport-fra-format-prosjektet-707.aspx" id="sourceTag">Source: Østforsk 2011</a>
+		</div>
+	</div>
+
+	<div class="section " id="section4">
 		<div class="intro">
 			<h3>What are the effects?</h3>
 		</div>
 	</div>
 
-	<div class="section" id="section4">
+	<div class="section" id="section5">
 			<div class="intro">
 				<p>The use of natural resources for food production is for industrialized countries inefficient (Kytzia, Faist and Baccini 2004). This has a tremendous affect on the earth's ecosystem (Wirsenius 2003), affecting water use, land use, loss of biodiversity and the carbon footprint (FAO 2013). This includes influencing nitrogen cycles, phosphorus (P) cycles and energy cycles among others, causing acidification, eutrophication and greenhouse gas emissions (Wirsenius 2003). Expected growth in food production due to population growth in the coming years (Kytzia, Faist and Baccini 2004) reinforces environmental concerns (Foley et al. 2013) and amplifies the need for effective resource management.</p>
 
 			</div>
 	</div>
 
-	<div class="section" id="section5">
+	<div class="section" id="section6">
 		<div class="intro">
 			<h3>Food production is driving energy use</h3>
 			<p>Process energy inputs and losses in the Norwegian food production system are considerable.</p>
@@ -309,33 +337,21 @@
 
 			<div id="stackedBarPEuse" class="c3"></div> 
 
+			<a href="http://www.ntnu.edu/employees/helen.a.hamilton" id="sourceTag">Source: Hamilton 2015</a>
 
 		</div>
 	</div>
 
-		<div class="section" id="section6">
+		<div class="section" id="section7">
 		<div class="intro">
 			<h3>Agriculture sector emissions</h3>
 			<p>The agriculture sector emits a large proportion of greenhouse gas emissions in Norway (SSB)</p>
-
-
 
 			<script src="js/sectorEmissions.js" defer></script>
 
 			<div id="emissionsPie" class="c3"></div> 
 
-
-		</div>
-	</div>
-
-	<div class="section" id="section7">
-		<div class="intro">
-			<h3>But there are not only negative effects...</h3>
-			<p>Food waste is contributing to energy production. In Norway today a substantial amount of food waste is becoming input to biogas production</p>
-
-			<div id="biogasDiagram"></div>
-
-			<script src="js/biogas.js" defer></script>
+			<a href="http://ssb.no/klimagassn/" id="sourceTag">Source: SSB 2015</a>
 
 		</div>
 	</div>
@@ -354,13 +370,11 @@
 	</div>
 
 
-
 	<div class="section" id="section10">
 		<div class="intro">
 			<h3>A limited resource</h3>
 			<p>Top 10 phosphate rock reserves in the world</p>
 
-			<script src="http://d3js.org/topojson.v0.min.js"></script>
 
 			<div id="map"></div>
 
@@ -382,11 +396,15 @@
 		</div>
 	</div>
 
-
-
-	<div class="section" id="section12">
+	<div class="section " id="section12">
 		<div class="intro">
 			<h3>What are the current strategies?</h3>
+		</div>
+	</div>
+
+	<div class="section" id="section13">
+		<div class="intro">
+			<h3>In the European Union</h3>
 			<p>Traditionaly as seen from the pyramid, the EU focus has been on using the waste hierarchy principles, where prevention of food waste is top priority. In Norway strategies however tend to favor recycling solutions (grey).</p>
 
 			<div id="funnelContainer"></div>
@@ -412,64 +430,83 @@
 		</div>
 	</div>
 
-
-	<div class="section" id="section13">
-		<div class="intro">
-			<h3>Why do we need systems-wide understanding?</h3>
-			<p>We do not blindly want to follow the waste hierarchy, since it lacks information about, mass, energy and critical material flows for food production. Since we are dealing with a multi-dimensional problem, we have to consider system-wide effects, since food waste affects multiple actors as well as environmental resources (Hamilton 2015). For this job, we use MFA (material flow anlysis), we quantifies the flows and stocks of a certain system (source: x), in this case the Norwegian food waste system.</p>
-
-			<img src="MFASystem.png" id="img_mfa" alt="MFA system" height="40%" width="40%">
-
-
-		</div>
-	</div>
-
 	<div class="section" id="section14">
 		<div class="intro">
-			<h3>Norway: Food waste quantified</h3>
-			<p>How much do we throw away where?</p>
-
-			
-
-
-  					<script src="js/avoidableFoodWaste.js" defer></script>
-
-  					<div id="stackedBar" class="c3"></div> 
-
-
-		</div>
-	</div>
-
-	<div class="section" id="section15">
-		<div class="intro">
 			<h3>What dominates Norwegian policy?</h3>
-			<p>Budget priorities in Norway indicates that recycling food waste for biogas is getting larger focus and monetary incentives compared to food waste prevention. This is indicated by the new government budget (regjeringen.no budjsett forhandlinger) </p>
+			<p>The Norwegian government has acknowledged that food waste is a major issue, and that reduction of food waste is high on the political agenda (Brekk 2010). However, according to Hamilton (2015), it is not clear whether food waste prevention is the prevailing strategy. As opposed to what the government claims, it appears that strategies focus on recycling solutions for creating energy, rewarding the production of bioenergy from organic waste. This is reflected in the state budget as well as the new intersectoral biogas strategy (FIN 2015; Hamilton 2015; KLD 2014).</p>
 
 			<script src="js/budgetPriorities.js" defer></script>
 
 			<div id="barChartBudget" class="c3"></div>       
 
-
 		</div>
 	</div>
 
-	<div class="section" id="section16">
+
+<div class="section" id="section15">
 		<div class="intro">
-			<h3>What are the positive effects of recycling for biogas?</h3>
-			<p>More info here...</p>
+			<h3>But there are not only negative effects...</h3>
+		</div>
+</div>
+
+<div class="section" id="section16">
+		<div class="intro">
+			<p>Food waste is also contributing to energy production. In Norway today a substantial amount of food waste is becoming input to biogas production, and the potential is much larger than what is utilized today.</p>
+		<div>
+
+			<div id="biogasDiagram"></div>
+
+			<script src="js/biogas.js"></script>
 
 		</div>
-	</div>
+
+		</div>
+</div>
 
 	<div class="section" id="section17">
 		<div class="intro">
-			<h3>What are the negative effects?</h3>
-			<p>More info here...</p>
+			<h3>Deconding the complexity</h3> 
+			<p>
+			We do not aimlessly want to follow the waste hierarchy. We need a systems approach, in order to quantify mass, energy and critical material flows for food production. Food waste affects multiple actors as well as environmental resources (Hamilton 2015). Since we are dealing with a multi-dimensional problem, we have to consider system-wide effects. For this job, we use MFA (Material Flow Anlysis) for qunatifying the mass, energy and material flows of the Norwegian food production system.</p>
+
+			<!--<img src="MFASystem.png" id="img_mfa" alt="MFA system" height="40%" width="40%">-->
+
 
 		</div>
 	</div>
 
 	<div class="section" id="section18">
+		<div class="intro">
+			<h3>So, should prevention strategies dominate policy?</h3>
+			<p>It is not clear whether food waste prevention is the best strategy, since we dont know what the actual environmental benefits from food waste prevention and how these differ from food waste recycling. Therefore a systematic assessment of the mass, energy and critical material flows is crucial. This has never been carried out for the agriculture and waste sector in Norway (Hamilton 2015). Hamilton (2015) has researched the Norwegian food waste system, quantifying all the flows and stocks, showing the inputs, outputs, throughput and accumulation of biomass, energy and P. This study also includes feature scenarios, comparing food waste prevention versus food waste recycling. And is an important first step in quantifying the effects of food waste and the possible problem shifting that might occur between different policy decisions.</p>
+
+			<a href="http://www.ntnu.edu/employees/helen.a.hamilton" id="sourceTag">Source: Hamilton 2015</a>
+
+		</div>
+	</div>
+
+	<div class="section" id="section19">
+		<div class="intro">
+			<h3>We need to ask ourselfs...</h3>
+			
+		</div>
+	</div>
+
+	<div class="section" id="section20">
+		<div class="intro">
+			<h3>Do recycling measures provide climate improvements?</h3>
+			
+		</div>
+	</div>
+
+	<div class="section" id="section21">
+		<div class="intro">
+			<h3>And are these benefits outweighed by the costs of phosphorus losses?</h3>
+			
+		</div>
+	</div>
+
+	<div class="section" id="section22">
 		<div class="intro">
 			<h3>What are the implications of this problem shift?</h3>
 			<p>More info here... What are the implications of this problem shift. What are the implications of this problem shift. What are the implications of this problem shift. What are the implications of this problem shift.</p>
@@ -497,7 +534,7 @@
 		</div>
 	</div>
 
-	<div class="section" id="section19">
+	<div class="section" id="section23">
 		<div class="intro">
 			<h3>So, should prevention strategies dominate policy?</h3>
 			<p>More info here...</p>
@@ -505,7 +542,7 @@
 		</div>
 	</div>
 
-	<div class="section" id="section20">
+	<div class="section" id="section24">
 		<div class="intro">
 			<h3>What are the benefits from food waste prevention, and how does it differ from food waste recycling?</h3>
 			<p>More info here...</p>
@@ -513,7 +550,7 @@
 		</div>
 	</div>
 
-	<div class="section" id="section21">
+	<div class="section" id="section25">
 		<div class="intro">
 			<h3>Does recycling provide climate improvements, alternatively are these benefits outweighed by the cost of P-losses</h3>
 			<p>More info here...</p>
@@ -521,7 +558,7 @@
 		</div>
 	</div>
 
-	<div class="section" id="section22">
+	<div class="section" id="section26">
 		<div class="intro">
 			<h3>Investigate the research behind this narrative</h3>
 			<p>To further investigate the research of Hamilton et al. (2015), follow the link below.</p>
@@ -531,20 +568,6 @@
 
 		</div>
 	</div>
-
-	<div class="section" id="section23">
-		<div class="intro">
-			<h3>Test</h3>
-			<p>Test</p>
-
-
-
-		</div>
-	</div>
-
-
-
-
 
 </div>
 

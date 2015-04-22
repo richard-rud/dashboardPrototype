@@ -1,7 +1,7 @@
 
 var dataset = [{label:"Food waste in the developed world: 222 million tons/yr", value:22},{label:"Total food production in sub-Saharan Africa: 230 million tons/yr",value:23}];
 
-  var arc = d3.svg.arc()
+var arc = d3.svg.arc()
   .outerRadius(function(d,i){return (4-i)*d.value*2+4;})
   .startAngle(0)
   .endAngle(2*Math.PI);
@@ -20,8 +20,6 @@ var LineCircle = svg.append("g")
   .style("fill","black")
   .attr("class", "label");
   
-
-
 var arcs = svg.append("path")
   .attr("stroke", "#006837")
   .attr("stroke-width", 2)

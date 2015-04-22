@@ -1,14 +1,91 @@
-<div class="section" id="section1">
-		<div class="wrap">
-			<div class="imgsContainer">
-				<img src="https://raw.githubusercontent.com/alvarotrigo/fullPage.js/master/examples/imgs/iphone2.png" alt="iphone" id="iphone2" />
-				<img src="https://raw.githubusercontent.com/alvarotrigo/fullPage.js/master/examples/imgs/iphone3.png" alt="iphone" id="iphone3" />
-				<img src="https://raw.githubusercontent.com/alvarotrigo/fullPage.js/master/examples/imgs/iphone4.png" alt="iphone" id="iphone4" />
-			</div>
+<html>
 
-			<div class="box">
-				<h2>A powerful plugin</h2>
-				 <strong>fullPage.js</strong>  callbacks allow you to create amazing dynamic sites with a bit of imagination. This example tries to reproduce the Apple iPhone-5c website animations as an example of what fullPage.js is capable of.
-			</div>
-		</div>
-	</div>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+
+<body>
+
+<div id="biogasDiagram"></div>
+
+<script type="text/javascript">
+var color = d3.scale.category20();
+
+
+var dataset = [{label:"Current production", value:5},{label:"Realistic potential",value:23},{label:"Teoretical potential", value:58}];
+
+/*
+var arc = d3.svg.arc()
+  .innerRadius(function(d,i){return (5-i)*35;})
+  .outerRadius(function(d,i){return (5-i)*35+1;})
+  .startAngle(0)
+  .endAngle(2*Math.PI);
+  */
+
+
+  var arc = d3.svg.arc()
+  //.innerRadius(function(d,i){return (4-i)*d.value*4;})
+  .outerRadius(function(d,i){return (4-i)*d.value*2+4;})
+  .startAngle(0)
+  .endAngle(2*Math.PI);
+
+var svg = d3.select("#biogasDiagram").append("svg")
+  .attr("width", 1200)
+  .attr("height", 800)
+  .selectAll("g")
+  .data(dataset)
+  .enter()
+  .append("g")
+  .attr("transform", "translate(300,290)");
+
+  var circle = svg.selectAll("circle").data([0, 1])
+    .enter().append("circle")
+    .attr("r", 46)
+    .attr("cx", 0)
+    .attr("cy", 0)
+    .style("fill","white")
+    .each(pulse);
+
+var LineCircle = svg.append("g")
+  .attr("id","LineCircle")
+  .style("fill","black")
+  .attr("class", "label")
+
+
+var arcs = svg.append("path")
+  .attr("stroke", "white")
+  .attr("stroke-width", 2)
+  .attr("fill", "none")
+  .attr("id", function(d,i){return "s"+i;})
+  .style("stroke-dasharray", "20, 10")
+  .attr("d",arc);
+
+
+
+LineCircle.append("text")
+  //.attr("x", 8)
+  .style("font-size",12)
+  .style("text-anchor","middle")
+  .append("textPath")
+  .attr("xlink:href",function(d,i){return "#s"+i;})
+  .attr("startOffset",function(d,i){return "50%";})
+  .text(function(d){return d.label.toUpperCase();})
+
+  function pulse() {
+            var circle = svg.select("circle");
+            
+                circle = circle.transition()
+                    .duration(1000)
+                    .attr("stroke-width", 20)
+                    .attr("r", 20)
+                    .transition()
+                    .duration(5000)
+                    .attr('stroke-width', 5)
+                    .attr("r", 238)
+                    .style("opacity", .2)
+                    .style("fill", "orange")
+                    .ease('sine');
+            };
+
+</script>
+
+</html>

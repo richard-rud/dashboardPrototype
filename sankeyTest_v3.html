@@ -56,7 +56,16 @@ line:hover {
   stroke-opacity: 1;
 }
 
-#sankeyContent {
+#sankeyContent_P {
+  width: 1450px;
+  height: 700px;
+  margin-top: 10px;
+  margin-left: 5px;
+  padding-left: 20px;
+  border: 2px solid black;
+}
+
+#sankeyContent_E {
   width: 1450px;
   height: 700px;
   margin-top: 10px;
@@ -196,11 +205,25 @@ line:hover {
   border: 2px solid black;
 }
 
+#navBar{
+  position: fixed;
+  right: 0;
+  top: 0%;
+  width: 106em;
+  z-index: 1;
+}
+
+#mainContent {
+  margin-top: 5em;
+}
+
 </style>
 
 </head>
 
 <body>
+
+<div id="navBar">
 
 <button id="s1_p" class="btn btn-success" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Recycling P</button>
 
@@ -215,12 +238,14 @@ line:hover {
 <button id="baseline_E" class="btn btn-success" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Baseline scenario E</button>
 
 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseProblemShifting" aria-expanded="false" aria-controls="collapseProblemShifting">
-  Problem shifting
+  Help
 </button>
 
 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseFlows" aria-expanded="false" aria-controls="collapseFlows">
-  Quantified flows: s0, s1 and s2
+  Background information
 </button>
+
+</div>
 
 <div class="collapse" id="collapseFlows">
   <div class="well">
@@ -240,6 +265,8 @@ line:hover {
 
 </br>
 
+<div id="mainContent">
+
 <div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="tabOne">
@@ -249,7 +276,7 @@ line:hover {
         </a>
       </h4>
     </div>
-    <div id="collapseOne" class="panel-collapse collapsing" role="tabpanel" aria-labelledby="tabOne">
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="tabOne">
       <div class="panel-body">
               
         <div id="testContainer">
@@ -310,22 +337,93 @@ line:hover {
   
 </div>
 
-<div id="sankeyContent">
+<div class="panel-group" id="accordion3" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="tabThree">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Phosphorus flow diagram
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapsing" role="tabpanel" aria-labelledby="tabThree">
+      <div class="panel-body">
+              
+        <h3>Phosphorus:</h3>
+
+        <div id="sankeyContent_P"></div>
+
+
+        </div>
+               
+      </div>
+    </div>
+
   </div>
+
+<div class="panel-group" id="accordion4" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="tabFour">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Energy flow diagram
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFour" class="panel-collapse collapsing" role="tabpanel" aria-labelledby="tabFour">
+      <div class="panel-body">
+              
+        
+      <h3>Energy:</h3>
+
+      <div id="sankeyContent_E"></div>
+
+
+        </div>
+               
+      </div>
+    </div>
+
+  </div>
+
+  <div class="panel-group" id="accordion5" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="tabFive">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          Avoidable food waste
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFive" class="panel-collapse collapsing" role="tabpanel" aria-labelledby="tabFive">
+      <div class="panel-body">
+              
+        
+      <h3>Avoidable food waste estimates: 2009 - 2011:</h3>
+
+      <div id="avoidableFoodWasteContainer">
+
+      <script src="js/avoidableFoodWaste.js" defer></script>
+
+      <div id="stackedBar"></div> 
+
+      </div> 
+
+        </div>
+               
+      </div>
+    </div>
+
+  </div>
+
+</div> <!-- Breaking off the main content -->
 
 <script type="text/javascript" src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js" defer></script>
 
-<div id="avoidableFoodWasteContainer">
+<script type="text/javascript" src="js/FW_sankey_P.js" defer></script>
 
-  <h1>Avoidable food waste estimates: 2009 - 2011</h1>
+<script type="text/javascript" src="js/FW_sankey_E.js" defer></script>
 
-  <script src="js/avoidableFoodWaste.js" defer></script>
-
-  <div id="stackedBar"></div> 
-
-</div> 
-
-<script type="text/javascript" src="js/FW_sankey.js" defer></script>
 
     <script src="js/jquery.js">
 
