@@ -209,7 +209,8 @@ line:hover {
   position: fixed;
   right: 0;
   top: 0%;
-  width: 106em;
+  width: 100%;
+  background-color: grey;
   z-index: 1;
 }
 
@@ -323,9 +324,16 @@ line:hover {
           <!-- Following script renders the barChart of flows, principle- seperation of the logic-->
           <script type="text/javascript" src="js/flowsBarChart.js" defer></script>
 
-            <div id="barChartEnergy" class="col-md-4"></div>   
-            <div id="barChartPhosphorus" class="col-md-4"></div> 
-            <div id="barChartDryMatter" class="col-md-4"></div>     
+              <h3 class="col-md-4">Energy: </h3>
+              <h3 class="col-md-4">Phosphorus: </h3>
+              <h3 class="col-md-4">Dry matter: </h3>
+
+         
+             <div id="barChartEnergy" class="col-md-4"></div>   
+             <div id="barChartPhosphorus" class="col-md-4"></div> 
+             <div id="barChartDryMatter" class="col-md-4"></div>     
+
+          
 
         </div>
                
@@ -378,7 +386,6 @@ line:hover {
 
       <div id="sankeyContent_E"></div>
 
-
         </div>
                
       </div>
@@ -408,6 +415,58 @@ line:hover {
       <div id="stackedBar"></div> 
 
       </div> 
+
+        </div>
+               
+      </div>
+    </div>
+
+  </div>
+
+  <div class="panel-group" id="accordion6" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="tabSix">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+          Process energy inputs
+        </a>
+      </h4>
+    </div>
+    <div id="collapseSix" class="panel-collapse collapsing" role="tabpanel" aria-labelledby="tabSix">
+      <div class="panel-body">
+              
+      <h3>Process energy inputs for the baseline scenario</h3>
+
+      <div id="stackedBarPEuse"></div>
+
+      <script type="text/javascript" src="js/PEandLossesDashboardVersion.js" defer></script>
+
+
+        </div>
+               
+      </div>
+    </div>
+
+  </div>
+
+  <div class="panel-group" id="accordion7" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="tabSeven">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          Biogas output 
+        </a>
+      </h4>
+    </div>
+    <div id="collapseSeven" class="panel-collapse collapsing" role="tabpanel" aria-labelledby="tabSeven">
+      <div class="panel-body">
+              
+      <h3>Biogas output (scenario comparison)</h3>
+
+      <div id="BiogasOutputBars"></div>
+
+      <script type="text/javascript" src="js/biogasOutput.js" defer></script>
+
 
         </div>
                
