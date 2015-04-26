@@ -19,7 +19,7 @@ var chart = c3.generate({
         duration: 1000
     },
     color: {
-        pattern: ['#1a9850','#fdae61','#66bd63','#f46d43']
+        pattern: ['#ffffff', '#969696']
     },
     axis: {
         x: {

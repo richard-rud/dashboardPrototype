@@ -27,6 +27,6 @@
     },
     color: {
         //pattern: ['#993404','#004529','#cc4c02','#ec7014','#fe9929','#fec44f','#fee391','#fff7bc']
-        pattern: ['#bdbdbd','#bdbdbd','#bdbdbd','#bdbdbd','#bdbdbd','#bdbdbd','#e31a1c','#bdbdbd']
+        pattern: ['#737373','#737373','#737373','#737373','#737373','#737373','#000000','#737373']
     }
 });

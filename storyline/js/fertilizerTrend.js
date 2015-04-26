@@ -11,7 +11,7 @@
         ]
     },
     color: {
-        pattern: ['#7f2704']
+        pattern: ['#ffffff']
     },
     axis: {
         x: {
@@ -49,7 +49,7 @@
         ]
     },
     color: {
-        pattern: ['#4d004b']
+        pattern: ['#ffffff']
     },
     axis: {
         x: {

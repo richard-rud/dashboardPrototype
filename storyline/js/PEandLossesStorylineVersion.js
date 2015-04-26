@@ -48,7 +48,7 @@ var chart = c3.generate({
         },
     },
     color: {
-        pattern: ['#c6dbef', '#9ecae1', '#6baed6', '#4292c6', '#2171b5', '#08519c', '#08306b']
+        pattern: ['#ffffff', '#d9d9d9', '#bdbdbd', '#969696', '#737373', '#525252', '#252525']
     }
 
 });
