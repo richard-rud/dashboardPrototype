@@ -47,7 +47,8 @@
 		font-size: 3em;
 		font-family: arial,helvetica;
 		color: #fff;
-		margin:0;
+		margin-left:2em;
+		margin-right: 2em;
 	}
 
 	h3 {
@@ -238,30 +239,55 @@
 }
 
 #sourceTag {
-	float: left;
-	margin-left: 100px;
-	font-size: 1.5em;
 	font-family: arial,helvetica;
 	color: #bdbdbd;
 	font-style: italic;
 }
 
+/* Next button */
+
+.next-button {
+	position: relative;
+	bottom: -2em;
+    width: 0; 
+	height: 0; 
+	border-left: 2em solid transparent;
+	border-right: 2em solid transparent;
+	border-top: 2em solid white;
+  
+}
+
+.next-button:hover {
+	border-left: 2em solid transparent;
+	border-right: 2em solid transparent;
+	border-top: 2em solid grey;
+}
+
+.prev-button {
+	position: relative;
+	top: -2em;
+    width: 0; 
+	height: 0; 
+	border-left: 2em solid transparent;
+	border-right: 2em solid transparent;
+	border-bottom: 2em solid white;
+}
+
+.prev-button:hover {
+	border-left: 2em solid transparent;
+	border-right: 2em solid transparent;
+	border-bottom: 2em solid grey;
+}
 
 	</style>
 
-	<!--[if IE]>
-		<script type="text/javascript">
-			 var console = { log: function() {} };
-		</script>
-	<![endif]-->
-
+	
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 
 	<script type="text/javascript" src="js/jquery.slimscroll.min.js"></script>
 
 	<script type="text/javascript" src="js/jquery.fullPage.js"></script>
-	<!--<script type="text/javascript" src="examples.js"></script>-->
 
 	<script type="text/javascript">
 		$(document).ready(function() {
@@ -284,26 +310,43 @@
 		<div class="intro">
 			<h1>Addressing food waste</h1>
 			<h2>Food waste prevention versus recycling food waste</h2>
+
+				<a href="#S2" class="next-button"></a>
+
 		</div>
+		
+
 	</div>
 
 	<div class="section " id="section1">
+
+			<a href="#S1" class="prev-button"></a>
+
 		<div class="intro">
+
+
 			<h3><b>How much food do we throw away?</b></h3>
+
 		</div>
+
+			<a href="#S3" class="next-button"></a>
+
 	</div>
 
 	<div class="section" id="section2">
 			<div class="intro">
 				<h2>The amount of food waste worldwide</h2>
-				<p>Increasingly, food products are wasted, estimated to be around one-third of all food produced (FAO 2013). Reducing large amounts of food waste could decrease the carbon footprint, water footprint, land use, and loss of biodiversity, let alone the economic cost (FAO 2013).</p>
+				<p>Increasingly, food products are wasted, estimated to be around one-third of all food produced. Reducing large amounts of food waste could decrease the carbon footprint, water footprint, land use, and loss of biodiversity, let alone the economic cost.</p> 
+
+			<p style="font-size:15px;">(<a href="http://www.fao.org/docrep/018/i3347e/i3347e.pdf" id="sourceTag">FAO 2013</a>)</p>
 
 				<script src="js/foodWasteGlobally.js" defer></script>
 
 				<div id="foodWasteGlobally" class="c3"></div>
 
-				<a href="http://www.fao.org/docrep/018/i3347e/i3347e.pdf" id="sourceTag">Source: FAO 2013</a>
-
+					<a href="#S2" class="prev-button"></a>
+					<a href="#S4" class="next-button"></a>
+					
 			</div>
 	</div>
 
@@ -313,12 +356,14 @@
 				
 				<h2>Amount of wet organic waste in Norway</h2>
 				<p>The amount of wet organic waste in Norway has seen an increase the last 20 years. It is worth noting that not all of this is avoidable food waste.</p>
+				<p style="font-size:15px;">(<a href="http://www.miljostatus.no/Tema/Avfall/Avfall-og-gjenvinning/Avfallstyper/Vatorganisk-avfall/" id="sourceTag">SSB/Miljøstatus 2015</a>)</p>
 
 				<script src="js/wetWasteStoryline.js" defer></script>
 
 				<div id="barChartWetWaste" class="c3"></div>
 
-				<a href="http://www.miljostatus.no/Tema/Avfall/Avfall-og-gjenvinning/Avfallstyper/Vatorganisk-avfall/" id="sourceTag">Source: SSB/Miljøstatus 2015</a>
+					<a href="#S3" class="prev-button"></a>
+					<a href="#S5" class="next-button"></a>
 
 			</div>
 	</div>
@@ -327,18 +372,25 @@
 		<div class="intro">
 			<h2>Norway: Food waste quantified</h2>
 			<p>How much of avoidable food waste do we throw away where?</p>
+			<p style="font-size:15px;">(<a href="http://ostfoldforskning.no/publikasjon/nyttbart-matsvinn-i-norge-2011-analyser-av-status-og-utvikling-i-matsvinn-i-norge-2010-11-rapport-fra-format-prosjektet-707.aspx" id="sourceTag">Østforsk 2011</a>)</p>
 
 
   					<script src="js/avoidableFoodWaste.js" defer></script>
   					<div id="stackedBar" class="c3"></div> 
 
-  					<a href="http://ostfoldforskning.no/publikasjon/nyttbart-matsvinn-i-norge-2011-analyser-av-status-og-utvikling-i-matsvinn-i-norge-2010-11-rapport-fra-format-prosjektet-707.aspx" id="sourceTag">Source: Østforsk 2011</a>
+					<a href="#S4" class="prev-button"></a>
+					<a href="#S6" class="next-button"></a>
+
 		</div>
 	</div>
 
 	<div class="section " id="section5">
 		<div class="intro">
 			<h3><b>What are the consequence?</b></h3>
+
+			<a href="#S5" class="prev-button"></a>
+			<a href="#S7" class="next-button"></a>
+
 		</div>
 	</div>
 
@@ -346,6 +398,10 @@
 			<div class="intro">
 				<h2>Intricate effects</h2>
 				<p>The use of natural resources for food production is for industrialized countries inefficient (Kytzia, Faist and Baccini 2004). This has a tremendous affect on the earth's ecosystem (Wirsenius 2003), affecting water use, land use, loss of biodiversity and the carbon footprint (FAO 2013). This includes influencing nitrogen cycles, phosphorus (P) cycles and energy cycles among others, causing acidification, eutrophication and greenhouse gas emissions (Wirsenius 2003). Expected growth in food production due to population growth in the coming years (Kytzia, Faist and Baccini 2004) reinforces environmental concerns (Foley et al. 2013) and amplifies the need for effective resource management.</p>
+				<p style="font-size:15px;">(<a href="" id="sourceTag">FAO 2013</a>; <a href="" id="sourceTag">Foley et al. 2013</a>; <a href="" id="sourceTag">Kytzia, Faist and Baccini 2004</a>; <a href="" id="sourceTag">Wirsenius 2003</a>)</p>
+
+				<a href="#S6" class="prev-button"></a>
+				<a href="#S8" class="next-button"></a>
 
 			</div>
 	</div>
@@ -354,12 +410,14 @@
 		<div class="intro">
 			<h2>Food production is driving energy use</h2>
 			<p>Process energy inputs and losses in the Norwegian food production system are considerable.</p>
+			<p style="font-size:15px;">(<a href="http://www.ntnu.edu/employees/helen.a.hamilton" id="sourceTag">Hamilton at al. 2015</a>)</p>
 
 			<script src="js/PEandLossesStorylineVersion.js" defer></script>
 
 			<div id="stackedBarPEuse" class="c3"></div> 
 
-			<a href="http://www.ntnu.edu/employees/helen.a.hamilton" id="sourceTag">Source: Hamilton 2015</a>
+			<a href="#S7" class="prev-button"></a>
+			<a href="#S9" class="next-button"></a>
 
 		</div>
 	</div>
@@ -368,13 +426,15 @@
 		<div class="intro">
 			<h2>Agriculture sector emissions</h2>
 			<p>The agriculture sector emits a large proportion of greenhouse gas emissions in Norway (SSB)</p>
+			<p style="font-size:15px;">(<a href="http://ssb.no/klimagassn/" id="sourceTag">SSB 2015</a>)</p>
 
 			<script src="js/sectorEmissions.js" defer></script>
 
 			<div id="emissionsPie" class="c3"></div> 
 
-			<a href="http://ssb.no/klimagassn/" id="sourceTag">Source: SSB 2015</a>
-
+			<a href="#S8" class="prev-button"></a>
+			<a href="#S10" class="next-button"></a>
+		
 		</div>
 	</div>
 
@@ -383,19 +443,28 @@
 				<h2>The phosphorus issue</h2>
 				<p>Phosphorus (P) is a vital nutrient for food production and the linearity of anthropogenic P processes makes the use of P unsustainable. Current practices go from extraction to consumption to waste without a reuse phase, eventually leading to P accumulation in land and aquatic systems. It is expected that current practices will lead to depletion, unless P is used in a more circular way (Schmid Neset, Bader, Scheidegger and Lohm, 2008; Cordell, Drangert and White, 2009). While P losses aggravates scarcity issues, if accumulated in the wrong environmental compartments, P also acts as a pollutant (Yuan, Shi, Wu, Zhang and Bi, 2011). </p>
 
+				<a href="#S9" class="prev-button"></a>
+				<a href="#S11" class="next-button"></a>
+
 			</div>
 	</div>
 
 
 	<div class="section" id="section10">
 		<div class="intro">
+
+			<a href="#S10" class="prev-button"></a>
+
 			<h2>A limited resource</h2>
 			<p>Top 10 phosphate rock reserves in the world</p>
-
+			<p style="font-size:15px;">(<a href="http://minerals.usgs.gov/minerals/pubs/mcs/2015/mcs2015.pdf" id="sourceTag">USGS 2015</a>)</p>
 
 			<div id="map"></div>
 
 			<script src="js/P_map.js" defer></script>
+
+			
+			<a href="#S12" class="next-button"></a>
 
 		</div>
 	</div>
@@ -409,6 +478,8 @@
             <div id="lineChart_Nitrogen" class="col-md-4"></div> 
 
 			<script src="js/fertilizerTrend.js" defer></script>
+
+			<a href="http://www.mattilsynet.no/planter_og_dyrking/gjodsel_jord_og_dyrkingsmedier/mineralgjodsel_og_kalk/omsetningsstatistikk_mineralgjodsel.5266" id="sourceTag">Source: Norwegian Food Safety Authority</a>
 
 		</div>
 	</div>
@@ -444,6 +515,8 @@
 
 				</script>
 
+		<a href="http://www.parliament.uk/documents/lords-committees/eu-sub-com-d/food-waste-prevention/154.pdf" id="sourceTag">Source: European Union Committee 2014</a>
+
 		</div>
 	</div>
 
@@ -454,7 +527,10 @@
 
 			<script src="js/budgetPriorities.js" defer></script>
 
-			<div id="barChartBudget" class="c3"></div>       
+			<div id="barChartBudget" class="c3"></div>
+
+			<a href="https://www.regjeringen.no/nb/dokumenter/Nasjonal-tverrsektoriell-biogasstrategi/id2005701/" id="sourceTag">Source: KLD 2014 and FIN 2015</a>
+		  
 
 		</div>
 	</div>
@@ -508,70 +584,11 @@
 
 	<div class="section" id="section19">
 		<div class="intro">
-			<h2>Decoding the complexity</h2> 
-			<p>
-			We do not aimlessly want to follow the waste hierarchy. We need a systems approach, in order to quantify mass, energy and critical material flows for food production. Food waste affects multiple actors as well as environmental resources (Hamilton 2015). Since we are dealing with a multi-dimensional problem, we have to consider system-wide effects. For this job, we use MFA (Material Flow Anlysis) for qunatifying the mass, energy and material flows of the Norwegian food production system.</p>
-
-		</div>
-	</div>
-
-	<div class="section " id="section20">
-		<div class="intro">
-			<h3>We need to ask ourselfs..</h3>
-		</div>
-	</div>
-
-	<div class="section" id="section21">
-		<div class="intro">
-			<h2>Should food waste prevention strategies dominate policy?</h2>
-		</br>
-			<p>Since we dont know what the actual environmental benefits from food waste prevention and how these differ from food waste recycling, it is not clear whether food waste prevention is the best strategy. As a result a systematic assessment of the mass, energy and critical material flows is crucial.</p> 
-		</br>
-			<p>A systematic assessment for the Norwegian food waste system has never been carried out for the agriculture and waste sector in Norway (Hamilton 2015). Hamilton (2015) has researched the Norwegian food waste system, quantifying all the flows and stocks, showing the inputs, outputs, throughput and accumulation of biomass, energy and P. This study also includes feature scenarios, comparing food waste prevention versus food waste recycling. And is an important first step in quantifying the effects of food waste and the possible problem shifting that might occur between different policy decisions.</p>
-
-		</br>
-
-			<a href="http://www.ntnu.edu/employees/helen.a.hamilton" id="sourceTag">Source: Hamilton 2015</a>
-
-		</div>
-	</div>
-
-
-	<div class="section" id="section22">
-		<div class="intro">
-			<h2>What are the actual environmental benefits from food waste prevention?</h2>
+			<h2>We are dealing with an interconnected and interdependent system</h2> 
+			
 			</br>
-			<p>Reducing food waste means a reduction in phosphorus accumulation in soil and runoff to aquatic systems due to the reduction of both organic fertilizers from manure applied to the soil as well as a reduction in mineral fertilizer. This also reduces our dependence on phosphate rock as a resource. We also reduce the process energy inputs needed to produce and transport the food. Reducing the Process energy inputs also gives us a reduction in the GHG emissions. </p> 
-		</br>
-			<p>On the other hand, the energy output from biogas production is rather limited, but still other sources of organic waste could still be used.</p>
 
-		</br>
-
-			<a href="http://www.ntnu.edu/employees/helen.a.hamilton" id="sourceTag">Source: Hamilton 2015</a>
-			
-		</div>
-	</div>
-
-	<div class="section" id="section23">
-		<div class="intro">
-			<h2>How do these differ from food waste recycling? </h2>
-			
-		</div>
-	</div>
-
-	<div class="section" id="section24">
-		<div class="intro">
-			<h2>Do recycling measures provide climate improvements? Alternatively, are these benefits outweighed by the costs of phosphorus losses?</h2>
-			
-		</div>
-	</div>
-
-	<div class="section" id="section25">
-		<div class="intro">
-			<h2>What are the implications of this problem shift?</h2>
-			<p>More info here... What are the implications of this problem shift. What are the implications of this problem shift. What are the implications of this problem shift. What are the implications of this problem shift.</p>
-
-		<div id="testContainer">
+			<div id="testContainer">
 
 			<link rel="stylesheet" type="text/css" href="css/d3.parcoords.css">
 
@@ -591,10 +608,49 @@
 		</div>
 	</div>
 
-	<div class="section" id="section26">
+	<div class="section" id="section20">
 		<div class="intro">
-			<h2>Investigate the research behind this narrative</h2>
-			<p>To further investigate the research of Hamilton et al. (2015), follow the link below.</p>
+			<h2>There is a need for decoding the complexity</h2> 
+			<p>
+			We do not aimlessly want to follow the waste hierarchy. We need a systems approach, in order to quantify mass, energy and critical material flows for food production. Food waste affects multiple actors as well as environmental resources (Hamilton 2015). Since we are dealing with a multi-dimensional problem, we have to consider system-wide effects. For this job, we use MFA (Material Flow Anlysis) for qunatifying the mass, energy and material flows of the Norwegian food production system.</p>
+
+		</div>
+	</div>
+
+	<div class="section " id="section21">
+		<div class="intro">
+			<h3>We need to ask ourselfs...</h3>
+		</div>
+	</div>
+
+	<div class="section" id="section22">
+		<div class="intro">
+			
+			<h2>What are the environmental benefits offered by food waste prevention and how these differ from food waste recycling?</h2>
+			
+		</div>
+	</div>
+
+	<div class="section" id="section23">
+		<div class="intro">
+
+			<h2>And...</h2>
+			
+		</div>
+	</div>
+
+	<div class="section" id="section24">
+		<div class="intro">
+			<h2>Should policy makers prioritize food waste prevention instead of food waste recycling?</h2>
+			
+		</div>
+	</div>
+
+	<div class="section" id="section25">
+		<div class="intro">
+			<h2>A systematic assessment can provide us with a knowledge base for effective resource management</h2>
+		</br>
+			<p>To further investigate the research (Hamilton 2015) behind this narrative, follow the link bellow. </p>
 
 			<a href="http://localhost:8888/dashboardPrototype/sankeyTest_v3.html"><button class="btn btn-primary btn-lg" type="button">Food waste dashboard</button></a>
 
