@@ -1,36 +1,22 @@
 //This (x) defines which scenario we are on
 var scenarioVariable = 0;
 
-var tipFlow = d3.tip()
+var tipFlow_energy = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
             if ( scenarioVariable == 0) 
                 {
-                   return "<strong>Process:</strong> <span style='color:orange'>" + d.f_name + "</span></br><strong>Type: </strong>" + "<span style='color:orange'>" + d.f_type + "</span></br><strong>Value: </strong>" + "<span style='color:orange'>" + d.value_s0 + "</span></br><strong>Scenario: </strong>" + "<span style='color:orange'>" + "S0: Baseline" + "</span>";
+                   return "<strong>Flow:</strong> <span style='color:orange'>" + d.f_name + "</span></br><strong>Type: </strong>" + "<span style='color:orange'>" + d.f_type + "</span></br><strong>Value: </strong>" + "<span style='color:orange'>" + d.value_s0 + "</span> (pj/yr)</br><strong>Scenario: </strong>" + "<span style='color:orange'>" + "S0: Baseline" + "</span>";
                 }
             if ( scenarioVariable == 1) 
                 {
-                   return "<strong>Process:</strong> <span style='color:orange'>" + d.f_name + "</span></br><strong>Type: </strong>" + "<span style='color:orange'>" + d.f_type + "</span></br><strong>Value: </strong>" + "<span style='color:orange'>" + d.value_s1 + "</span></br><strong>Scenario: </strong>" + "<span style='color:orange'>" + "S1: Recycling for biogas" + "</span>";
+                   return "<strong>Flow:</strong> <span style='color:orange'>" + d.f_name + "</span></br><strong>Type: </strong>" + "<span style='color:orange'>" + d.f_type + "</span></br><strong>Value: </strong>" + "<span style='color:orange'>" + d.value_s1 + "</span> (pj/yr)</br><strong>Scenario: </strong>" + "<span style='color:orange'>" + "S1: Recycling for biogas" + "</span>";
                 }
             if (scenarioVariable == 2)
               {
-                 return "<strong>Process:</strong> <span style='color:orange'>" + d.f_name + "</span></br><strong>Type: </strong>" + "<span style='color:orange'>" + d.f_type + "</span></br><strong>Value: </strong>" + "<span style='color:orange'>" + d.value_s2 + "</span></br><strong>Scenario: </strong>" + "<span style='color:orange'>" + "S2: Preventing food waste" + "</span>";
+                 return "<strong>Flow:</strong> <span style='color:orange'>" + d.f_name + "</span></br><strong>Type: </strong>" + "<span style='color:orange'>" + d.f_type + "</span></br><strong>Value: </strong>" + "<span style='color:orange'>" + d.value_s2 + "</span> (pj/yr)</br><strong>Scenario: </strong>" + "<span style='color:orange'>" + "S2: Preventing food waste" + "</span>";
               }
-  })
-
-var tipFlow_s1 = d3.tip()
-  .attr('class', 'd3-tip')
-  .offset([-10, 0])
-  .html(function(d) {
-    return "<strong>Process:</strong> <span style='color:orange'>" + d.f_name + "</span></br><strong>Type: </strong>" + "<span style='color:orange'>" + d.f_type + "</span></br><strong>Value: </strong>" + "<span style='color:orange'>" + d.value_s1 + "</span></br><strong>Test: </strong>" + "<span style='color:orange'>" + d.f_id + "</span>";
-  })
-
-var tipFlow_s2 = d3.tip()
-  .attr('class', 'd3-tip')
-  .offset([-10, 0])
-  .html(function(d) {
-    return "<strong>Process:</strong> <span style='color:orange'>" + d.f_name + "</span></br><strong>Type: </strong>" + "<span style='color:orange'>" + d.f_type + "</span></br><strong>Value: </strong>" + "<span style='color:orange'>" + d.value_s1 + "</span></br><strong>Scenario: </strong>" + "<span style='color:orange'>" + d.f_id + "</span>";
   })
           
 var width = 1450,
@@ -40,8 +26,6 @@ var svg_E = d3.select("#sankeyContent_E")
             .append("svg")
             .attr("width", width)
             .attr("height", height);  
-
-svg_E.call(tipFlow_s2);
 
 function readFile(file) {
 
@@ -115,7 +99,7 @@ var mfaFlows = linearFlows
             .attr("x1", function (d) { 
               if(d.flowDir == "loop")
               {
-                return d.f_x1 + (d.value_s0/2);
+                return d.f_x1 + ((d.value_s0 * 2 )/2);
               }
               else {
                 return d.f_x1;
@@ -128,11 +112,11 @@ var mfaFlows = linearFlows
                 return d.f_x2;
               }
               else {
-                return d.f_x2 - (d.value_s0/2)
+                return d.f_x2 - ((d.value_s0 * 2) /2)
               } 
             })
             .attr("y2", function (d) { return d.f_y2 })
-            .attr("stroke-width", function (d) { return d.value_s0 })
+            .attr("stroke-width", function (d) { return d.value_s0 * 2 })
             .attr("stroke", function (d) { return d.f_stroke })
             .attr("stroke-dasharray", function (d) { return d.strokeDasharray })
             .attr("marker-start", function (d) {
@@ -156,9 +140,9 @@ var mfaFlows = linearFlows
               }
               
             })
-            .call(tipFlow)
-            .on('mouseover', tipFlow.show)
-            .on('mouseout', tipFlow.hide);
+            .call(tipFlow_energy)
+            .on('mouseover', tipFlow_energy.show)
+            .on('mouseout', tipFlow_energy.hide);
             
 svg_E.selectAll("text.process")
         .data(graph.processes)
@@ -175,7 +159,7 @@ var flowText = svg_E.selectAll("text.flow")
         .append("text")
         .attr("id", function(d) { return d.f_id; })
         .attr("x", function(d) { return d.f_x1 + 5; })
-        .attr("y", function(d) { return d.f_y1 - (d.value_s0/2); })
+        .attr("y", function(d) { return d.f_y1 - ((d.value_s0 * 2)/2); })
         .text(function(d) { return d.f_name; });
        
 d3.select("#s1_E").on("click", function() {
@@ -190,7 +174,7 @@ scenarioVariable = 1;
           .attr("x1", function (d) { 
               if(d.flowDir == "loop")
               {
-                return d.f_x1 + ((d.value_s1 * 10)/2);
+                return d.f_x1 + ((d.value_s1 * 2)/2);
               }
               else {
                 return d.f_x1;
@@ -203,11 +187,11 @@ scenarioVariable = 1;
                 return d.f_x2;
               }
               else {
-                return d.f_x2 - ((d.value_s1 * 10)/2)
+                return d.f_x2 - ((d.value_s1 * 2)/2)
               } 
             })
             .attr("y2", function (d) { return d.f_y2 })
-            .attr("stroke-width", function (d) { return (d.value_s1 * 10) })
+            .attr("stroke-width", function (d) { return (d.value_s1 * 2) })
             .attr("stroke", function (d) { return d.f_stroke })
             .attr("stroke-dasharray", function (d) { return d.strokeDasharray });
        
@@ -215,7 +199,7 @@ scenarioVariable = 1;
         .transition()
         .duration(3000)
         .attr("x", function(d) { return d.f_x1 + 5; })
-        .attr("y", function(d) { return d.f_y1 - ((d.value_s1 * 10)/2); })
+        .attr("y", function(d) { return d.f_y1 - ((d.value_s1 * 2)/2); })
         .text(function(d) { return d.f_name; });
 
   });
@@ -231,7 +215,7 @@ scenarioVariable = 2;
           .attr("x1", function (d) { 
               if(d.flowDir == "loop")
               {
-                return d.f_x1 + ((d.value_s2 * 5)/2);
+                return d.f_x1 + ((d.value_s2 * 2)/2);
               }
               else {
                 return d.f_x1;
@@ -244,11 +228,11 @@ scenarioVariable = 2;
                 return d.f_x2;
               }
               else {
-                return d.f_x2 - ((d.value_s2 * 5)/2)
+                return d.f_x2 - ((d.value_s2 * 2)/2)
               } 
             })
             .attr("y2", function (d) { return d.f_y2 })
-            .attr("stroke-width", function (d) { return (d.value_s2 * 5)})
+            .attr("stroke-width", function (d) { return (d.value_s2 * 2)})
             .attr("stroke", function (d) { return d.f_stroke })
             .attr("stroke-dasharray", function (d) { return d.strokeDasharray });
 
@@ -256,7 +240,48 @@ scenarioVariable = 2;
         .transition()
         .duration(3000)
         .attr("x", function(d) { return d.f_x1 + 5; })
-        .attr("y", function(d) { return d.f_y1 - ((d.value_s2 * 5)/2); })
+        .attr("y", function(d) { return d.f_y1 - ((d.value_s2 * 2)/2); })
+        .text(function(d) { return d.f_name; });
+
+  });
+
+d3.select("#baseline_E").on("click", function() {
+
+scenarioVariable = 0;
+
+    mfaFlows
+          .transition()
+          .duration(3000)
+          .attr("id", function (d) { return d.f_id })
+          .attr("x1", function (d) { 
+              if(d.flowDir == "loop")
+              {
+                return d.f_x1 + ((d.value_s0 * 2)/2);
+              }
+              else {
+                return d.f_x1;
+              } 
+            })
+            .attr("y1", function (d) { return d.f_y1 })
+            .attr("x2", function (d) { 
+            if(d.flowDir == "loop")
+              {
+                return d.f_x2;
+              }
+              else {
+                return d.f_x2 - ((d.value_s0 * 2)/2)
+              } 
+            })
+            .attr("y2", function (d) { return d.f_y2 })
+            .attr("stroke-width", function (d) { return (d.value_s0 * 2)})
+            .attr("stroke", function (d) { return d.f_stroke })
+            .attr("stroke-dasharray", function (d) { return d.strokeDasharray });
+
+   flowText
+        .transition()
+        .duration(3000)
+        .attr("x", function(d) { return d.f_x1 + 5; })
+        .attr("y", function(d) { return d.f_y1 - ((d.value_s0 * 2)/2); })
         .text(function(d) { return d.f_name; });
 
   });
