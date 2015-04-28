@@ -1,7 +1,7 @@
 var chart = c3.generate({
     size: {
         height: 200,
-        width: 600
+        width: 1000
     },
     bindto: '#foodWasteGlobally',
     data: {
@@ -35,7 +35,7 @@ var chart = c3.generate({
         y: {
             show: false,
             tick: {
-                format: function(d) { return d + ' (tons/yr)'; }, //Determine unit of measure 
+                format: function(d) { return d + ' (million tons/yr)'; }, //Determine unit of measure 
 
             }
         }

@@ -246,16 +246,23 @@
 
 /* Next button */
 
+/*
 .next-button {
-	position: relative;
-	bottom: -2em;
+	position: absolute;
+	bottom: 1em;
     width: 0; 
 	height: 0; 
 	border-left: 2em solid transparent;
 	border-right: 2em solid transparent;
 	border-top: 2em solid white;
+	margin-bottom: 3em;
+	-webkit-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
   
 }
+
+
 
 .next-button:hover {
 	border-left: 2em solid transparent;
@@ -264,13 +271,18 @@
 }
 
 .prev-button {
-	position: relative;
-	top: -2em;
+	position: absolute;
+	top: 1em;
     width: 0; 
 	height: 0; 
 	border-left: 2em solid transparent;
 	border-right: 2em solid transparent;
 	border-bottom: 2em solid white;
+	margin-top: 3em;
+	-webkit-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+
 }
 
 .prev-button:hover {
@@ -278,6 +290,8 @@
 	border-right: 2em solid transparent;
 	border-bottom: 2em solid grey;
 }
+
+*/
 
 	</style>
 
@@ -310,28 +324,30 @@
 		<div class="intro">
 			<h1>Addressing food waste</h1>
 			<h2>Food waste prevention versus recycling food waste</h2>
-
-				<a href="#S2" class="next-button"></a>
+		</br>
+			<h4>Scroll to continue</h4>
 
 		</div>
 		
 
 	</div>
 
+
 	<div class="section " id="section1">
 
-			<a href="#S1" class="prev-button"></a>
 
 		<div class="intro">
 
 
 			<h3><b>How much food do we throw away?</b></h3>
 
+				
+
 		</div>
 
-			<a href="#S3" class="next-button"></a>
-
 	</div>
+
+
 
 	<div class="section" id="section2">
 			<div class="intro">
@@ -472,14 +488,15 @@
 	<div class="section" id="section11">
 		<div class="intro">
 			<h2>Phosphorus and Nitrogen use in Norway</h2>
-			<p>The last few years there has been a steady increase in the use of mineral fertilizer in Norway (The Norwegian Food Authority)</p>
+			<p>The last few years there has been a steady increase in the use of mineral fertilizer in Norway</p>
+			<p style="font-size:15px;">(<a href="http://www.mattilsynet.no/planter_og_dyrking/gjodsel_jord_og_dyrkingsmedier/mineralgjodsel_og_kalk/omsetningsstatistikk_mineralgjodsel.5266" id="sourceTag">Norwegian Food Safety Authority</a>)</p>
+
 
 			<div id="lineChart_Phosphorus" class="col-md-4"></div>       
             <div id="lineChart_Nitrogen" class="col-md-4"></div> 
 
 			<script src="js/fertilizerTrend.js" defer></script>
 
-			<a href="http://www.mattilsynet.no/planter_og_dyrking/gjodsel_jord_og_dyrkingsmedier/mineralgjodsel_og_kalk/omsetningsstatistikk_mineralgjodsel.5266" id="sourceTag">Source: Norwegian Food Safety Authority</a>
 
 		</div>
 	</div>
@@ -494,6 +511,7 @@
 		<div class="intro">
 			<h2>In the European Union</h2>
 			<p>Traditionaly as seen from the pyramid, the EU focus has been on using the waste hierarchy principles, where prevention of food waste is top priority. In Norway strategies however tend to favor recycling solutions (grey).</p>
+			<p style="font-size:15px;">(<a href="http://www.parliament.uk/documents/lords-committees/eu-sub-com-d/food-waste-prevention/154.pdf" id="sourceTag">European Union Committee 2014</a>)</p>
 
 			<div id="funnelContainer"></div>
 
@@ -515,8 +533,6 @@
 
 				</script>
 
-		<a href="http://www.parliament.uk/documents/lords-committees/eu-sub-com-d/food-waste-prevention/154.pdf" id="sourceTag">Source: European Union Committee 2014</a>
-
 		</div>
 	</div>
 
@@ -524,13 +540,11 @@
 		<div class="intro">
 			<h2>What dominates Norwegian policy?</h2>
 			<p>The Norwegian government has acknowledged that food waste is a major issue, and that reduction of food waste is high on the political agenda (Brekk 2010). However, according to Hamilton (2015), it is not clear whether food waste prevention is the prevailing strategy. As opposed to what the government claims, it appears that strategies focus on recycling solutions for creating energy, rewarding the production of bioenergy from organic waste. This is reflected in the state budget as well as the new intersectoral biogas strategy (FIN 2015; Hamilton 2015; KLD 2014).</p>
+			<p style="font-size:15px;">(<a href="https://www.regjeringen.no/nb/dokumenter/Nasjonal-tverrsektoriell-biogasstrategi/id2005701/" id="sourceTag" id="sourceTag">KLD 2014 and FIN 2015</a>)</p>
 
 			<script src="js/budgetPriorities.js" defer></script>
 
-			<div id="barChartBudget" class="c3"></div>
-
-			<a href="https://www.regjeringen.no/nb/dokumenter/Nasjonal-tverrsektoriell-biogasstrategi/id2005701/" id="sourceTag">Source: KLD 2014 and FIN 2015</a>
-		  
+			<div id="barChartBudget" class="c3"></div>		  
 
 		</div>
 	</div>
@@ -546,16 +560,11 @@
 		<div class="intro">
 			<h2>Increased energy production</h2>
 			<p>Food waste is also contributing to energy production. In Norway today a substantial amount of food waste is becoming input to biogas production, and the potential is much larger than what is utilized today.</p>
-
+			<p style="font-size:15px;">(<a href="http://www.miljodirektoratet.no/no/Nyheter/Nyheter/Old-klif/2013/April_2013/Biogass_reduserer_klimagassutslipp_/" id="sourceTag" id="sourceTag">Miljødirektoratet 2013</a>)</p>
 
 			<div id="biogasDiagram"></div>
 
-			<script src="js/biogas.js"></script>
-
-			<a href="http://www.miljodirektoratet.no/no/Nyheter/Nyheter/Old-klif/2013/April_2013/Biogass_reduserer_klimagassutslipp_/" id="sourceTag">Source: Miljødirektoratet 2013</a>
-
-
-	
+			<script src="js/biogas.js"></script>	
 
 		</div>
 </div>
@@ -563,15 +572,11 @@
 <div class="section" id="section17">
 		<div class="intro">
 			<h2>Using wet organic waste for energy production in Norway</h2>
-			<div>
-
+			<p style="font-size:15px;">(<a href="http://www.miljostatus.no/Tema/Avfall/Avfall-og-gjenvinning/Avfallstyper/Vatorganisk-avfall/" id="sourceTag" id="sourceTag">SSB/Miljøstatus 2015</a>)</p>
+		
 			<script src="js/wetWasteToEnergy.js" defer></script>
 
 			<div id="barChartWetWasteEnergy"></div>
-
-			<a href="http://www.miljostatus.no/Tema/Avfall/Avfall-og-gjenvinning/Avfallstyper/Vatorganisk-avfall/" id="sourceTag">Source: SSB/Miljøstatus 2015</a>
-
-		</div>
 
 		</div>
 </div>

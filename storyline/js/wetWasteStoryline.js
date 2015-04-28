@@ -12,8 +12,8 @@ var chart = c3.generate({
     bindto: '#barChartWetWaste',
     data: {
         columns: [
-            ['1995: Total wet organic waste', 1077000000],
-            ['2011: Total wet organic waste', 1452000000]
+            ['1995: Total wet organic waste', 1077000],
+            ['2011: Total wet organic waste', 1452000]
         ],
         type: 'bar',
     },
