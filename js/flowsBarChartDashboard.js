@@ -6,7 +6,7 @@
 var chartEnergy = c3.generate({
     size: {
         height: 2500,
-        width: 400
+        width: 600
     },
     bindto: '#barChartEnergy',
     data: 
@@ -15,9 +15,9 @@ var chartEnergy = c3.generate({
         //All the following data in this script is taken for energy (green column)
         columns: [
             ['x','Imported feed ingredients','Imported food','Plants for feed','Grazing','Plants for food','Manure','Animal products','Exported food','Processing waste','Secondary feed','Animal and plant products','Organic waste,','Wastewater','Exported waste','Waste to incineration/landfill','Secondary fertilizer','Waste to biogas','Rejects/loss','Biogas','Residuals' ],
-            ['Scenario 0: 2009 - 2011',10.3,22.3,16.9,40.5,4.3,26.4,10.9,7.2,0.5,0.5,13.2,7.8,2.9,2.6,6.2,0.6,0.9,0.00179,0.6,0.4,0.2,1,3,10,0.1],
-            ['Scenario 1: Recycling food waste',14,22,17,51,4,26,11,7,1,0.5,13,18,3,3,6,3,7,0.1,4,3,1,0.1,3,10,1],
-            ['Scenario 2: Preventing food waste',10,22,12,30,1,19,8,7,1,0.3,7,12,3,0.5,3,3,0.07,0.0001,0.01,0.05,0.1,0.8,2,9,0.01]
+            ['Baseline Scenario: 2009 - 2011 (Energy)',10.3,22.3,16.9,40.5,4.3,26.4,10.9,7.2,0.5,0.5,13.2,7.8,2.9,2.6,6.2,0.6,0.9,0.00179,0.6,0.4,0.2,1,3,10,0.1],
+            ['Scenario 1: Recycling food waste (Energy)',14,22,17,51,4,26,11,7,1,0.5,13,18,3,3,6,3,7,0.1,4,3,1,0.1,3,10,1],
+            ['Scenario 2: Preventing food waste (Energy)',10,22,12,30,1,19,8,7,1,0.3,7,12,3,0.5,3,3,0.007,0.00001,0.001,0.005,0.1,0.8,2,9,0.001]
         ],
         type: 'bar',
         order: 'desc'
@@ -43,7 +43,7 @@ var chartEnergy = c3.generate({
         y: {
             show: false,
             tick: {
-                format: function(d) { return d + ' (kj/yr)'; }, //Determine unit of measure 
+                format: function(d) { return d + ' (pj/yr)'; }, //Determine unit of measure 
 
             }
         }
@@ -59,7 +59,7 @@ var chartEnergy = c3.generate({
 var chartPhosphorus = c3.generate({
     size: {
         height: 2500,
-        width: 400
+        width: 600
     },
     bindto: '#barChartPhosphorus',
     data: 
@@ -67,10 +67,10 @@ var chartPhosphorus = c3.generate({
         x : 'x',
         //All the following data in this script is taken for energy (green column)
         columns: [
-            ['x','Fish silage and meal','Imported feed ingredients','Domestic chemical feed ingredients','Imported food','Imported phosphates','Deposition','Exported fertilizer','Mineral fertilizer','Produced plants','Grazing','Seeds and planting potatoes','Plants for feed','Plants for human consumption','Manure','Animal products','Feed','Secondary products for feed','Norwegian food products','Food processing waste','Avoidable food waste FP','Exported food products','Food to retail','Avoidable wholesale food waste','Food sold/service','Avoidable retail food waste','Avoidable HH food waste','HH/service organic waste','Waste water','Exported organic waste','Exported sewage sludge','Discharge','SS for incineration/landfill/fertilizer','Exported organic waste','Secondary fertilizer waste','Organic waste for bioenergy','Waste for incineration/construction/landfill','Residuals for fertilizer'],
-            ['Scenario 0: 2009 - 2011',733,4405,1124,4900,94203,160,85823,7880,5118,7826,254,4236,882,12111,4757,9397,22,2572,1765,111,752,6716,4,3901,114,509,3439,2621,5399,329,131,1537,1611,769,415,2658,415],
-            ['Scenario 1: Recycling food waste',733,4405,1124,4900,94203,160,85823,7142,5118,7826,254,4236,882,12111,4757,9397,22,2572,1765,111,752,6716,4,3901,114,509,3439,2621,5399,329,131,1537,1611,1507,1153,2658,1153],
-            ['Scenario 2: Preventing food waste',726,3654,1124,4900,92577,160,85823,6254,4393,7826,254,3883,511,10477,4391,8991,22,1835,1765,0,752,6716,0,3901,0,0,2702,2621,4662,329,131,1537,1344,701,346,2256,346],
+            ['x','Imported P','Deposition','Imported feed ingredients','Imported food','P accumulation (NAS)','Runoff','Plants for feed','Grazing','Plants for food','Manure','Animal products','Exported food','Processing waste','Secondary feed','Animal and plant products','Organic waste','Wastewater','Exported waste','Waste to incineration/landfill','Discharge','Secondary fertilizer','Waste to biogas','Rejects/loss','Residuals'],
+            ['Baseline Scenario: 2009 - 2011 (Phosphorus)',7.9,0.2,4.4,4.9,7.1,1.2,4.2,7.8,0.9,12.1,4.8,0.8,1.7,0.02,3.4,4,2.6,1.9,2.7,0.1,0.8,0.4,0.05,0.4],
+            ['Scenario 1: Recycling food waste (Phosphorus)',7,0.2,6,5,6,1,4,8,1,12,5,0.8,2,0.03,3,3.5,3,1,3,0.1,0.8,1.2,0.1,1],
+            ['Scenario 2: Preventing food waste (Phosphorus)',6,0.2,5.5,5,5,1,4,8,0.5,11,4,0.8,2,0.02,2,3,3,1,2,0.1,0.7,0.3,0.03,0.3],
         ],
         type: 'bar',
         order: 'desc'
@@ -96,13 +96,15 @@ var chartPhosphorus = c3.generate({
         y: {
             show: false,
             tick: {
-                format: function(d) { return d + ' (ton)'; }, //Determine unit of measure 
+                format: function(d) { return d + ' (kton P/yr)'; }, //Determine unit of measure 
 
             }
         }
     },
 
 });
+
+/*
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 //The following shows the chart generator for the dry matter layer with scenario 0, 1, 2//
@@ -120,9 +122,7 @@ var chartDryMatter = c3.generate({
         //All the following data in this script is taken for energy (green column)
         columns: [
             ['x','Fish silage and meal','Imported feed ingredients','Domestic chemical feed ingredients','Imported food','Imported phosphates','Produced plants','Grazing','Seeds and planting potatoes','Plants for feed','Plants for human consumption','Manure','Animal products','Feed','Secondary products for feed','Norwegian food products','Food processing waste','Avoidable food waste FP','Exported food products','Food to retail','Avoidable wholesale food waste','Food sold/service','Avoidable retail food waste','Avoidable HH food waste','HH/service organic waste','Waste water','Exported organic waste','Exported sewage sludge','SS for incineration/landfill/fertilizer','Exported organic waste','Secondary fertilizer waste','Organic waste for bioenergy','Waste for incineration/construction/landfill','Residuals for fertilizer','Biogas'],
-            ['Scenario 0: 2009 - 2011',13952,529966,256679,895701,0,1125352,2419748,7642,908824,239657,1662577,431724,1520393,25820,604125,55333,33140,363923,1107196,28706,896352,28706,117067,439837,111768,245689,19708,92060,113327,123223,50381,177659,44117,6264],
-            ['Scenario 1: Recycling food waste',],
-            ['Scenario 2: Preventing food waste',],
+            ['Baseline Scenario: 2009 - 2011',]
         ],
         type: 'bar',
         order: 'desc'
@@ -158,3 +158,5 @@ var chartDryMatter = c3.generate({
 
 
 });
+
+*/

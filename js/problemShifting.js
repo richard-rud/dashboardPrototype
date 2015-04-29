@@ -12,7 +12,7 @@ d3.parcoords = function(config) {
     mode: "default",
     rate: 20,
     width: 600,
-    height: 300,
+    height: 400,
     margin: { top: 24, right: 0, bottom: 12, left: 0 },
     color: "#069",
     composite: "source-over",
@@ -1389,7 +1389,7 @@ var colorScale = d3.scale.linear()
   
   var color = d3.scale.ordinal()
   .domain([1,2,3])
-  .range(['#377eb8','#4daf4a','#984ea3']);
+  .range(['#1d91c0','#ec7014','#41ab5d']);
 
 
 

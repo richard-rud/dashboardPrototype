@@ -1,4 +1,4 @@
-Scenario,Biogas (E),Manure (P),Organic waste bioenergy (E),Norwegian food products (P),Tot organic waste (E)
-S0,226800,12111,936282,2572,5009300
-S1,4554562,12111,7397804,2572,13550821
-S2,113113,10477,7730,1835,5009300
+Scenario,Biogas prod. (pj/yr), Soil acc. (kton P/yr), Manure (kton P/yr), Imports (kton P/yr),HC (kton P/yr), PE inputs (pj/yr), Incineration/landfill(kton P/yr)
+2009 - 2011 avg.,0.6,7.1,12.1,7.9,3.4,14.3,2.7
+Recycling FW,4,6,12,7,3,15.1,3
+Preventing FW,0.001,5,11,6,2,11.901,2	

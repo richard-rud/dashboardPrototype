@@ -60,7 +60,7 @@
 
     {"f_id": "Flow25", "f_x1": 710, "f_y1": 540, "f_x2": 800, "f_y2": 540, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Heat", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":0, "value_s1":10, "value_s2":9,"flowDir":"output"},
 
-    {"f_id": "Flow26", "f_x1": 910, "f_y1": 350, "f_x2": 1000, "f_y2": 350, "f_strokeWidth": 5, "f_stroke": "red", "f_name": "Assimilation/resp. heat", "f_type": "Energy", "strokeDasharray": "2,2,2,2","value_s0":0, "value_s1":14, "value_s2":14,"flowDir":"output"},
+    {"f_id": "Flow26", "f_x1": 910, "f_y1": 350, "f_x2": 1000, "f_y2": 350, "f_strokeWidth": 5, "f_stroke": "red", "f_name": "Assimilation/resp. heat", "f_type": "Energy", "strokeDasharray": "2,2,2,2","value_s0":14, "value_s1":14, "value_s2":14,"flowDir":"output"},
 
     {"f_id": "Flow27", "f_x1": 1310, "f_y1": 290, "f_x2": 1400, "f_y2": 290, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Heat", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":0, "value_s1":1, "value_s2":0.03,"flowDir":"output"},
 
@@ -70,6 +70,8 @@
 
     {"f_id": "Flow30", "f_x1": 1310, "f_y1": 490, "f_x2": 1400, "f_y2": 490, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Recjects/loss", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":0.00179, "value_s1":0.1, "value_s2":0.0003,"flowDir":"output"},
     
-    {"f_id": "Flow31", "f_x1": 1200, "f_y1": 300, "f_x2": 1290, "f_y2": 300, "f_strokeWidth": 5, "f_stroke": "#d95f0e", "f_name": "Biogas PE", "f_type": "Energy", "strokeDasharray": "2,2,2,2","value_s0":0.1, "value_s1":1, "value_s2":0.1,"flowDir":"linear"}
+    {"f_id": "Flow31", "f_x1": 1200, "f_y1": 300, "f_x2": 1290, "f_y2": 300, "f_strokeWidth": 5, "f_stroke": "#d95f0e", "f_name": "Biogas PE", "f_type": "Energy", "strokeDasharray": "2,2,2,2","value_s0":0.1, "value_s1":1, "value_s2":0.1,"flowDir":"linear"},
+
+    {"f_id": "Flow32", "f_x1": 310, "f_y1": 660, "f_x2": 1290, "f_y2": 660, "f_strokeWidth": 5, "f_stroke": "blue", "f_name": "Digestate", "f_type": "Energy", "strokeDasharray": "2,2,2,2","value_s0":0.4, "value_s1":3, "value_s2":0.005,"flowDir":"loop"} 
 
 ]}
