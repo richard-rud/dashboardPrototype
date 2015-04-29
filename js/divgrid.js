@@ -1,4 +1,3 @@
-// http://bl.ocks.org/3687826
 d3.divgrid = function(config) {
   var columns = [];
 
@@ -16,7 +15,7 @@ d3.divgrid = function(config) {
       .data(columns);
 
     header.enter().append("div")
-      .attr("class", function(d,i) { return "col" + i; })
+      .attr("class", function(d,i) { return "col-" + i; })
       .classed("cell", true)
 
     selection.selectAll(".header .cell")
@@ -36,13 +35,10 @@ d3.divgrid = function(config) {
     var cells = selection.selectAll(".row").selectAll(".cell")
         .data(function(d) { return columns.map(function(col){return d[col];}) })
 
-
     // cells
     cells.enter().append("div")
-      .attr("class", function(d,i) { return "col" + i; })
+      .attr("class", function(d,i) { return "col-" + i; })
       .classed("cell", true)
-
-      
 
     cells.exit().remove();
 

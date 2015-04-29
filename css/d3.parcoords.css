@@ -11,6 +11,7 @@
 }
 
 .parcoords rect.background {
+  stroke-width: 100px;
   fill: transparent;
 }
 .parcoords rect.background:hover {
@@ -27,6 +28,7 @@
   fill: none;
   stroke: #222;
   shape-rendering: crispEdges;
+
 }
 .parcoords canvas {
   opacity: 1;
@@ -45,3 +47,4 @@
 	-ms-user-select: none;
 	user-select: none;
 }
+
