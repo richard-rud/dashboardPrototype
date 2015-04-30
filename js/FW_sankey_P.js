@@ -161,7 +161,7 @@ var flowText = svg.selectAll("text.flow")
         .attr("id", function(d) { return d.f_id; })
         .attr("x", function(d) { return d.f_x1 + 5; })
         .attr("y", function(d) { return d.f_y1 - ((d.value_s0 * 10)/2); })
-        .text( function (d) { return d.f_name + " (" + d.value_s0 + " kton P/yr)"; });
+        .text( function (d) { return d.f_name + " (" + d.value_s0 + " kt P/yr)"; });
        
 d3.select("#s1_p").on("click", function() {
 
@@ -201,7 +201,7 @@ scenarioVariable = 1;
         .duration(3000)
         .attr("x", function(d) { return d.f_x1 + 5; })
         .attr("y", function(d) { return d.f_y1 - ((d.value_s1 * 10)/2); })
-        .text( function (d) { return d.f_name + " (" + d.value_s1 + " kton P/yr)"; });
+        .text( function (d) { return d.f_name + " (" + d.value_s1 + " kt P/yr)"; });
 
   });
 
@@ -241,7 +241,7 @@ scenarioVariable = 2;
         .duration(3000)
         .attr("x", function(d) { return d.f_x1 + 5; })
         .attr("y", function(d) { return d.f_y1 - ((d.value_s2 * 10)/2); })
-        .text( function (d) { return d.f_name + " (" + d.value_s2 + " kton P/yr)"; });
+        .text( function (d) { return d.f_name + " (" + d.value_s2 + " kt P/yr)"; });
 
   });
 
@@ -282,7 +282,7 @@ scenarioVariable = 0;
         .duration(3000)
         .attr("x", function(d) { return d.f_x1 + 5; })
         .attr("y", function(d) { return d.f_y1 - ((d.value_s0 * 10)/2); })
-        .text( function (d) { return d.f_name + " (" + d.value_s0 + " kton P/yr)"; });
+        .text( function (d) { return d.f_name + " (" + d.value_s0 + " kt P/yr)"; });
 
   });
 
