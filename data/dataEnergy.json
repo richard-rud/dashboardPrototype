@@ -1,77 +1,79 @@
 {"processes":[
 
-  {"p_id": "P2", "p_x1": 300, "p_y1": 60, "p_x2": 300, "p_y2": 680, "p_strokeWidth": 20, "p_stroke": "grey", "p_name": "Plant Production", "p_stock": 0, "p_type": "Energy"},
+  {"p_id": "P2", "p_x1": 150, "p_y1": 60, "p_x2": 150, "p_y2": 680, "p_strokeWidth": 20, "p_stroke": "#d9d9d9", "p_name": "Plant Production", "p_stock": 0, "p_type": "Energy"},
 
-  {"p_id": "P3", "p_x1": 500, "p_y1": 60, "p_x2": 500, "p_y2": 550, "p_strokeWidth": 20, "p_stroke": "grey", "p_name": "Animal Husbandry", "p_stock": 0, "p_type": "Energy"},
+  {"p_id": "P3", "p_x1": 350, "p_y1": 60, "p_x2": 350, "p_y2": 550, "p_strokeWidth": 20, "p_stroke": "#d9d9d9", "p_name": "Animal Husbandry", "p_stock": 0, "p_type": "Energy"},
 
-  {"p_id": "P4", "p_x1": 700, "p_y1": 60, "p_x2": 700, "p_y2": 600, "p_strokeWidth": 20, "p_stroke": "grey", "p_name": "Food Processing", "p_stock": 0, "p_type": "Energy"},
+  {"p_id": "P4", "p_x1": 550, "p_y1": 60, "p_x2": 550, "p_y2": 600, "p_strokeWidth": 20, "p_stroke": "#d9d9d9", "p_name": "Food Processing", "p_stock": 0, "p_type": "Energy"},
 
-  {"p_id": "P5", "p_x1": 900, "p_y1": 60, "p_x2": 900, "p_y2": 400, "p_strokeWidth": 20, "p_stroke": "grey", "p_name": "Human Consumption", "p_stock": 0, "p_type": "Energy"},
+  {"p_id": "P5", "p_x1": 750, "p_y1": 60, "p_x2": 750, "p_y2": 400, "p_strokeWidth": 20, "p_stroke": "#d9d9d9", "p_name": "Human Consumption", "p_stock": 0, "p_type": "Energy"},
 
-  {"p_id": "P6", "p_x1": 1100, "p_y1": 60, "p_x2": 1100, "p_y2": 650, "p_strokeWidth": 20, "p_stroke": "grey", "p_name": "Waste Management", "p_stock": 0, "p_type": "Energy"},
+  {"p_id": "P6", "p_x1": 950, "p_y1": 60, "p_x2": 950, "p_y2": 650, "p_strokeWidth": 20, "p_stroke": "#d9d9d9", "p_name": "Waste Management", "p_stock": 0, "p_type": "Energy"},
 
-  {"p_id": "P7", "p_x1": 1300, "p_y1": 60, "p_x2": 1300, "p_y2": 680, "p_strokeWidth": 20, "p_stroke": "grey", "p_name": "Biogas Production", "p_stock": 0, "p_type": "Energy"}
+  {"p_id": "P7", "p_x1": 1150, "p_y1": 60, "p_x2": 1150, "p_y2": 680, "p_strokeWidth": 20, "p_stroke": "#d9d9d9", "p_name": "Biogas Production", "p_stock": 0, "p_type": "Energy"}
 ],
 "flows":[
     
-    {"f_id": "Flow1", "f_x1": 110, "f_y1": 300, "f_x2": 290, "f_y2": 300, "f_strokeWidth": 5, "f_stroke": "#d95f0e", "f_name": "PE fertilizer production", "f_type": "Energy", "strokeDasharray": "none", "value_s0":0.2, "value_s1":0.1, "value_s2":0.1, "flowDir":"linear"},
+    {"f_id": "Flow1", "f_x1": 0, "f_y1": 150, "f_x2": 140, "f_y2": 150, "f_strokeWidth": 5, "f_stroke": "#ec971f", "f_name": "PE fertilizer production", "f_type": "Energy", "strokeDasharray": "none", "value_s0":0.2, "value_s1":0.1, "value_s2":0.1, "flowDir":"linear"},
 
-    {"f_id": "Flow2", "f_x1": 200, "f_y1": 90, "f_x2": 290, "f_y2": 90, "f_strokeWidth": 10, "f_stroke": "#d95f0e", "f_name": "Plant Production PE", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":1, "value_s1":1, "value_s2":0.8,"flowDir":"input"},
+    {"f_id": "Flow2", "f_x1": 0, "f_y1": 90, "f_x2": 140, "f_y2": 90, "f_strokeWidth": 10, "f_stroke": "#ec971f", "f_name": "PE Plant Production", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":1, "value_s1":1, "value_s2":0.8,"flowDir":"input"},
 
-    {"f_id": "Flow3", "f_x1": 310, "f_y1": 380, "f_x2": 490, "f_y2": 380, "f_strokeWidth": 5, "f_stroke": "#d95f0e", "f_name": "Plants for feed", "f_type": "Energy", "strokeDasharray": "none", "value_s0":16.9, "value_s1":17, "value_s2":12, "flowDir":"linear"},
+    {"f_id": "Flow3", "f_x1": 160, "f_y1": 380, "f_x2": 340, "f_y2": 380, "f_strokeWidth": 5, "f_stroke": "#ec971f", "f_name": "Plants for feed", "f_type": "Energy", "strokeDasharray": "none", "value_s0":16.9, "value_s1":17, "value_s2":12, "flowDir":"linear"},
     
-    {"f_id": "Flow4", "f_x1": 310, "f_y1": 300, "f_x2": 490, "f_y2": 300, "f_strokeWidth": 5, "f_stroke": "#d95f0e", "f_name": "Grazing", "f_type": "Energy", "strokeDasharray": "none", "value_s0":40.5, "value_s1":51, "value_s2":30, "flowDir":"linear"},
+    {"f_id": "Flow4", "f_x1": 160, "f_y1": 250, "f_x2": 340, "f_y2": 250, "f_strokeWidth": 5, "f_stroke": "#ec971f", "f_name": "Grazing", "f_type": "Energy", "strokeDasharray": "none", "value_s0":40.5, "value_s1":51, "value_s2":30, "flowDir":"linear"},
 
-    {"f_id": "Flow5", "f_x1": 310, "f_y1": 580, "f_x2": 690, "f_y2": 580, "f_strokeWidth": 5, "f_stroke": "#d95f0e", "f_name": "Plants for food", "f_type": "Energy", "strokeDasharray": "none", "value_s0":4.3, "value_s1":4, "value_s2":1, "flowDir":"linear"},
+    {"f_id": "Flow5", "f_x1": 160, "f_y1": 580, "f_x2": 540, "f_y2": 580, "f_strokeWidth": 5, "f_stroke": "#ec971f", "f_name": "Plants for food", "f_type": "Energy", "strokeDasharray": "none", "value_s0":4.3, "value_s1":4, "value_s2":1, "flowDir":"linear"},
 
-    {"f_id": "Flow6", "f_x1": 310, "f_y1": 440, "f_x2": 490, "f_y2": 440, "f_strokeWidth": 5, "f_stroke": "blue", "f_name": "Manure", "f_type": "Energy", "strokeDasharray": "2,2,2,2","value_s0":26.4, "value_s1":26, "value_s2":19, "flowDir":"loop"},
+    {"f_id": "Flow6", "f_x1": 160, "f_y1": 440, "f_x2": 340, "f_y2": 440, "f_strokeWidth": 5, "f_stroke": "blue", "f_name": "Manure", "f_type": "Energy", "strokeDasharray": "2,2,2,2","value_s0":26.4, "value_s1":26, "value_s2":19, "flowDir":"loop"},
 
-    {"f_id": "Flow7", "f_x1": 510, "f_y1": 300, "f_x2": 690, "f_y2": 300, "f_strokeWidth": 5, "f_stroke": "#d95f0e", "f_name": "Animal products", "f_type": "Energy", "strokeDasharray": "none","value_s0":10.9, "value_s1":11, "value_s2":8, "flowDir":"linear"},
+    {"f_id": "Flow7", "f_x1": 360, "f_y1": 300, "f_x2": 540, "f_y2": 300, "f_strokeWidth": 5, "f_stroke": "#ec971f", "f_name": "Animal products", "f_type": "Energy", "strokeDasharray": "none","value_s0":10.9, "value_s1":11, "value_s2":8, "flowDir":"linear"},
 
-    {"f_id": "Flow8", "f_x1": 600, "f_y1": 400, "f_x2": 690, "f_y2": 400, "f_strokeWidth": 5, "f_stroke": "#d95f0e", "f_name": "Animal products PE", "f_type": "Energy", "strokeDasharray": "2,2,2,2","value_s0":3, "value_s1":3, "value_s2":2, "flowDir":"linear"},
+    {"f_id": "Flow8", "f_x1": 450, "f_y1": 400, "f_x2": 540, "f_y2": 400, "f_strokeWidth": 5, "f_stroke": "#ec971f", "f_name": "Food processing PE", "f_type": "Energy", "strokeDasharray": "2,2,2,2","value_s0":10, "value_s1":10, "value_s2":9, "flowDir":"linear"},
 
-    {"f_id": "Flow9", "f_x1": 710, "f_y1": 300, "f_x2": 890, "f_y2": 300, "f_strokeWidth": 5, "f_stroke": "#d95f0e", "f_name": "Animal and plant products", "f_type": "Energy", "strokeDasharray": "none","value_s0":13.2, "value_s1":13, "value_s2":7,"flowDir":"linear"},
+    {"f_id": "Flow9", "f_x1": 560, "f_y1": 300, "f_x2": 740, "f_y2": 300, "f_strokeWidth": 5, "f_stroke": "#ec971f", "f_name": "Animal and plant products", "f_type": "Energy", "strokeDasharray": "none","value_s0":13.2, "value_s1":13, "value_s2":7,"flowDir":"linear"},
 
-    {"f_id": "Flow10", "f_x1": 510, "f_y1": 430, "f_x2": 690, "f_y2": 430, "f_strokeWidth": 5, "f_stroke": "blue", "f_name": "Secondary Feed", "f_type": "Energy", "strokeDasharray": "2,2,2,2","value_s0":0.5, "value_s1":0.5, "value_s2":0.3,"flowDir":"loop"},
+    {"f_id": "Flow10", "f_x1": 360, "f_y1": 430, "f_x2": 540, "f_y2": 430, "f_strokeWidth": 5, "f_stroke": "blue", "f_name": "Secondary Feed", "f_type": "Energy", "strokeDasharray": "2,2,2,2","value_s0":0.5, "value_s1":0.5, "value_s2":0.3,"flowDir":"loop"},
 
-    {"f_id": "Flow11", "f_x1": 910, "f_y1": 150, "f_x2": 1090, "f_y2": 150, "f_strokeWidth": 5, "f_stroke": "#d95f0e", "f_name": "Organic waste", "f_type": "Energy", "strokeDasharray": "none","value_s0":7.8, "value_s1":18, "value_s2":12,"flowDir":"linear"},
+    {"f_id": "Flow11", "f_x1": 760, "f_y1": 150, "f_x2": 940, "f_y2": 150, "f_strokeWidth": 5, "f_stroke": "#ec971f", "f_name": "Organic waste", "f_type": "Energy", "strokeDasharray": "none","value_s0":7.8, "value_s1":18, "value_s2":12,"flowDir":"linear"},
 
-    {"f_id": "Flow12", "f_x1": 910, "f_y1": 200, "f_x2": 1090, "f_y2": 200, "f_strokeWidth": 5, "f_stroke": "#d95f0e", "f_name": "Wastewater", "f_type": "Energy", "strokeDasharray": "none","value_s0":2.9, "value_s1":3, "value_s2":3,"flowDir":"linear"},
+    {"f_id": "Flow12", "f_x1": 760, "f_y1": 200, "f_x2": 940, "f_y2": 200, "f_strokeWidth": 5, "f_stroke": "#ec971f", "f_name": "Wastewater", "f_type": "Energy", "strokeDasharray": "none","value_s0":2.9, "value_s1":3, "value_s2":3,"flowDir":"linear"},
 
-    {"f_id": "Flow13", "f_x1": 1110, "f_y1": 200, "f_x2": 1290, "f_y2": 200, "f_strokeWidth": 5, "f_stroke": "#d95f0e", "f_name": "Waste to biogas", "f_type": "Energy", "strokeDasharray": "none","value_s0":0.9, "value_s1":7, "value_s2":0.07,"flowDir":"linear"},
+    {"f_id": "Flow13", "f_x1": 960, "f_y1": 200, "f_x2": 1140, "f_y2": 200, "f_strokeWidth": 5, "f_stroke": "#ec971f", "f_name": "Waste to biogas", "f_type": "Energy", "strokeDasharray": "none","value_s0":0.9, "value_s1":7, "value_s2":0.07,"flowDir":"linear"},
 
-    {"f_id": "Flow14", "f_x1": 310, "f_y1": 620, "f_x2": 1090, "f_y2": 620, "f_strokeWidth": 5, "f_stroke": "blue", "f_name": "Secondary Fertilizer", "f_type": "Energy", "strokeDasharray": "2,2,2,2","value_s0":0.6, "value_s1":3, "value_s2":3,"flowDir":"loop"},
+    {"f_id": "Flow14", "f_x1": 160, "f_y1": 620, "f_x2": 940, "f_y2": 620, "f_strokeWidth": 5, "f_stroke": "blue", "f_name": "Secondary Fertilizer", "f_type": "Energy", "strokeDasharray": "2,2,2,2","value_s0":0.6, "value_s1":3, "value_s2":3,"flowDir":"loop"},
   
-    {"f_id": "Flow16", "f_x1": 400, "f_y1": 110, "f_x2": 490, "f_y2": 110, "f_strokeWidth": 10, "f_stroke": "#d95f0e", "f_name": "Imp. feedstuff", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":10.3, "value_s1":14, "value_s2":10,"flowDir":"input"},
+    {"f_id": "Flow16", "f_x1": 250, "f_y1": 110, "f_x2": 340, "f_y2": 110, "f_strokeWidth": 10, "f_stroke": "#ec971f", "f_name": "Imp. feedstuff", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":10.3, "value_s1":14, "value_s2":10,"flowDir":"input"},
 
-    {"f_id": "Flow17", "f_x1": 400, "f_y1": 210, "f_x2": 490, "f_y2": 210, "f_strokeWidth": 10, "f_stroke": "#d95f0e", "f_name": "Animal Husbandry PE", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":3, "value_s1":3, "value_s2":2,"flowDir":"input"},
+    {"f_id": "Flow17", "f_x1": 250, "f_y1": 150, "f_x2": 340, "f_y2": 150, "f_strokeWidth": 10, "f_stroke": "#ec971f", "f_name": "PE Animal Husbandry", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":3, "value_s1":3, "value_s2":2,"flowDir":"input"},
 
-    {"f_id": "Flow18", "f_x1": 800, "f_y1": 90, "f_x2": 890, "f_y2": 90, "f_strokeWidth": 10, "f_stroke": "#d95f0e", "f_name": "Imp. food", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":22.3, "value_s1":22, "value_s2":22,"flowDir":"input"},
+    {"f_id": "Flow18", "f_x1": 650, "f_y1": 90, "f_x2": 740, "f_y2": 90, "f_strokeWidth": 10, "f_stroke": "#ec971f", "f_name": "Imp. food", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":22.3, "value_s1":22, "value_s2":22,"flowDir":"input"},
 
-    {"f_id": "Flow19", "f_x1": 710, "f_y1": 340, "f_x2": 800, "f_y2": 340, "f_strokeWidth": 30, "f_stroke": "red", "f_name": "Exp. food", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":7.2, "value_s1":7, "value_s2":7,"flowDir":"output"},
+    {"f_id": "Flow19", "f_x1": 560, "f_y1": 340, "f_x2": 650, "f_y2": 340, "f_strokeWidth": 30, "f_stroke": "red", "f_name": "Exp. food", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":7.2, "value_s1":7, "value_s2":7,"flowDir":"output"},
 
-    {"f_id": "Flow20", "f_x1": 710, "f_y1": 390, "f_x2": 800, "f_y2": 390, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Processing waste", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":0.5, "value_s1":1, "value_s2":1,"flowDir":"output"},
+    {"f_id": "Flow20", "f_x1": 560, "f_y1": 440, "f_x2": 650, "f_y2": 440, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Processing waste", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":0.5, "value_s1":1, "value_s2":1,"flowDir":"output"},
 
-    {"f_id": "Flow21", "f_x1": 510, "f_y1": 490, "f_x2": 600, "f_y2": 490, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Respiratory heat", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":0, "value_s1":34, "value_s2":18,"flowDir":"output"},
+    {"f_id": "Flow21", "f_x1": 360, "f_y1": 490, "f_x2": 450, "f_y2": 490, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Respiratory heat", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":25.1, "value_s1":34, "value_s2":18,"flowDir":"output"},
 
-    {"f_id": "Flow22", "f_x1": 510, "f_y1": 540, "f_x2": 600, "f_y2": 540, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Heat", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":0, "value_s1":3, "value_s2":2,"flowDir":"output"},
+    {"f_id": "Flow22", "f_x1": 360, "f_y1": 540, "f_x2": 450, "f_y2": 540, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Heat", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":3, "value_s1":3, "value_s2":2,"flowDir":"output"},
 
-    {"f_id": "Flow23", "f_x1": 310, "f_y1": 540, "f_x2": 400, "f_y2": 540, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Heat", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":0, "value_s1":1, "value_s2":0.9,"flowDir":"output"},
+    {"f_id": "Flow23", "f_x1": 160, "f_y1": 540, "f_x2": 250, "f_y2": 540, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Heat", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":1, "value_s1":1, "value_s2":0.9,"flowDir":"output"},
 
-    {"f_id": "Flow25", "f_x1": 710, "f_y1": 540, "f_x2": 800, "f_y2": 540, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Heat", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":0, "value_s1":10, "value_s2":9,"flowDir":"output"},
+    {"f_id": "Flow25", "f_x1": 560, "f_y1": 540, "f_x2": 650, "f_y2": 540, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Heat", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":10, "value_s1":10, "value_s2":9,"flowDir":"output"},
 
-    {"f_id": "Flow26", "f_x1": 910, "f_y1": 350, "f_x2": 1000, "f_y2": 350, "f_strokeWidth": 5, "f_stroke": "red", "f_name": "Assimilation/resp. heat", "f_type": "Energy", "strokeDasharray": "2,2,2,2","value_s0":14, "value_s1":14, "value_s2":14,"flowDir":"output"},
+    {"f_id": "Flow26", "f_x1": 760, "f_y1": 350, "f_x2": 850, "f_y2": 350, "f_strokeWidth": 5, "f_stroke": "red", "f_name": "Assimilation/resp. heat", "f_type": "Energy", "strokeDasharray": "2,2,2,2","value_s0":14, "value_s1":14, "value_s2":14,"flowDir":"output"},
 
-    {"f_id": "Flow27", "f_x1": 1310, "f_y1": 290, "f_x2": 1400, "f_y2": 290, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Heat", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":0, "value_s1":1, "value_s2":0.03,"flowDir":"output"},
+    {"f_id": "Flow27", "f_x1": 1160, "f_y1": 290, "f_x2": 1250, "f_y2": 290, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Heat", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":0.1, "value_s1":1, "value_s2":0.03,"flowDir":"output"},
 
-    {"f_id": "Flow28", "f_x1": 1110, "f_y1": 390, "f_x2": 1200, "f_y2": 390, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Waste to incineration/landfill", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":6.2, "value_s1":6, "value_s2":3,"flowDir":"output"},
+    {"f_id": "Flow28", "f_x1": 960, "f_y1": 390, "f_x2": 1050, "f_y2": 390, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Waste to incineration/landfill", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":6.2, "value_s1":6, "value_s2":3,"flowDir":"output"},
 
-    {"f_id": "Flow29", "f_x1": 1110, "f_y1": 490, "f_x2": 1200, "f_y2": 490, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Exported Waste", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":2.6, "value_s1":1, "value_s2":0.5,"flowDir":"output"},
+    {"f_id": "Flow29", "f_x1": 960, "f_y1": 490, "f_x2": 1050, "f_y2": 490, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Exported Waste", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":2.6, "value_s1":1, "value_s2":0.5,"flowDir":"output"},
 
-    {"f_id": "Flow30", "f_x1": 1310, "f_y1": 490, "f_x2": 1400, "f_y2": 490, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Recjects/loss", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":0.00179, "value_s1":0.1, "value_s2":0.0003,"flowDir":"output"},
+    {"f_id": "Flow30", "f_x1": 1160, "f_y1": 490, "f_x2": 1250, "f_y2": 490, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Recjects/loss", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":0.00179, "value_s1":0.1, "value_s2":0.0003,"flowDir":"output"},
     
-    {"f_id": "Flow31", "f_x1": 1200, "f_y1": 300, "f_x2": 1290, "f_y2": 300, "f_strokeWidth": 5, "f_stroke": "#d95f0e", "f_name": "Biogas PE", "f_type": "Energy", "strokeDasharray": "2,2,2,2","value_s0":0.1, "value_s1":1, "value_s2":0.1,"flowDir":"linear"},
+    {"f_id": "Flow31", "f_x1": 1050, "f_y1": 300, "f_x2": 1140, "f_y2": 300, "f_strokeWidth": 5, "f_stroke": "#ec971f", "f_name": "Biogas PE", "f_type": "Energy", "strokeDasharray": "2,2,2,2","value_s0":0.1, "value_s1":1, "value_s2":0.1,"flowDir":"linear"},
 
-    {"f_id": "Flow32", "f_x1": 310, "f_y1": 660, "f_x2": 1290, "f_y2": 660, "f_strokeWidth": 5, "f_stroke": "blue", "f_name": "Digestate", "f_type": "Energy", "strokeDasharray": "2,2,2,2","value_s0":0.4, "value_s1":3, "value_s2":0.005,"flowDir":"loop"} 
+    {"f_id": "Flow32", "f_x1": 160, "f_y1": 660, "f_x2": 1140, "f_y2": 660, "f_strokeWidth": 5, "f_stroke": "blue", "f_name": "Digestate", "f_type": "Energy", "strokeDasharray": "2,2,2,2","value_s0":0.4, "value_s1":3, "value_s2":0.005,"flowDir":"loop"}, 
+
+    {"f_id": "Flow30", "f_x1": 1160, "f_y1": 190, "f_x2": 1250, "f_y2": 190, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Biogas", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":0.6, "value_s1":4, "value_s2":0.001,"flowDir":"output"}
 
 ]}

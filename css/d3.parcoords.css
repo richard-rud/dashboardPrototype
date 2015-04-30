@@ -7,13 +7,14 @@
 }
 
 .parcoords text.label {
-  cursor: default;
+  cursor: default;  
 }
 
 .parcoords rect.background {
   stroke-width: 100px;
   fill: transparent;
 }
+
 .parcoords rect.background:hover {
   fill: rgba(120,120,120,0.2);
 }

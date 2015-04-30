@@ -58,7 +58,7 @@ var mfaProcesses = processes
      .append('path')
      .attr('d', 'M 5,0 m -5,-5 L 5,0 L 0,5 Z')
      .style("opacity", 0.5)
-     .style("fill", "#d95f0e");
+     .style("fill", "#ec971f");
 
   svg_E.append('marker')
      .attr('id', "output-arrow_E")
@@ -158,9 +158,9 @@ var flowText = svg_E.selectAll("text.flow")
         .enter()
         .append("text")
         .attr("id", function(d) { return d.f_id; })
-        .attr("x", function(d) { return d.f_x1 + 5; })
+        .attr("x", function(d) { return d.f_x1 + 10; })
         .attr("y", function(d) { return d.f_y1 - ((d.value_s0 * 2)/2); })
-        .text(function(d) { return d.f_name; });
+        .text(function(d) { return d.f_name + " (" + d.value_s0 + " pj/yr)"; });
        
 d3.select("#s1_E").on("click", function() {
 
@@ -200,7 +200,7 @@ scenarioVariable = 1;
         .duration(3000)
         .attr("x", function(d) { return d.f_x1 + 5; })
         .attr("y", function(d) { return d.f_y1 - ((d.value_s1 * 2)/2); })
-        .text(function(d) { return d.f_name; });
+        .text(function(d) { return d.f_name + " (" + d.value_s1 + " pj/yr)"; });
 
   });
 
@@ -241,7 +241,7 @@ scenarioVariable = 2;
         .duration(3000)
         .attr("x", function(d) { return d.f_x1 + 5; })
         .attr("y", function(d) { return d.f_y1 - ((d.value_s2 * 2)/2); })
-        .text(function(d) { return d.f_name; });
+        .text(function(d) { return d.f_name + " (" + d.value_s2 + " pj/yr)"; });
 
   });
 
@@ -282,7 +282,9 @@ scenarioVariable = 0;
         .duration(3000)
         .attr("x", function(d) { return d.f_x1 + 5; })
         .attr("y", function(d) { return d.f_y1 - ((d.value_s0 * 2)/2); })
-        .text(function(d) { return d.f_name; });
+        //.text(function(d) { return d.f_name; });
+        .text( function (d) { return d.f_name + " (" + d.value_s0 + " pj/yr)"; });
+
 
   });
 
