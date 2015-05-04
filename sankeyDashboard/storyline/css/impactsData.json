@@ -1,0 +1,21 @@
+{
+ "name": "Food waste impacts",
+ "children": [
+  {
+   "name": "Land use"
+  },
+  {
+   "name": "Water footprint"
+  },
+  {
+   "name": "Minerals"
+  },
+  {
+   "name": "Energy"
+  },
+  {
+   "name": "Biodiversity"
+  }
+   ]
+  }
+ 

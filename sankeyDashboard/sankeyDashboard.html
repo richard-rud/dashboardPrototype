@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<head>
+
+<!-- JavaScript stylesheet -->
+
+<script src="js/d3.v3.min.js" defer></script>
+      
+<script src="js/bootstrap.min.js" defer></script>
+
+<!-- CSS stylesheets reference-->  
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<link href="css/c3.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="css/d3.parcoords.css">
+
+<script src="js/d3.min.js" defer></script>
+<script src="js/d3.parcoords.js" defer></script>
+<script src="js/divgrid.js" defer></script>
+
+<style>
+
+#showInfo {
+  height: 160px;
+  width: 410px;
+  margin: 20px;
+  background-color: white;
+  border: none;
+  border-style: groove;
+
+  /*Positioning the sankey*/
+  position: absolute;
+  left: 1000px;
+  top: 0px;
+}
+
+.btn {
+margin-top: 10px;
+margin-bottom: 10px;
+margin-left:10px;
+}
+
+line {
+  stroke-opacity: .5;
+}
+
+path {
+  stroke-opacity: .6;
+}
+
+path:hover {
+  stroke-opacity: .1;
+}
+
+line:hover {
+  stroke-opacity: 1;
+}
+
+#sankeyContent_P {
+  width: 1450px;
+  height: 700px;
+  margin-top: 10px;
+  margin-left: 5px;
+  padding-left: 20px;
+}
+
+#sankeyContent_E {
+  width: 1450px;
+  height: 700px;
+  margin-top: 10px;
+  margin-left: 5px;
+  padding-left: 20px;
+}
+
+#processText {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.row {
+  float:left;
+}
+
+/* Styling for the tooltip */
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  /*background: rgba(0, 0, 0, 0.8);*/
+  background: black;
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+/*Styling for the parallel coordinates*/
+
+/* data table styles */
+
+
+.row, .header { 
+    clear: left; 
+    font-size: 12px; 
+    line-height: 18px; 
+    height: 18px; 
+}
+
+.row:nth-child(odd) { 
+    background: rgba(0,0,0,0.2); 
+}
+
+.header { 
+    font-weight: bold; 
+}
+
+.cell { 
+    float: left; 
+    overflow: hidden; 
+    white-space: nowrap; 
+    width: 170px; 
+    height: 18px; 
+    color: black ;}
+
+.col-0 { 
+    width: 170px; 
+}
+
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.header {
+    background-color: grey;
+}
+
+.header.cell, .header .cell {
+    color: black;
+}
+
+#problemShifting {
+  width: 1300px;
+  height: 100%;
+  margin: 20px;
+}
+
+#grid {
+  width: 1360px;
+  height: 100%;
+  /*
+  margin-top: 10px;
+  margin-left: 5px;
+  padding-left: 20px;
+  /*border: 2px solid black;*/
+}
+
+/*************************************/
+
+#containerBar {
+  width: 1500px;
+  height: 100%;
+}
+
+#accordion {
+  width: 1500px;
+}
+
+#avoidableFoodWasteContainer {
+  width: 1200px;
+  height: 100%;
+  padding: 2%;
+  margin-left: 5%;
+}
+
+#navBar{
+  position: fixed;
+  right: 0;
+  top: 0%;
+  width: 100%;
+  background-color: grey;
+  z-index: 1;
+}
+
+#mainContent {
+  margin-top: 5em;
+  width: 1400px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="navBar">
+
+<a href=""><button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-info-sign"></span>
+  Help
+</button></a>
+
+<a href="storyline/storyline.html"><button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-book"></span>
+  Background information
+</button></a>
+
+<a href="credits.html"><button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-heart"></span>
+  Acknowledgments
+</button></a>
+
+<a href="http://www.ntnu.edu/indecol"><button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-leaf"></span>
+  NTNU’s Industrial Ecology Programme
+</button></a>
+
+</div>
+
+
+
+<div class="collapse" id="collapseFlows">
+  <div class="well">
+      
+     
+
+  </div>
+</div>
+
+  
+
+<!--<div class="collapse" id="collapseProblemShifting">
+  <div class="well collapsing">
+
+  </div>
+</div>-->
+
+</br>
+
+<div id="mainContent">
+
+<!-- Phosphorus flow diagram -->
+
+<div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="tabOne">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Phosphorus flow diagram
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="tabOne">
+      <div class="panel-body">
+
+        <button id="s1_p" class="btn btn-success" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Recycling (P)</button>
+
+        <button id="s2_p" class="btn btn-success" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Food waste prevention (P)</button>
+
+        <button id="baseline_P" class="btn btn-success" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Baseline scenario (P)</button>
+              
+        <div id="sankeyContent_P"></div>
+
+        </div>
+               
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Energy flow diagram -->
+
+  <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="tabTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Energy flow diagram
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="tabTwo">
+      <div class="panel-body">
+
+        <button id="s1_E" class="btn btn-warning" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Recycling (E)</button>
+
+        <button id="s2_E" class="btn btn-warning" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Food waste prevention (E)</button>
+
+        <button id="baseline_E" class="btn btn-warning" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Baseline scenario (E)</button>
+              
+      <div id="sankeyContent_E"></div>
+
+        </div>
+               
+      </div>
+    </div>
+
+  </div>
+
+<!-- Scenario comparison charts -->
+
+<div class="panel-group" id="accordion3" role="tablist" aria-multiselectable="true">
+
+    <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="tabThree">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Scenario comparison
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapsing" role="tabpanel" aria-labelledby="tabThree">
+      
+      <div class="panel-body">
+              
+       <div id="containerBar">
+
+          <script src="js/d3.v3.min.js" charset="utf-8" defer></script>
+
+          <script src="js/c3.js" defer></script>
+
+          <!-- Following script renders the barChart of flows, principle- seperation of the logic-->
+          <script type="text/javascript" src="js/flowsBarChartDashboard.js" defer></script>
+
+              <p class="col-md-6"><b>Energy: </b></p>
+              <p class="col-md-6"><b>Phosphorus: </b></p>
+         
+             <div id="barChartEnergy" class="col-md-6"></div>   
+             <div id="barChartPhosphorus" class="col-md-6"></div>           
+
+        </div>
+               
+      </div>
+
+    </div>
+
+  </div>
+  
+</div>
+
+<!-- Problem shifting (Parallel coordinates chart) -->
+
+<div class="panel-group" id="accordion4" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="tabFour">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Problem shifting
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFour" class="panel-collapse collapsing" role="tabpanel" aria-labelledby="tabFour">
+      <div class="panel-body">
+              
+        <div id="testContainer">
+
+          <!--<script src="js/d3.min.js"></script>-->
+
+          <!--<script src="js/d3.parcoords.js" defer></script>-->
+
+          <div id="problemShifting" class="parcoords" style="height:400px;"></div>
+
+          <div id="grid"></div>      
+
+          <script type="text/javascript" src="js/problemShifting.js" defer></script> 
+
+        </div>
+               
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+   <!-- The Norwegian Food Waste system quantified -->
+
+  <div class="panel-group" id="accordion5" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="tabFice">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          The Norwegian food waste system quantified
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFive" class="panel-collapse collapsing" role="tabpanel" aria-labelledby="tabFive">
+      <div class="panel-body">
+              
+      <p><b>Imports, exports and domestic production vs. avoidable food waste (kt DM/yr): Baseline scenario: 2009 - 2011 avg.</b></p>
+
+      <div id="nfws"></div>
+
+      <!--<script type="text/javascript" src="js/biogasOutput.js" defer></script>-->
+      <script type="text/javascript" src="js/nfws.js" defer></script>
+
+
+        </div>
+               
+      </div>
+    </div>
+
+  </div>
+
+<!-- Avoidable food waste stacked bar chart -->
+
+  <div class="panel-group" id="accordion6" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="tabSix">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+          Avoidable food waste 
+        </a>
+      </h4>
+    </div>
+    <div id="collapseSix" class="panel-collapse collapsing" role="tabpanel" aria-labelledby="tabSix">
+      <div class="panel-body">
+              
+        
+      <p><b>Avoidable food waste (kt DM/yr): 2009 - 2011 avg.</b></p>
+
+      <div id="avoidableFoodWasteContainer">
+
+      <script src="js/avoidableFoodWaste.js" defer></script>
+
+      <div id="stackedBar"></div> 
+
+      </div> 
+
+        </div>
+               
+      </div>
+    </div>
+
+  </div>
+
+  <!-- AFW vs. tot FW chart -->
+
+  <div class="panel-group" id="accordion7" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="tabSeven">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          Avoidable food waste versus total food inputs 
+        </a>
+      </h4>
+    </div>
+    <div id="collapseSeven" class="panel-collapse collapsing" role="tabpanel" aria-labelledby="tabSeven">
+      <div class="panel-body">
+              
+      <p><b>Avoidable food waste versus total food inputs (kt DM/yr): Baseline scenario: 2009 - 2011 avg.</b></p>
+
+      <div id="AFWcomparison"></div>
+
+      <!--<script type="text/javascript" src="js/biogasOutput.js" defer></script>-->
+      <script type="text/javascript" src="js/AFWcomparison.js" defer></script>
+
+        </div>
+               
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Organic waste collection chart -->
+
+  <div class="panel-group" id="accordion8" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="tabEight">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+           Waste management  
+        </a>
+      </h4>
+    </div>
+    <div id="collapseEight" class="panel-collapse collapsing" role="tabpanel" aria-labelledby="tabEight">
+      <div class="panel-body">
+              
+      <p><b>Waste management inputs (kt DM/yr): Baseline scenario: 2009 - 2011 avg.</b></p>
+
+      <div id="wasteManagement"></div>
+
+      <!--<script type="text/javascript" src="js/PEandLossesDashboardVersion.js" defer></script>-->
+      <script type="text/javascript" src="js/wasteManagement.js" defer></script>
+
+        </div>
+               
+      </div>
+    </div>
+
+  </div>
+
+</div> <!-- Breaking off the main content -->
+
+<script type="text/javascript" src="js/d3.tip.js" defer></script>
+
+<script type="text/javascript" src="js/FW_sankey_P.js" defer></script>
+
+<script type="text/javascript" src="js/FW_sankey_E.js" defer></script>
+
+
+    <script src="js/jquery.js">
+
+    $('.collapse').collapse()
+
+    </script>
+    
+</body>
+
+
+   
