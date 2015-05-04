@@ -84,18 +84,15 @@ line:hover {
   float:left;
 }
 
-/* Styling for the tooltip */
 .d3-tip {
   line-height: 1;
   font-weight: bold;
   padding: 12px;
-  /*background: rgba(0, 0, 0, 0.8);*/
   background: black;
   color: #fff;
   border-radius: 2px;
 }
 
-/* Creates a small triangle extender for the tooltip */
 .d3-tip:after {
   box-sizing: border-box;
   display: inline;
@@ -108,17 +105,11 @@ line:hover {
   text-align: center;
 }
 
-/* Style northward tooltips differently */
 .d3-tip.n:after {
   margin: -1px 0 0 0;
   top: 100%;
   left: 0;
 }
-
-/*Styling for the parallel coordinates*/
-
-/* data table styles */
-
 
 .row, .header { 
     clear: left; 
@@ -169,14 +160,7 @@ line:hover {
 #grid {
   width: 1360px;
   height: 100%;
-  /*
-  margin-top: 10px;
-  margin-left: 5px;
-  padding-left: 20px;
-  /*border: 2px solid black;*/
 }
-
-/*************************************/
 
 #containerBar {
   width: 1500px;
@@ -228,31 +212,15 @@ line:hover {
   Acknowledgments
 </button></a>
 
+<a href="http://en.wikipedia.org/wiki/Material_flow_analysis"><button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-search"></span>
+  What is Material Flow Analysis
+</button></a>
+
 <a href="http://www.ntnu.edu/indecol"><button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-leaf"></span>
   NTNU’s Industrial Ecology Programme
 </button></a>
 
 </div>
-
-
-
-<div class="collapse" id="collapseFlows">
-  <div class="well">
-      
-     
-
-  </div>
-</div>
-
-  
-
-<!--<div class="collapse" id="collapseProblemShifting">
-  <div class="well collapsing">
-
-  </div>
-</div>-->
-
-</br>
 
 <div id="mainContent">
 
@@ -371,10 +339,6 @@ line:hover {
               
         <div id="testContainer">
 
-          <!--<script src="js/d3.min.js"></script>-->
-
-          <!--<script src="js/d3.parcoords.js" defer></script>-->
-
           <div id="problemShifting" class="parcoords" style="height:400px;"></div>
 
           <div id="grid"></div>      
@@ -408,7 +372,6 @@ line:hover {
 
       <div id="nfws"></div>
 
-      <!--<script type="text/javascript" src="js/biogasOutput.js" defer></script>-->
       <script type="text/javascript" src="js/nfws.js" defer></script>
 
 
@@ -469,7 +432,6 @@ line:hover {
 
       <div id="AFWcomparison"></div>
 
-      <!--<script type="text/javascript" src="js/biogasOutput.js" defer></script>-->
       <script type="text/javascript" src="js/AFWcomparison.js" defer></script>
 
         </div>
@@ -497,7 +459,6 @@ line:hover {
 
       <div id="wasteManagement"></div>
 
-      <!--<script type="text/javascript" src="js/PEandLossesDashboardVersion.js" defer></script>-->
       <script type="text/javascript" src="js/wasteManagement.js" defer></script>
 
         </div>
