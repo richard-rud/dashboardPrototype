@@ -14,52 +14,52 @@
 ],
 "flows":[
     
-    {"f_id": "Flow1", "f_x1": 0, "f_y1": 160, "f_x2": 140, "f_y2": 160, "f_strokeWidth": 5, "f_stroke": "green", "f_name": "Imported P, Fertilizer", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2", "value_s0":7.9, "value_s1":7, "value_s2":6, "flowDir":"linear"},
+    {"f_id": "Flow1", "f_x1": 0, "f_y1": 160, "f_x2": 140, "f_y2": 160, "f_strokeWidth": 5, "f_stroke": "#6a51a3", "f_name": "Imported P, Fertilizer", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2", "value_s0":7.9, "value_s1":7, "value_s2":6, "flowDir":"input"},
 
-    {"f_id": "Flow15", "f_x1": 50, "f_y1": 90, "f_x2": 140, "f_y2": 90, "f_strokeWidth": 10, "f_stroke": "green", "f_name": "Deposition", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2", "value_s0":0.2, "value_s1":0.2, "value_s2":0.2,"flowDir":"input"},
+    {"f_id": "Flow15", "f_x1": 50, "f_y1": 90, "f_x2": 140, "f_y2": 90, "f_strokeWidth": 10, "f_stroke": "#6a51a3", "f_name": "Deposition", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2", "value_s0":0.2, "value_s1":0.2, "value_s2":0.2,"flowDir":"input"},
 
-    {"f_id": "Flow2", "f_x1": 160, "f_y1": 280, "f_x2": 340, "f_y2": 280, "f_strokeWidth": 5, "f_stroke": "green", "f_name": "Plants for feed", "f_type": "Phosphorus", "strokeDasharray": "none", "value_s0":4.2, "value_s1":4, "value_s2":4, "flowDir":"linear"},
+    {"f_id": "Flow2", "f_x1": 160, "f_y1": 280, "f_x2": 340, "f_y2": 280, "f_strokeWidth": 5, "f_stroke": "#006d2c", "f_name": "Plants for feed", "f_type": "Phosphorus", "strokeDasharray": "none", "value_s0":4.2, "value_s1":4, "value_s2":4, "flowDir":"linear"},
     
-    {"f_id": "Flow3", "f_x1": 160, "f_y1": 200, "f_x2": 340, "f_y2": 200, "f_strokeWidth": 5, "f_stroke": "green", "f_name": "Grazing", "f_type": "Phosphorus", "strokeDasharray": "none", "value_s0":7.8, "value_s1":8, "value_s2":8, "flowDir":"linear"},
+    {"f_id": "Flow3", "f_x1": 160, "f_y1": 200, "f_x2": 340, "f_y2": 200, "f_strokeWidth": 5, "f_stroke": "#006d2c", "f_name": "Grazing", "f_type": "Phosphorus", "strokeDasharray": "none", "value_s0":7.8, "value_s1":8, "value_s2":8, "flowDir":"linear"},
 
-    {"f_id": "Flow4", "f_x1": 160, "f_y1": 580, "f_x2": 540, "f_y2": 580, "f_strokeWidth": 5, "f_stroke": "green", "f_name": "Plants for food", "f_type": "Phosphorus", "strokeDasharray": "none", "value_s0":0.9, "value_s1":1, "value_s2":0.5, "flowDir":"linear"},
+    {"f_id": "Flow4", "f_x1": 160, "f_y1": 580, "f_x2": 540, "f_y2": 580, "f_strokeWidth": 5, "f_stroke": "#006d2c", "f_name": "Plants for food", "f_type": "Phosphorus", "strokeDasharray": "none", "value_s0":0.9, "value_s1":1, "value_s2":0.5, "flowDir":"linear"},
 
-    {"f_id": "Flow5", "f_x1": 160, "f_y1": 380, "f_x2": 340, "f_y2": 380, "f_strokeWidth": 5, "f_stroke": "blue", "f_name": "Manure", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2","value_s0":12.1, "value_s1":12, "value_s2":11, "flowDir":"loop"},
+    {"f_id": "Flow5", "f_x1": 160, "f_y1": 380, "f_x2": 340, "f_y2": 380, "f_strokeWidth": 5, "f_stroke": "#08519c", "f_name": "Manure", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2","value_s0":12.1, "value_s1":12, "value_s2":11, "flowDir":"loop"},
 
-    {"f_id": "Flow6", "f_x1": 360, "f_y1": 300, "f_x2": 540, "f_y2": 300, "f_strokeWidth": 5, "f_stroke": "green", "f_name": "Animal products", "f_type": "Phosphorus", "strokeDasharray": "none","value_s0":4.8, "value_s1":5, "value_s2":4, "flowDir":"linear"},
+    {"f_id": "Flow6", "f_x1": 360, "f_y1": 300, "f_x2": 540, "f_y2": 300, "f_strokeWidth": 5, "f_stroke": "#006d2c", "f_name": "Animal products", "f_type": "Phosphorus", "strokeDasharray": "none","value_s0":4.8, "value_s1":5, "value_s2":4, "flowDir":"linear"},
 
-    {"f_id": "Flow7", "f_x1": 560, "f_y1": 300, "f_x2": 740, "f_y2": 300, "f_strokeWidth": 5, "f_stroke": "green", "f_name": "Animal and plant products", "f_type": "Phosphorus", "strokeDasharray": "none","value_s0":3.8, "value_s1":3, "value_s2":2,"flowDir":"linear"},
+    {"f_id": "Flow7", "f_x1": 560, "f_y1": 300, "f_x2": 740, "f_y2": 300, "f_strokeWidth": 5, "f_stroke": "#006d2c", "f_name": "Animal and plant products", "f_type": "Phosphorus", "strokeDasharray": "none","value_s0":3.8, "value_s1":3, "value_s2":2,"flowDir":"linear"},
 
-    {"f_id": "Flow8", "f_x1": 360, "f_y1": 430, "f_x2": 540, "f_y2": 430, "f_strokeWidth": 5, "f_stroke": "blue", "f_name": "Secondary Feed", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2","value_s0":0.02, "value_s1":0.03, "value_s2":0.02,"flowDir":"loop"},
+    {"f_id": "Flow8", "f_x1": 360, "f_y1": 430, "f_x2": 540, "f_y2": 430, "f_strokeWidth": 5, "f_stroke": "#08519c", "f_name": "Secondary Feed", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2","value_s0":0.02, "value_s1":0.03, "value_s2":0.02,"flowDir":"loop"},
 
-    {"f_id": "Flow9", "f_x1": 760, "f_y1": 150, "f_x2": 940, "f_y2": 150, "f_strokeWidth": 5, "f_stroke": "green", "f_name": "Organic waste", "f_type": "Phosphorus", "strokeDasharray": "none","value_s0":4, "value_s1":3.5, "value_s2":3,"flowDir":"linear"},
+    {"f_id": "Flow9", "f_x1": 760, "f_y1": 150, "f_x2": 940, "f_y2": 150, "f_strokeWidth": 5, "f_stroke": "#006d2c", "f_name": "Organic waste", "f_type": "Phosphorus", "strokeDasharray": "none","value_s0":4, "value_s1":3.5, "value_s2":3,"flowDir":"linear"},
 
-    {"f_id": "Flow10", "f_x1": 760, "f_y1": 200, "f_x2": 940, "f_y2": 200, "f_strokeWidth": 5, "f_stroke": "green", "f_name": "Wastewater", "f_type": "Phosphorus", "strokeDasharray": "none","value_s0":2.6, "value_s1":3, "value_s2":3,"flowDir":"linear"},
+    {"f_id": "Flow10", "f_x1": 760, "f_y1": 200, "f_x2": 940, "f_y2": 200, "f_strokeWidth": 5, "f_stroke": "#006d2c", "f_name": "Wastewater", "f_type": "Phosphorus", "strokeDasharray": "none","value_s0":2.6, "value_s1":3, "value_s2":3,"flowDir":"linear"},
 
-    {"f_id": "Flow11", "f_x1": 960, "f_y1": 200, "f_x2": 1140, "f_y2": 200, "f_strokeWidth": 5, "f_stroke": "green", "f_name": "Waste to biofuel", "f_type": "Phosphorus", "strokeDasharray": "none","value_s0":0.4, "value_s1":1.2, "value_s2":0.3,"flowDir":"linear"},
+    {"f_id": "Flow11", "f_x1": 960, "f_y1": 200, "f_x2": 1140, "f_y2": 200, "f_strokeWidth": 5, "f_stroke": "#006d2c", "f_name": "Waste to biofuel", "f_type": "Phosphorus", "strokeDasharray": "none","value_s0":0.4, "value_s1":1.2, "value_s2":0.3,"flowDir":"linear"},
 
-    {"f_id": "Flow12", "f_x1": 160, "f_y1": 620, "f_x2": 940, "f_y2": 620, "f_strokeWidth": 5, "f_stroke": "blue", "f_name": "Secondary Fertilizer", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2","value_s0":0.8, "value_s1":0.8, "value_s2":0.7,"flowDir":"loop"},
+    {"f_id": "Flow12", "f_x1": 160, "f_y1": 620, "f_x2": 940, "f_y2": 620, "f_strokeWidth": 5, "f_stroke": "#08519c", "f_name": "Secondary Fertilizer", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2","value_s0":0.8, "value_s1":0.8, "value_s2":0.7,"flowDir":"loop"},
 
-    {"f_id": "Flow13", "f_x1": 160, "f_y1": 660, "f_x2": 1140, "f_y2": 660, "f_strokeWidth": 5, "f_stroke": "blue", "f_name": "Residuals", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2","value_s0":0.4, "value_s1":1, "value_s2":0.3,"flowDir":"loop"},
+    {"f_id": "Flow13", "f_x1": 160, "f_y1": 660, "f_x2": 1140, "f_y2": 660, "f_strokeWidth": 5, "f_stroke": "#08519c", "f_name": "Residuals", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2","value_s0":0.4, "value_s1":1, "value_s2":0.3,"flowDir":"loop"},
   
-    {"f_id": "Flow16", "f_x1": 250, "f_y1": 110, "f_x2": 340, "f_y2": 110, "f_strokeWidth": 10, "f_stroke": "green", "f_name": "Imp. Feedstuff", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2", "value_s0":4.4, "value_s1":6, "value_s2":5.5,"flowDir":"input"},
+    {"f_id": "Flow16", "f_x1": 250, "f_y1": 110, "f_x2": 340, "f_y2": 110, "f_strokeWidth": 10, "f_stroke": "#6a51a3", "f_name": "Imp. Feedstuff", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2", "value_s0":4.4, "value_s1":6, "value_s2":5.5,"flowDir":"input"},
 
-    {"f_id": "Flow17", "f_x1": 650, "f_y1": 90, "f_x2": 740, "f_y2": 90, "f_strokeWidth": 10, "f_stroke": "green", "f_name": "Imp. food", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2", "value_s0":4.9, "value_s1":5, "value_s2":5,"flowDir":"input"},
+    {"f_id": "Flow17", "f_x1": 650, "f_y1": 90, "f_x2": 740, "f_y2": 90, "f_strokeWidth": 10, "f_stroke": "#6a51a3", "f_name": "Imp. food", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2", "value_s0":4.9, "value_s1":5, "value_s2":5,"flowDir":"input"},
 
-    {"f_id": "Flow18", "f_x1": 560, "f_y1": 340, "f_x2": 650, "f_y2": 340, "f_strokeWidth": 30, "f_stroke": "red", "f_name": "Exp. food", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2", "value_s0":0.8, "value_s1":0.8, "value_s2":0.8,"flowDir":"output"},
+    {"f_id": "Flow18", "f_x1": 560, "f_y1": 340, "f_x2": 650, "f_y2": 340, "f_strokeWidth": 30, "f_stroke": "#a50f15", "f_name": "Exp. food", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2", "value_s0":0.8, "value_s1":0.8, "value_s2":0.8,"flowDir":"output"},
 
-    {"f_id": "Flow19", "f_x1": 560, "f_y1": 390, "f_x2": 650, "f_y2": 390, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Processing waste", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2", "value_s0":1.7, "value_s1":2, "value_s2":2,"flowDir":"output"},
+    {"f_id": "Flow19", "f_x1": 560, "f_y1": 390, "f_x2": 650, "f_y2": 390, "f_strokeWidth": 10, "f_stroke": "#a50f15", "f_name": "Processing waste", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2", "value_s0":1.7, "value_s1":2, "value_s2":2,"flowDir":"output"},
 
-    {"f_id": "Flow20", "f_x1": 160, "f_y1": 490, "f_x2": 250, "f_y2": 490, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "P accumulation", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2", "value_s0":7.1, "value_s1":6, "value_s2":5,"flowDir":"output"},
+    {"f_id": "Flow20", "f_x1": 160, "f_y1": 490, "f_x2": 250, "f_y2": 490, "f_strokeWidth": 10, "f_stroke": "#a50f15", "f_name": "P accumulation", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2", "value_s0":7.1, "value_s1":6, "value_s2":5,"flowDir":"output"},
 
-    {"f_id": "Flow21", "f_x1": 160, "f_y1": 540, "f_x2": 250, "f_y2": 540, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Runoff", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2", "value_s0":1.2, "value_s1":1, "value_s2":1,"flowDir":"output"},
+    {"f_id": "Flow21", "f_x1": 160, "f_y1": 540, "f_x2": 250, "f_y2": 540, "f_strokeWidth": 10, "f_stroke": "#a50f15", "f_name": "Runoff", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2", "value_s0":1.2, "value_s1":1, "value_s2":1,"flowDir":"output"},
 
-    {"f_id": "Flow22", "f_x1": 960, "f_y1": 290, "f_x2": 1050, "f_y2": 290, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Discharge", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2", "value_s0":0.1, "value_s1":0.1, "value_s2":0.1,"flowDir":"output"},
+    {"f_id": "Flow22", "f_x1": 960, "f_y1": 290, "f_x2": 1050, "f_y2": 290, "f_strokeWidth": 10, "f_stroke": "#a50f15", "f_name": "Discharge", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2", "value_s0":0.1, "value_s1":0.1, "value_s2":0.1,"flowDir":"output"},
 
-    {"f_id": "Flow23", "f_x1": 960, "f_y1": 390, "f_x2": 1050, "f_y2": 390, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Waste to incineration/landfill", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2", "value_s0":2.7, "value_s1":3, "value_s2":2,"flowDir":"output"},
+    {"f_id": "Flow23", "f_x1": 960, "f_y1": 390, "f_x2": 1050, "f_y2": 390, "f_strokeWidth": 10, "f_stroke": "#a50f15", "f_name": "Waste to incineration/landfill", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2", "value_s0":2.7, "value_s1":3, "value_s2":2,"flowDir":"output"},
 
-    {"f_id": "Flow24", "f_x1": 960, "f_y1": 490, "f_x2": 1050, "f_y2": 490, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Exported Waste", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2", "value_s0":10, "value_s1":1.9, "value_s2":1,"flowDir":"output"},
+    {"f_id": "Flow24", "f_x1": 960, "f_y1": 490, "f_x2": 1050, "f_y2": 490, "f_strokeWidth": 10, "f_stroke": "#a50f15", "f_name": "Exported Waste", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2", "value_s0":10, "value_s1":1.9, "value_s2":1,"flowDir":"output"},
 
-    {"f_id": "Flow25", "f_x1": 1160, "f_y1": 490, "f_x2": 1250, "f_y2": 490, "f_strokeWidth": 10, "f_stroke": "red", "f_name": "Recjects/loss", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2", "value_s0":10, "value_s1":0.05, "value_s2":0.03,"flowDir":"output"}
+    {"f_id": "Flow25", "f_x1": 1160, "f_y1": 490, "f_x2": 1250, "f_y2": 490, "f_strokeWidth": 10, "f_stroke": "#a50f15", "f_name": "Recjects/loss", "f_type": "Phosphorus", "strokeDasharray": "2,2,2,2", "value_s0":10, "value_s1":0.05, "value_s2":0.03,"flowDir":"output"}
     
 ]}

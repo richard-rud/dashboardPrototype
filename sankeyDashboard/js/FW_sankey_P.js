@@ -59,7 +59,7 @@ var mfaProcesses = processes
      .append('path')
      .attr('d', 'M 5,0 m -5,-5 L 5,0 L 0,5 Z')
      .style("opacity", 0.5)
-     .style("fill", "green");
+     .style("fill", "#6a51a3");
 
   svg.append('marker')
      .attr('id', "output-arrow")
@@ -72,7 +72,7 @@ var mfaProcesses = processes
      .append('path')
      .attr('d', 'M 5,0 m -5,-5 L 5,0 L 0,5 Z')
      .style("opacity", 0.5)
-     .style("fill", "red");
+     .style("fill", "#a50f15");
 
   svg.append('marker')
      .attr('id', "loop-arrow")
@@ -85,7 +85,20 @@ var mfaProcesses = processes
      .append('path')
      .attr('d', 'M -5,0 L -5,-5 L -5,0 L 0,5 L 0,-5')
      .style("opacity", 0.5)
-     .style("fill", "blue");
+     .style("fill", "#08519c");
+
+  svg.append('marker')
+     .attr('id', "linear-arrow")
+     .attr('markerHeight', 2.5)
+     .attr('markerWidth', 2,5)
+     .attr('orient', 'auto')
+     .attr('refX', 0)
+     .attr('refY', 0)
+     .attr('viewBox', '-5 -5 20 10')
+     .append('path')
+     .attr('d', 'M 5,0 m -5,-5 L 5,0 L 0,5 Z')
+     .style("opacity", 0.5)
+     .style("fill", "#006d2c");
 
 var linearFlows = svg.append("g").attr("class", "MFA_flows").selectAll(".line")
             .data(graph.flows)
@@ -137,7 +150,7 @@ var mfaFlows = linearFlows
                 }
               if (d.flowDir == "linear")
               {
-                return "url(#input-arrow)"; 
+                return "url(#linear-arrow)"; 
               }
               
             })

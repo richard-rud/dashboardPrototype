@@ -205,6 +205,57 @@ line:hover {
   margin-left:200px;
 }
 
+/* Legend for the sankey diagrams */
+
+.my-legend {
+    position: absolute;
+    margin-top: -60px;
+    margin-left:1200px;
+  }
+
+.my-legend .legend-title {
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 90%;
+  }
+
+.my-legend .legend-scale ul {
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 0;
+    float: left;
+    list-style: none;
+  }
+
+.my-legend .legend-scale ul li {
+    font-size: 80%;
+    list-style: none;
+    margin-left: 0;
+    line-height: 18px;
+    margin-bottom: 2px;
+  }
+
+.my-legend ul.legend-labels li span {
+    display: block;
+    float: left;
+    height: 16px;
+    width: 30px;
+    margin-right: 5px;
+    margin-left: 0;
+    opacity: .6;  
+  }
+
+.my-legend .legend-source {
+    font-size: 70%;
+    color: #999;
+    clear: both;
+  }
+
+.my-legend a {
+    color: #777;
+  }
+
 </style>
 
 </head>
@@ -259,6 +310,18 @@ line:hover {
         <button data-step="4" data-intro="This button gives you the food waste prevention scenario" data-position="right" id="s2_p" class="btn btn-success" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Food waste prevention (P)</button>
 
         <button data-step="5" data-intro="This button gives you the baseline scenario for phosphorus. This scenario uses historical data, 2009-2010 avg." data-position="right" id="baseline_P" class="btn btn-success" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Baseline scenario (P)</button>
+
+          <div class='my-legend' id="legend_P">
+            <div class='legend-scale'>
+              <ul class='legend-labels'>
+                <li><span style='background:#238b45;'></span>Linear flows</li>
+                <li><span style='background:#807dba;'></span>Import flows</li>
+                <li><span style='background:#cb181d;'></span>Losses and exports flows</li>
+                <li><span style='background:#2171b5;'></span>Recycling flows</li>
+              </ul>
+            </div>
+          </div>
+
               
         <div id="sankeyContent_P"></div>
 
@@ -288,8 +351,20 @@ line:hover {
         <button data-step="8" data-intro="This button gives you the food waste prevention scenario" data-position="right" id="s2_E" class="btn btn-warning" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Food waste prevention (E)</button>
 
         <button data-step="9" data-intro="This button gives you the baseline scenario for energy. This scenario uses historical data, 2009-2010 avg." data-position="right" id="baseline_E" class="btn btn-warning" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Baseline scenario (E)</button>
-              
-      <div id="sankeyContent_E"></div>
+        
+
+          <div class='my-legend' id="legend_E">
+            <div class='legend-scale'>
+              <ul class='legend-labels'>
+                <li><span style='background:#ec971f;'></span>Linear flows</li>
+                <li><span style='background:#807dba;'></span>Import flows</li>
+                <li><span style='background:#cb181d;'></span>Losses and exports flows</li>
+                <li><span style='background:#2171b5;'></span>Recycling flows</li>
+              </ul>
+            </div>
+          </div>  
+
+          <div id="sankeyContent_E"></div>
 
         </div>
                

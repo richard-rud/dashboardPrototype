@@ -14,10 +14,11 @@ var chartEnergy = c3.generate({
         x : 'x',
         //All the following data in this script is taken for energy (green column)
         columns: [
-            ['x','Imported feed ingredients','Imported food','Plants for feed','Grazing','Plants for food','Manure','Animal products','Exported food','Processing waste','Secondary feed','Animal and plant products','Organic waste,','Wastewater','Exported waste','Waste to incineration/landfill','Secondary fertilizer','Waste to biogas','Rejects/loss','Biogas','Residuals' ],
-            ['Baseline Scenario: 2009 - 2011 (Energy)',10.3,22.3,16.9,40.5,4.3,26.4,10.9,7.2,0.5,0.5,13.2,7.8,2.9,2.6,6.2,0.6,0.9,0.00179,0.6,0.4,0.2,1,3,10,0.1],
-            ['Scenario 1: Recycling food waste (Energy)',14,22,17,51,4,26,11,7,1,0.5,13,18,3,3,6,3,7,0.1,4,3,1,0.1,3,10,1],
-            ['Scenario 2: Preventing food waste (Energy)',10,22,12,30,1,19,8,7,1,0.3,7,12,3,0.5,3,3,0.007,0.00001,0.001,0.005,0.1,0.8,2,9,0.001]
+            ['x','Imported feed ingredients','Imported food','Plants for feed','Grazing','Plants for food','Manure','Animal products','Exported food','Processing waste','Secondary feed','Animal and plant products','Organic waste,','Wastewater','Exported waste','Waste to incineration/landfill','Secondary fertilizer','Waste to biogas','Rejects/loss','Biogas','Residuals','PE Fertilizer production','PE Plant production','PE Animal Husbandry','PE Food processing','PE Biogas Production'],
+            ['Baseline Scenario: 2009 - 2011 (Energy)',10.3,22.3,16.9,40.5,4.3,26.4,10.9,7.2,0.5,0.5,13.2,7.8,2.9,2.6,6.2,0.6,0.9,0.00179,0.6,0.4,0.2,1,3,10,0.1,0.2,1,3,10,0.1],
+            ['Scenario 1: Recycling food waste (Energy)',14,22,17,51,4,26,11,7,1,0.5,13,18,3,3,6,3,7,0.1,4,3,1,0.1,3,10,1,1,0.1,3,10,1],
+            ['Scenario 2: Preventing food waste (Energy)',10,22,12,30,1,19,8,7,1,0.3,7,12,3,0.5,3,3,0.007,0.00001,0.001,0.005,0.1,0.8,2,9,0.001,0.1,0.8,2,9,0.001]
+         
         ],
         type: 'bar',
         order: 'desc'
