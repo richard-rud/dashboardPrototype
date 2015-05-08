@@ -281,7 +281,7 @@ line:hover {
   What is Material Flow Analysis
 </button></a>
 
-<a href="http://www.ntnu.edu/indecol"><button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-leaf"></span>
+<a href="http://www.ntnu.edu/indecol"><button class="btn btn-primary" type="button"></span>
   NTNU’s Industrial Ecology Programme
 </button></a>
 
@@ -289,7 +289,7 @@ line:hover {
 
 <div id="mainContent">
 
-<div data-step="1" data-intro="Welcome to the food waste dashboard! This is a quick tutorial of how to use the application." id="introJS_intro"></div>
+<div data-step="1" data-intro="Welcome to the Norwegian food waste dashboard! This is a quick tutorial of how to use the application."></div>
 
 <!-- Phosphorus flow diagram -->
 
@@ -297,19 +297,24 @@ line:hover {
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="tabOne">
       <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne" data-step="2" data-intro="This window displays the phosphorus layer" data-position="right">
-          Phosphorus flow diagram
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne" data-step="2" data-intro="This window displays the phosphorus layer. You can hover over the flows with the mouse pointer for more detailed information. The default diagram displays the baseline scenario for phosphorus using historical data, 2009-2011 avg." data-position="right">
+          <b>Phosphorus flow diagram:</b>             
         </a>
+          
+          <div id="scenarioLabel_P"><div>
+
+
+
       </h4>
     </div>
     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="tabOne">
       <div class="panel-body">
 
-        <button data-step="3" data-intro="You can press the different buttons to run different scenarios for phosphorus. This button gives you the recycling scenario" data-position="right" id="s1_p" class="btn btn-success" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Recycling (P)</button>
+        <button data-step="3" data-intro="You can press the different buttons to run different scenarios for phosphorus. Pressing this button gives you the recycling scenario for phosphorus." data-position="right" id="s1_p" class="btn btn-success" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Recycling (P)</button>
 
-        <button data-step="4" data-intro="This button gives you the food waste prevention scenario" data-position="right" id="s2_p" class="btn btn-success" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Food waste prevention (P)</button>
+        <button data-step="4" data-intro="Pressing this button gives you the food waste prevention scenario for phosphorus." data-position="right" id="s2_p" class="btn btn-success" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Food waste prevention (P)</button>
 
-        <button data-step="5" data-intro="This button gives you the baseline scenario for phosphorus. This scenario uses historical data, 2009-2010 avg." data-position="right" id="baseline_P" class="btn btn-success" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Baseline scenario (P)</button>
+        <button data-step="5" data-intro="Pressing this button gives you the baseline scenario for phosphorus. This scenario uses historical data, 2009-2011 avg." data-position="right" id="baseline_P" class="btn btn-success" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Baseline scenario (P)</button>
 
           <div class='my-legend' id="legend_P">
             <div class='legend-scale'>
@@ -338,19 +343,22 @@ line:hover {
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="tabTwo">
       <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" data-step="6" data-intro="This window displays the energy layer" data-position="right">
-          Energy flow diagram
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" data-step="6" data-intro="This window displays the energy layer. You can hover over the flow with the mouse pointer for more detailed information. The default diagram displays the baseline scenario for energy using historical data, 2009-2011 avg." data-position="right">
+          <b>Energy flow diagram:</b>
         </a>
+
+          <div id="scenarioLabel_E"><div>
+
       </h4>
     </div>
     <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="tabTwo">
       <div class="panel-body">
 
-        <button data-step="7" data-intro="You can press the different buttons to run different scenarios for energy. This button gives you the food waste recycling scenario" data-position="right" id="s1_E" class="btn btn-warning" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Recycling (E)</button>
+        <button data-step="7" data-intro="You can press the different buttons to run different scenarios for energy. Pressing this button gives you the food waste recycling scenario for energy." data-position="right" id="s1_E" class="btn btn-warning" type="button" ></span>Recycling (E)</button>
 
-        <button data-step="8" data-intro="This button gives you the food waste prevention scenario" data-position="right" id="s2_E" class="btn btn-warning" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Food waste prevention (E)</button>
+        <button data-step="8" data-intro="Pressing this button gives you the food waste prevention scenario for energy." data-position="right" id="s2_E" class="btn btn-warning" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Food waste prevention (E)</button>
 
-        <button data-step="9" data-intro="This button gives you the baseline scenario for energy. This scenario uses historical data, 2009-2010 avg." data-position="right" id="baseline_E" class="btn btn-warning" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Baseline scenario (E)</button>
+        <button data-step="9" data-intro="Pressing this button gives you the baseline scenario for energy. This scenario uses historical data, 2009-2010 avg." data-position="right" id="baseline_E" class="btn btn-warning" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Baseline scenario (E)</button>
         
 
           <div class='my-legend' id="legend_E">
@@ -380,7 +388,7 @@ line:hover {
     <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="tabThree">
       <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" data-step="10" data-intro="By pressing this tab, you will be able to compare different scenarios and different flows more directly" data-position="right">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" data-step="10" data-intro="By pressing and opening up this tab, you will be able to compare different scenarios and different flows more directly. Hover over the different collections of bar charts to see more detailed information for each separate flow. You can unselect/select which scenarios to show in the bottom of both the energy and phosphorus bar chart collection." data-position="right">
           Scenario comparison
         </a>
       </h4>
@@ -401,8 +409,9 @@ line:hover {
               <p class="col-md-6"><b>Energy: </b></p>
               <p class="col-md-6"><b>Phosphorus: </b></p>
          
-             <div id="barChartEnergy" class="col-md-6"></div>   
-             <div id="barChartPhosphorus" class="col-md-6"></div>           
+            <div id="barChartPhosphorus" class="col-md-6"></div>           
+
+            <div id="barChartEnergy" class="col-md-6"></div>   
 
         </div>
                
@@ -420,7 +429,7 @@ line:hover {
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="tabFour">
       <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour" data-step="11" data-intro="By pressing this tab, you will be able to look at problems shifting more directly" data-position="right">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour" data-step="11" data-intro="By pressing and opening up this tab, you will be able to look at problems shifting more directly. You can hover over the table in the bottom of the chart to more clearly see the variation between scenarios and the different parameters. It is also possible to use a brush on each axis, e.g. if you want to set a limit to the values displayed or select a combination of parameters to show." data-position="right">
           Problem shifting
         </a>
       </h4>
@@ -451,7 +460,7 @@ line:hover {
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="tabFice">
       <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive" data-step="12" data-intro="By pressing this tab, you will be able to look at the baseline scenario and imports, exports and domestic production vs. avoidable food waste for dry matter" data-position="right">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive" data-step="12" data-intro="By pressing and opening up this tab, you will be able to look at the baseline scenario, including imports, exports, domestic production and avoidable food waste measured in kilotons of dry matter per year. In the bottom of the chart you can unselect/select which columns to display." data-position="right">
           The Norwegian food waste system quantified
         </a>
       </h4>
@@ -479,7 +488,7 @@ line:hover {
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="tabSix">
       <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix" data-step="13" data-intro="By pressing this tab, you will be able to look at the avoidable food waste measured in tons for different sources along the value chain" data-position="right">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix" data-step="13" data-intro="By pressing and opening up this tab, you will be able to look at the avoidable food waste for different sources along the value chain measured in tons of waste. In the bottom of the chart you can unselect/select which columns to display." data-position="right">
           Avoidable food waste 
         </a>
       </h4>
@@ -511,7 +520,7 @@ line:hover {
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="tabSeven">
       <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven" data-step="14" data-intro="By pressing this tab, you will be able to look at the avoidable food waste versus total food inputs, measured in dry matter" data-position="right">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven" data-step="14" data-intro="By pressing and opening up this tab, you will be able to look at the avoidable food waste versus total food inputs, measured in kilotons of dry matter per year. In the bottom of the chart you can unselect/select which columns to display." data-position="right">
           Avoidable food waste versus total food inputs 
         </a>
       </h4>
@@ -538,7 +547,7 @@ line:hover {
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="tabEight">
       <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight" data-step="15" data-intro="By pressing this tab, you will be able to look at the amount of dry matter inputs to waste management. Now you are ready to start exploring, enjoy!" data-position="right">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight" data-step="15" data-intro="By pressing and opening up this tab, you will be able to look at the amount of dry matter inputs to waste management measured in kilotons of dry matter per year. In the bottom of the chart you can unselect/select which columns to display. Now you are ready to start exploring the data, enjoy!" data-position="right">
            Waste management  
         </a>
       </h4>

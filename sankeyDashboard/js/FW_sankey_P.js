@@ -1,6 +1,8 @@
 //This (x) defines which scenario we are on
 var scenarioVariable = 0;
 
+var scenarioName = "Baseline Scenario: 2009 - 2011 avg."
+
 var tipFlow = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
@@ -27,7 +29,9 @@ var svg = d3.select("#sankeyContent_P")
             .attr("width", width)
             .attr("height", height);  
 
-
+var scenarioLabel = d3.select("#scenarioLabel_P")
+                      .text(scenarioName);            
+    
 function readFile(file) {
 
 d3.json(file, function(graph) {
@@ -180,6 +184,11 @@ d3.select("#s1_p").on("click", function() {
 
 scenarioVariable = 1;
 
+scenarioName = "Scenario 1: Recycling food waste"
+
+scenarioLabel = d3.select("#scenarioLabel_P")
+                      .text(scenarioName);   
+
     mfaFlows
           .data(graph.flows) 
           .transition()
@@ -221,6 +230,12 @@ scenarioVariable = 1;
 d3.select("#s2_p").on("click", function() {
 
 scenarioVariable = 2;
+
+scenarioName = "Scenario 2: Preventing food waste";
+
+scenarioLabel = d3.select("#scenarioLabel_P")
+                      .text(scenarioName);   
+
     mfaFlows
           .transition()
           .duration(3000)
@@ -261,6 +276,11 @@ scenarioVariable = 2;
 d3.select("#baseline_P").on("click", function() {
 
 scenarioVariable = 0;
+
+scenarioName = "Baseline Scenario: 2009 - 2011 avg.";
+
+scenarioLabel = d3.select("#scenarioLabel_P")
+                      .text(scenarioName);   
 
     mfaFlows
           .transition()
