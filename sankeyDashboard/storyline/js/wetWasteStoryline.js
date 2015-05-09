@@ -30,8 +30,12 @@ var chart = c3.generate({
             //categories: ['1995']
         },
         y: {
-            label: 'tons' 
-        }
+            label: 'Amount',
+            tick: {
+                format: function(d) { return d + ' (ton)'; }, //Determine unit of measure 
+
+            }
+        },
     },
     tooltip: {
         format: {

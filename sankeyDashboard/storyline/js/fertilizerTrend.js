@@ -20,8 +20,12 @@
             label: 'year'
         },
         y: {
-            label: 'tons'
-        }
+            label: 'Amount',
+            tick: {
+                format: function(d) { return d + ' (ton)'; }, //Determine unit of measure 
+
+            }
+        },
     },
     grid: {
         x: {
@@ -58,8 +62,12 @@
             label: 'year'
         },
         y: {
-            label: 'tons'
-        }
+            label: 'Amount',
+            tick: {
+                format: function(d) { return d + ' (ton)'; }, //Determine unit of measure 
+
+            }
+        },
     },
     grid: {
         x: {

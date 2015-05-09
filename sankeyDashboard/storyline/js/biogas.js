@@ -1,6 +1,3 @@
-var color = d3.scale.category20();
-
-
 var dataset = [{label:"Current production: 0,5 Twh", value:5},{label:"Realistic potential: 2,3 TWh",value:23},{label:"Teoretical potential: 5,8 TWh", value:58}];
 
   var arc = d3.svg.arc()
@@ -26,7 +23,6 @@ var svg = d3.select("#biogasDiagram").append("svg")
     .style("fill","white")
     .on("mouseover", function() {
 
-            //d3.select(this)
               d3.select(this)
                   .transition()
                   .duration(1000)
@@ -64,19 +60,3 @@ LineCircle.append("text")
   .attr("xlink:href",function(d,i){return "#s"+i;})
   .attr("startOffset",function(d,i){return "50%";})
   .text(function(d){return d.label.toUpperCase();})
-
-  function pulse() {
-            var circle = svg.select("circle");
-            
-                circle = circle.transition()
-                    .duration(1000)
-                    .attr("stroke-width", 20)
-                    .attr("r", 20)
-                    .transition()
-                    .duration(5000)
-                    .attr('stroke-width', 5)
-                    .attr("r", 238)
-                    .style("opacity", .2)
-                    .style("fill", "orange")
-                    .ease('sine');
-            };
