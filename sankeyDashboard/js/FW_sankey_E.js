@@ -24,6 +24,10 @@ var tipFlow_energy = d3.tip()
 var width = 1450,
     height = 700;
 
+var yScale = d3.scale.linear()
+                        .domain([0, 12])
+                        .range([4, 15]);
+
 var svg_E = d3.select("#sankeyContent_E")
             .append("svg")
             .attr("width", width)
@@ -134,7 +138,7 @@ var mfaFlows = linearFlows
               } 
             })
             .attr("y2", function (d) { return d.f_y2 })
-            .attr("stroke-width", function (d) { return d.value_s0 * 2 })
+            .attr("stroke-width", function (d) { return yScale(d.value_s0 * 2) })
             .attr("stroke", function (d) { return d.f_stroke })
             .attr("stroke-dasharray", function (d) { return d.strokeDasharray })
             .attr("marker-start", function (d) {
@@ -177,7 +181,7 @@ var flowText = svg_E.selectAll("text.flow")
         .append("text")
         .attr("id", function(d) { return d.f_id; })
         .attr("x", function(d) { return d.f_x1 + 10; })
-        .attr("y", function(d) { return d.f_y1 - ((d.value_s0 * 2)/2); })
+        .attr("y", function(d) { return d.f_y1 - yScale((d.value_s0 * 2)/2); })
         .text(function(d) { return d.f_name + " (" + d.value_s0 + " pj/yr)"; });
        
 d3.select("#s1_E").on("click", function() {
@@ -214,7 +218,7 @@ scenarioLabel = d3.select("#scenarioLabel_E")
               } 
             })
             .attr("y2", function (d) { return d.f_y2 })
-            .attr("stroke-width", function (d) { return (d.value_s1 * 2) })
+            .attr("stroke-width", function (d) { return yScale(d.value_s1 * 2) })
             .attr("stroke", function (d) { return d.f_stroke })
             .attr("stroke-dasharray", function (d) { return d.strokeDasharray });
        
@@ -222,7 +226,7 @@ scenarioLabel = d3.select("#scenarioLabel_E")
         .transition()
         .duration(3000)
         .attr("x", function(d) { return d.f_x1 + 5; })
-        .attr("y", function(d) { return d.f_y1 - ((d.value_s1 * 2)/2); })
+        .attr("y", function(d) { return d.f_y1 - yScale((d.value_s1 * 2)/2); })
         .text(function(d) { return d.f_name + " (" + d.value_s1 + " pj/yr)"; });
 
   });
@@ -260,7 +264,7 @@ scenarioLabel = d3.select("#scenarioLabel_E")
               } 
             })
             .attr("y2", function (d) { return d.f_y2 })
-            .attr("stroke-width", function (d) { return (d.value_s2 * 2)})
+            .attr("stroke-width", function (d) { return yScale(d.value_s2 * 2)})
             .attr("stroke", function (d) { return d.f_stroke })
             .attr("stroke-dasharray", function (d) { return d.strokeDasharray });
 
@@ -268,7 +272,7 @@ scenarioLabel = d3.select("#scenarioLabel_E")
         .transition()
         .duration(3000)
         .attr("x", function(d) { return d.f_x1 + 5; })
-        .attr("y", function(d) { return d.f_y1 - ((d.value_s2 * 2)/2); })
+        .attr("y", function(d) { return d.f_y1 - yScale((d.value_s2 * 2)/2); })
         .text(function(d) { return d.f_name + " (" + d.value_s2 + " pj/yr)"; });
 
   });
@@ -306,7 +310,7 @@ scenarioLabel = d3.select("#scenarioLabel_E")
               } 
             })
             .attr("y2", function (d) { return d.f_y2 })
-            .attr("stroke-width", function (d) { return (d.value_s0 * 2)})
+            .attr("stroke-width", function (d) { return yScale(d.value_s0 * 2)})
             .attr("stroke", function (d) { return d.f_stroke })
             .attr("stroke-dasharray", function (d) { return d.strokeDasharray });
 
@@ -314,8 +318,7 @@ scenarioLabel = d3.select("#scenarioLabel_E")
         .transition()
         .duration(3000)
         .attr("x", function(d) { return d.f_x1 + 5; })
-        .attr("y", function(d) { return d.f_y1 - ((d.value_s0 * 2)/2); })
-        //.text(function(d) { return d.f_name; });
+        .attr("y", function(d) { return d.f_y1 - yScale((d.value_s0 * 2)/2); })
         .text( function (d) { return d.f_name + " (" + d.value_s0 + " pj/yr)"; });
 
 
@@ -328,6 +331,8 @@ scenarioLabel = d3.select("#scenarioLabel_E")
 var jsonFile2 = "data/dataEnergy.json" 
 
   readFile(jsonFile2);
+
+
 
 
 

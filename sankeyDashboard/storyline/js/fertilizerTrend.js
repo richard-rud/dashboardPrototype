@@ -2,7 +2,7 @@
     var chart = c3.generate({
     size: {
         height: 400,
-        width: 400
+        width: 800
     },
     bindto: '#lineChart_Phosphorus',
     data: {
@@ -40,7 +40,7 @@
     }
 });
 
-
+/*
     var chart = c3.generate({
     size: {
         height: 400,
@@ -81,3 +81,5 @@
         duration: 1000
     }
 });
+
+*/

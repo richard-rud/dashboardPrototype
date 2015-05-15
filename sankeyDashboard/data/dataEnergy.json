@@ -14,7 +14,7 @@
 ],
 "flows":[
     
-    {"f_id": "Flow1", "f_x1": 0, "f_y1": 150, "f_x2": 140, "f_y2": 150, "f_strokeWidth": 5, "f_stroke": "#6a51a3", "f_name": "PE fertilizer production", "f_type": "Energy", "strokeDasharray": "none", "value_s0":0.2, "value_s1":0.1, "value_s2":0.1, "flowDir":"input"},
+    {"f_id": "Flow1", "f_x1": 0, "f_y1": 150, "f_x2": 140, "f_y2": 150, "f_strokeWidth": 5, "f_stroke": "#6a51a3", "f_name": "PE fertilizer production", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":0.2, "value_s1":0.1, "value_s2":0.1, "flowDir":"input"},
 
     {"f_id": "Flow2", "f_x1": 0, "f_y1": 90, "f_x2": 140, "f_y2": 90, "f_strokeWidth": 10, "f_stroke": "#6a51a3", "f_name": "PE Plant Production", "f_type": "Energy", "strokeDasharray": "2,2,2,2", "value_s0":1, "value_s1":1, "value_s2":0.8,"flowDir":"input"},
 

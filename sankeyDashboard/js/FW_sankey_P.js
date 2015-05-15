@@ -24,10 +24,14 @@ var tipFlow = d3.tip()
 var width = 1450,
     height = 700;
 
+var yScale = d3.scale.linear()
+                        .domain([0, 12])
+                        .range([4, 15]);
+
 var svg = d3.select("#sankeyContent_P")
             .append("svg")
             .attr("width", width)
-            .attr("height", height);  
+            .attr("height", height);
 
 var scenarioLabel = d3.select("#scenarioLabel_P")
                       .text(scenarioName);            
@@ -134,7 +138,7 @@ var mfaFlows = linearFlows
               } 
             })
             .attr("y2", function (d) { return d.f_y2 })
-            .attr("stroke-width", function (d) { return d.value_s0 * 10 })
+            .attr("stroke-width", function (d) { return yScale(d.value_s0 * 10) })
             .attr("stroke", function (d) { return d.f_stroke })
             .attr("stroke-dasharray", function (d) { return d.strokeDasharray })
             .attr("marker-start", function (d) {
@@ -177,7 +181,7 @@ var flowText = svg.selectAll("text.flow")
         .append("text")
         .attr("id", function(d) { return d.f_id; })
         .attr("x", function(d) { return d.f_x1 + 5; })
-        .attr("y", function(d) { return d.f_y1 - ((d.value_s0 * 10)/2); })
+        .attr("y", function(d) { return d.f_y1 - yScale((d.value_s0 * 10)/2); })
         .text( function (d) { return d.f_name + " (" + d.value_s0 + " kt P/yr)"; });
        
 d3.select("#s1_p").on("click", function() {
@@ -214,7 +218,7 @@ scenarioLabel = d3.select("#scenarioLabel_P")
               } 
             })
             .attr("y2", function (d) { return d.f_y2 })
-            .attr("stroke-width", function (d) { return (d.value_s1 * 10) })
+            .attr("stroke-width", function (d) { return yScale(d.value_s1 * 10) })
             .attr("stroke", function (d) { return d.f_stroke })
             .attr("stroke-dasharray", function (d) { return d.strokeDasharray });
        
@@ -222,7 +226,7 @@ scenarioLabel = d3.select("#scenarioLabel_P")
         .transition()
         .duration(3000)
         .attr("x", function(d) { return d.f_x1 + 5; })
-        .attr("y", function(d) { return d.f_y1 - ((d.value_s1 * 10)/2); })
+        .attr("y", function(d) { return d.f_y1 - yScale((d.value_s1 * 10)/2); })
         .text( function (d) { return d.f_name + " (" + d.value_s1 + " kt P/yr)"; });
 
   });
@@ -260,7 +264,7 @@ scenarioLabel = d3.select("#scenarioLabel_P")
               } 
             })
             .attr("y2", function (d) { return d.f_y2 })
-            .attr("stroke-width", function (d) { return (d.value_s2 * 10)})
+            .attr("stroke-width", function (d) { return yScale(d.value_s2 * 10)})
             .attr("stroke", function (d) { return d.f_stroke })
             .attr("stroke-dasharray", function (d) { return d.strokeDasharray });
 
@@ -268,7 +272,7 @@ scenarioLabel = d3.select("#scenarioLabel_P")
         .transition()
         .duration(3000)
         .attr("x", function(d) { return d.f_x1 + 5; })
-        .attr("y", function(d) { return d.f_y1 - ((d.value_s2 * 10)/2); })
+        .attr("y", function(d) { return d.f_y1 - yScale((d.value_s2 * 10)/2); })
         .text( function (d) { return d.f_name + " (" + d.value_s2 + " kt P/yr)"; });
 
   });
@@ -306,7 +310,15 @@ scenarioLabel = d3.select("#scenarioLabel_P")
               } 
             })
             .attr("y2", function (d) { return d.f_y2 })
-            .attr("stroke-width", function (d) { return (d.value_s0 * 10)})
+            .attr("stroke-width", function (d) { return yScale(d.value_s0 * 10)})
+            
+            /*
+            .attr("stroke-width", function (d) { 
+              if (d.value_s0 < 0.1 ) { return d.value_s0 * 40};
+              if (d.value_s0 > 1) {return (d.value_s0 * 10)};
+            })
+            */
+
             .attr("stroke", function (d) { return d.f_stroke })
             .attr("stroke-dasharray", function (d) { return d.strokeDasharray });
 
@@ -314,7 +326,7 @@ scenarioLabel = d3.select("#scenarioLabel_P")
         .transition()
         .duration(3000)
         .attr("x", function(d) { return d.f_x1 + 5; })
-        .attr("y", function(d) { return d.f_y1 - ((d.value_s0 * 10)/2); })
+        .attr("y", function(d) { return d.f_y1 - yScale((d.value_s0 * 10)/2); })
         .text( function (d) { return d.f_name + " (" + d.value_s0 + " kt P/yr)"; });
 
   });
