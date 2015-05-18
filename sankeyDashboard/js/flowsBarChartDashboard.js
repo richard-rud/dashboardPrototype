@@ -25,7 +25,7 @@ var chartPhosphorus = c3.generate({
         position: 'bottom'
     },
     color: {
-        pattern: ['#41ab5d','#238b45','#006d2c']
+        pattern: ['#99d8c9','#41ae76','#006d2c']
     },
      bar: {
         width: {
@@ -80,7 +80,7 @@ var chartEnergy = c3.generate({
         position: 'bottom'
     },
     color: {
-        pattern: ['#fec44f','#fe9929','#ec7014']
+        pattern: ['#fff7bc','#fec44f','#ec7014']
     },
      bar: {
         width: {
