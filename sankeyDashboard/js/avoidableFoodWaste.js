@@ -70,7 +70,7 @@ var chart = c3.generate({
         }
     },
     color: {
-        pattern: ['#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69','#fccde5','#d9d9d9']
+        pattern: ['#d9d9d9','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69','#fccde5','#8dd3c7']
     },
 });
 
