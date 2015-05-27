@@ -4,7 +4,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////
 var chart = c3.generate({
     size: {
-        height: 600,
+        height: 700,
         width: 1000
     },
     bindto: '#stackedBar',
@@ -51,6 +51,7 @@ var chart = c3.generate({
         order: 'desc'
     },
     axis: {
+        rotated: false,
         y: {
             label: 'Amount',
             tick: {

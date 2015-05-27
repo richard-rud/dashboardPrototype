@@ -7,16 +7,21 @@ var chart = c3.generate({
     },
     bindto: '#nfws',
     data: {
-        x : 'x',
         columns: [
-            ['x', 'Norwegian Food Waste System'],
             ['Imports',900],
+            ['Domestic production',500],
+            ['MBI',40],
             ['Exports',360],
-            ['Domestic production',670],
-            ['Avoidable food waste',179]
+            ['Human consumption',900],
+            ['Avoidable food waste',180]
+            
         ],
         type: 'bar',
-        order: 'none'
+        groups: [
+            ['Imports','Domestic production','MBI'],
+            ['Exports','Avoidable food waste','Human consumption']
+        ],
+        order: 'desc'
     },
     grid: {
         y: {
@@ -24,12 +29,14 @@ var chart = c3.generate({
         }
     },
     bar: {
-        width: 40
+        width: 200
     },
     axis: {
         rotated: true,
         x: {
-            type: 'category'
+            type: 'category',
+            categories: ['Comparing production with consumption and losses']
+            
         },
         y: {
             label: 'Amount',
@@ -40,7 +47,7 @@ var chart = c3.generate({
         },
     },
     color: {
-        pattern: ['#8dd3c7','#ffffb3','#bebada','#fb8072']
+        pattern: ['#9e9ac8','#6a51a3','#3f007d','#fee391','#fe9929','#cc4c02','#662506']
     }
 });
 

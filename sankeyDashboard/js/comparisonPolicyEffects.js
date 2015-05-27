@@ -13,7 +13,7 @@ var chart = c3.generate({
         columns: [
             ['x', 'The energy perspective'],
             ['Norwegian energy demand for transportation',62],
-            ['Total output of biogas from recycling avoidable food waste',1.24]
+            ['Biogas potential from recycling avoidable food waste',1.24]
         ],
         type: 'bar',
         order: 'none'
@@ -56,8 +56,9 @@ var chart = c3.generate({
         x : 'x',
         columns: [
             ['x', 'The phosphorus perspective'],
-            ['Norway’s 2009-2011 demand mineral phosphorus',8],
-            ['Estimated demand for mineral phosphorus when preventing food waste',6.32]
+            ['Norwegian demand for mineral phosphorus',8],
+            /*['Estimated demand for mineral phosphorus when preventing food waste',6.32]*/
+            ['Potential savings mineral phosphorus',1.7]
         ],
         type: 'bar',
         order: 'none'

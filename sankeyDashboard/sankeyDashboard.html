@@ -46,9 +46,24 @@
 
 <script>
 
-function switchCSS(){
+function switchCSS1(){
 
-if(checkboxGrid.checked == true) {
+if(checkboxGrid1.checked == true) {
+
+document.getElementById('pagestyle').setAttribute('href', 'css/grid.css');
+
+  }
+
+else {
+  document.getElementById('pagestyle').setAttribute('href', 'css/mainStyle.css');
+
+}
+
+}
+
+function switchCSS2(){
+
+if(checkboxGrid2.checked == true) {
 
 document.getElementById('pagestyle').setAttribute('href', 'css/grid.css');
 
@@ -86,8 +101,6 @@ else {
   NTNU’s Industrial Ecology Programme
 </button></a>
 
-<input id="checkboxGrid" type="checkbox" name="checkboxGrid" value="selectGrid" onchange="switchCSS('css/grid.css')">Grid</input>
-
 </div>
 
 <div id="mainContent">
@@ -100,7 +113,7 @@ else {
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="tabOne">
       <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne" data-step="2" data-intro="This window displays the phosphorus layer. You can hover over the flows with the mouse pointer for more detailed information. The default diagram displays the baseline scenario for phosphorus using historical data, 2009-2011 avg." data-position="right">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne" data-step="2" data-intro="This diagram displays the phosphorus layer. You can hover over the flows with the mouse pointer for more detailed information. The default diagram displays the baseline scenario for phosphorus using historical data, 2009-2011 avg. By pressing the green buttons you can switch between different scenarios. Additionally, you can collapse/uncollapse different diagram windows, making it possible for you to mix and match which diagrams to display." data-position="right">
           Phosphorus flow diagram:             
         </a>          
 
@@ -111,19 +124,34 @@ else {
     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="tabOne">
       <div class="panel-body">
 
+        <p>
+        The flow diagram below is a presentation of the Norwegian food production and consumption system representing the imports and deposition (purple), losses and exports (red), domestic supply (green) and recycling (blue) flows of phosphorus (P). The grey vertical lines are processes in the system. The system includes plant production, animal husbandry, food processing, human consumption, waste management and biogas production. For more information about phosphorus visit <a href="http://www.unep.org/yearbook/2011/pdfs/phosphorus_and_food_productioin.pdf">UNEP</a>.
+        </p>
+
+      
+
+       
+
+        <hr>
+
+
         <button data-step="3" data-intro="You can press the different buttons to run different scenarios for phosphorus. Pressing this button gives you the recycling scenario for phosphorus." data-position="right" id="s1_p" class="btn btn-success" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Recycling (P)</button>
 
         <button data-step="4" data-intro="Pressing this button gives you the food waste prevention scenario for phosphorus." data-position="right" id="s2_p" class="btn btn-success" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Food waste prevention (P)</button>
 
         <button data-step="5" data-intro="Pressing this button gives you the baseline scenario for phosphorus. This scenario uses historical data, 2009-2011 avg." data-position="right" id="baseline_P" class="btn btn-success" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Baseline scenario (P)</button>
 
+        <button onclick="helpPhosphorusFlowDiagram()" class="btn btn-info" type="button"><span class="glyphicon glyphicon-info-sign"></span> How do I use it?</button>
+
+        <input style="margin:10px;" id="checkboxGrid1" type="checkbox" name="checkboxGrid1" value="selectGrid" onchange="switchCSS1('css/grid.css')"><b>Gridlines</b></input>
+
           <div class='my-legend' id="legend_P">
             <div class='legend-scale'>
               <ul class='legend-labels'>
-                <li><span style='background:#238b45;'></span>Linear flows</li>
-                <li><span style='background:#807dba;'></span>Import flows</li>
+                <li><span style='background:#238b45;'></span>Domestic supply flows</li>
+                <li><span style='background:#807dba;'></span>Import and deposition flows</li>
                 <li><span style='background:#cb181d;'></span>Losses and exports flows</li>
-                <li><span style='background:#2171b5;'></span>Recycling flows</li>
+                <li><span style='background:#2171b5;'></span>Domestic recycling flows</li>
               </ul>
             </div>
           </div>
@@ -158,19 +186,28 @@ else {
     <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="tabTwo">
       <div class="panel-body">
 
+        <p>
+          The flow diagram below is a presentation of the Norwegian food production and consumption system representing the imports and process energy (PE) (purple), losses and exports (red), domestic supply (yellow) and recycling (blue) flows of energy. The grey vertical lines are processes in the system. The system includes plant production, animal husbandry, food processing, human consumption, waste management and biogas production. For more information about phosphorus visit <a href="http://www.unep.org/climatechange/mitigation/Energy/tabid/104339/Default.aspx">UNEP</a>.
+        </p>
+
         <button data-step="7" data-intro="You can press the different buttons to run different scenarios for energy. Pressing this button gives you the food waste recycling scenario for energy." data-position="right" id="s1_E" class="btn btn-warning" type="button" ></span>Recycling (E)</button>
 
         <button data-step="8" data-intro="Pressing this button gives you the food waste prevention scenario for energy." data-position="right" id="s2_E" class="btn btn-warning" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Food waste prevention (E)</button>
 
         <button data-step="9" data-intro="Pressing this button gives you the baseline scenario for energy. This scenario uses historical data, 2009-2010 avg." data-position="right" id="baseline_E" class="btn btn-warning" type="button"><span class="glyphicon glyphicon-floppy-open"></span>Baseline scenario (E)</button>
 
+        <button onclick="helpEnergyFlowDiagram()" class="btn btn-info" type="button"><span class="glyphicon glyphicon-info-sign"></span> How do I use it?</button>
+
+        <input style="margin:15px;" id="checkboxGrid2" type="checkbox" name="checkboxGrid2" value="selectGrid" onchange="switchCSS2('css/grid.css')"><b>Gridlines</b></input>
+
+
           <div class='my-legend' id="legend_E">
             <div class='legend-scale'>
               <ul class='legend-labels'>
-                <li><span style='background:#ec971f;'></span>Linear flows</li>
-                <li><span style='background:#807dba;'></span>Import flows</li>
+                <li><span style='background:#ec971f');></span>Domestic supply flows</li>
+                <li><span style='background:#807dba;'></span>Imports and PE flows</li>
                 <li><span style='background:#cb181d;'></span>Losses and exports flows</li>
-                <li><span style='background:#2171b5;'></span>Recycling flows</li>
+                <li><span style='background:#2171b5;'></span>Domestic recycling flows</li>
               </ul>
             </div>
           </div>  
@@ -203,7 +240,15 @@ else {
     <div id="collapseThree" class="panel-collapse collapsing" role="tabpanel" aria-labelledby="tabThree">
       
       <div class="panel-body">
-              
+
+        <p>
+        The diagram below compares the effect of different scenarios distributed among the different flows. Each flow is presented as a cluster of three bars quantifying the effect of the baseline, recycling and food waste prevention scenario.
+        </p>
+
+        <button onclick="helpScenarioComparisonFlowDiagram()" class="btn btn-info" type="button"><span class="glyphicon glyphicon-info-sign"></span> How do I use it?</button>
+        
+        <hr>
+
        <div id="containerBar">
 
           <script src="js/d3.v3.min.js" charset="utf-8" defer></script>
@@ -246,7 +291,11 @@ else {
               
         <div id="psContainer">
 
-          <p><b>The parallel coordinates plot presents a few of the most relevant indicators for both phosphorus and energy distributed among the various scenarios. You can hover the attached table to separate scenarios. There is also a brush function for specifying the value range of the various y-axes. By double-clicking the axis name you can switch between representing values in an ascending or descending order. </b></p>
+          <p>The parallel coordinates plot presents a few of the most relevant indicators for both phosphorus and energy distributed among the various scenarios. You can hover the attached table to separate scenarios. There is also a brush function for specifying the value range of the various y-axes. By double-clicking the axis name you can switch between representing values in an ascending or descending order. PE = Process Energy, P = Phosphorus, kton = kiloton</p>
+
+          <button onclick="helpProblemShiftingFlowDiagram()" class="btn btn-info" type="button"><span class="glyphicon glyphicon-info-sign"></span> How do I use it?</button>
+
+          <hr>
 
           <div id="problemShifting" class="parcoords" style="height:400px;"></div>
 
@@ -269,15 +318,21 @@ else {
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="tabFice">
       <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive" data-step="12" data-intro="By pressing and opening up this tab, you will be able to look at the baseline scenario, including imports, exports, domestic production and avoidable food waste measured in kilotons of dry matter per year. In the bottom of the chart you can unselect/select which columns to display." data-position="right">
-          The Norwegian food waste system quantified
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive" data-step="12" data-intro="This diagram makes it possible for you to look at imports, exports, domestic production and avoidable food waste for the baseline scenario (2009 - 2011 avg) as kiloton of dry matter per year. " data-position="right">
+          The Norwegian food production and consumption system quantified
         </a>
       </h4>
     </div>
     <div id="collapseFive" class="panel-collapse collapsing" role="tabpanel" aria-labelledby="tabFive">
       <div class="panel-body">
               
-      <p><b>Imports, exports, domestic production and avoidable food waste quantified as kiloton of dry matter per year: Baseline scenario: 2009 - 2011 avg. Select/unselect what bars to display, pressing the categories in the legend. Hover over the bars for detailed information. </b></p>
+      <p>
+        This diagram makes it possible for you to look at imports, exports, domestic production and avoidable food waste for the baseline scenario (2009 - 2011 avg) as kiloton of dry matter per year. MBI = mass balance inconsistency. 
+      </p>
+
+      <button onclick="helpSystemQuantified()" class="btn btn-info" type="button"><span class="glyphicon glyphicon-info-sign"></span> How do I use it?</button>
+
+      <hr>
 
       <div id="nfws"></div>
 
@@ -297,7 +352,7 @@ else {
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="tabSix">
       <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix" data-step="13" data-intro="By pressing and opening up this tab, you will be able to look at the avoidable food waste for different sources along the value chain measured in tons of waste. In the bottom of the chart you can unselect/select which columns to display." data-position="right">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix" data-step="13" data-intro="This diagram makes it possible for you to look at avoidable food waste for the baseline scenario (2009 - 2011 avg.) as kiloton of dry matter per year. Select/unselect what bars to display, pressing the categories in the legend. Hover over the bars for detailed information." data-position="right">
           Avoidable food waste 
         </a>
       </h4>
@@ -305,7 +360,13 @@ else {
     <div id="collapseSix" class="panel-collapse collapsing" role="tabpanel" aria-labelledby="tabSix">
       <div class="panel-body">
               
-      <p><b>Avoidable food waste (kt DM/yr): 2009 - 2011 avg. Select/unselect what bars to display, pressing the categories in the legend. Hover over the bars for detailed information. </b></p>
+        <p>
+        This diagram makes it possible for you to look at avoidable food waste for the baseline scenario (2009 - 2011 avg.) as kiloton of dry matter per year. Select/unselect what bars to display, pressing the categories in the legend. Hover over the bars for detailed information. Avoidable food waste is defined as “all edible food that should have been eaten but due to different reasons cannot be sold or utilized, both before it is discarded and ends up as waste and when it has become waste.”  (Hanssen et al. 2013). 
+        </p>
+
+        <button onclick="helpAFW()" class="btn btn-info" type="button"><span class="glyphicon glyphicon-info-sign"></span> How do I use it?</button>
+
+      <hr>
 
       <div id="avoidableFoodWasteContainer">
 
@@ -328,7 +389,7 @@ else {
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="tabSeven">
       <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven" data-step="14" data-intro="By pressing and opening up this tab, you will be able to look at the avoidable food waste versus total food inputs, measured in kilotons of dry matter per year. In the bottom of the chart you can unselect/select which columns to display." data-position="right">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven" data-step="14" data-intro="By pressing and opening up this tab, you will get a comparison of the relative importance of food waste recycling for energy purposes versus food waste prevention for phosphorus related issues." data-position="right">
           Recycling versus prevention
         </a>
       </h4>
@@ -336,41 +397,25 @@ else {
     <div id="collapseSeven" class="panel-collapse collapsing" role="tabpanel" aria-labelledby="tabSeven">
       <div class="panel-body">
               
-      <p><b>This chart tries to compare the relative importance of food waste recycling for energy purposes versus food waste prevention for phosphorus related issues</b></p>
+      <p>
+        This diagram tries to compare the relative importance of food waste recycling for energy purposes versus food waste prevention for phosphorus related issues. 
+      <br>
+     
+        The energy perspective presents the energy demand in the transportation sector for 2010 (Ministry of Petroleum and Energy 2013). The data uses energy demand in transportation due to the fact that biogas is identified as a potential displacement for fossil fuels. 
+      <br>
+        The phosphorus perspective use tha avg. data from 2009-2011 (Hamilton et al. 2015) compared with potential reduction when preventing food waste (scenario 2: food waste prevention) 
+      </p>
 
+      <button onclick="helpRecyclingVersusPrevention()" class="btn btn-info" type="button"><span class="glyphicon glyphicon-info-sign"></span> How do I use it?</button>
+
+       <hr>
+      
       <div id="comparison1" class="col-md-6"></div>
 
       <div id="comparison2" class="col-md-6"></div>
 
       <!--<script type="text/javascript" src="js/AFWcomparison.js" defer></script>-->
       <script type="text/javascript" src="js/comparisonPolicyEffects.js" defer></script>
-
-        </div>
-               
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Organic waste collection chart -->
-
-  <div class="panel-group" id="accordion8" role="tablist" aria-multiselectable="true">
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="tabEight">
-      <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight" data-step="15" data-intro="By pressing and opening up this tab, you will be able to look at the amount of dry matter inputs to waste management measured in kilotons of dry matter per year. In the bottom of the chart you can unselect/select which columns to display. Now you are ready to start exploring the data, enjoy!" data-position="right">
-           Waste management  
-        </a>
-      </h4>
-    </div>
-    <div id="collapseEight" class="panel-collapse collapsing" role="tabpanel" aria-labelledby="tabEight">
-      <div class="panel-body">
-              
-      <p><b>Waste management inputs (kt DM/yr): Baseline scenario: 2009 - 2011 avg. Select/unselect what bars to display, pressing the categories in the legend. Hover over the bars for detailed information. </b></p>
-
-      <div id="wasteManagement"></div>
-
-      <script type="text/javascript" src="js/wasteManagement.js" defer></script>
 
         </div>
                
@@ -393,6 +438,52 @@ else {
     $('.collapse').collapse()
 
     </script>
+
+    <!-- Help buttons below-->
+
+     <script>
+
+       // \n\n means linebreak
+
+        //Help functionality
+            
+            function helpPhosphorusFlowDiagram() {
+                
+                alert('This diagram displays the phosphorus layer. You can hover over the flows with the mouse pointer for more detailed information. \n\nThe default diagram displays the baseline scenario for phosphorus using historical data, 2009-2011 avg. By pressing the green buttons you can switch between different scenarios.\n\nIf you want to know more about this application, please press the "Show me how" button for a walkthrough of the functionality in this application.');
+              }
+
+            function helpEnergyFlowDiagram() {
+                
+                alert('This diagram displays the energy layer. You can hover over the flows with the mouse pointer for more detailed information. \n\nThe default diagram displays the baseline scenario for energy using historical data, 2009-2011 avg. By pressing the yellow buttons you can switch between different scenarios.\n\nIf you want to know more about this application, please press the "Show me how" button for a walkthrough of the functionality in this application.');
+            }
+
+            function helpScenarioComparisonFlowDiagram() {
+                
+                alert('This diagram makes it possible for you to compare different scenarios and different flows more directly. \n\nHover over the different clusters of bars to see more detailed information for each separate flow. \n\nYou can unselect/select which scenarios to show in the bottom of both the energy and phosphorus bar chart by clicking the legend or hovering over the categories in the legend to highlight a specific scenario.');
+            }
+
+            function helpProblemShiftingFlowDiagram() {
+                
+                alert('This diagram makes it possible for you to look at tradeoffs between phosphorus and energy comparing different scenarios. \n\nYou can hover over the table in the bottom of the chart to highlight the tradeoffs for a specific scenario. \n\nIn addition, there is a brush function available on each axis so that you can set a maximum or minimum value limit. \n\nYou can also rearrange the scale on each axis by double clicking the label name on top (currently only working in Safari, Opera and Chrome).');
+            }
+
+            function helpSystemQuantified() {
+                
+                alert('You can select/ unselect which categories to display by pressing the categories in the legend. \n\nBy clicking the legend or hovering over the categories in the legend you can highlight a specific scenario');
+            }
+
+            function helpAFW() {
+                
+                alert('You can select/ unselect which categories to display by pressing the categories in the legend. By clicking the legend or hovering over the categories in the legend you can highlight a specific scenario');
+            }
+
+            function helpRecyclingVersusPrevention() {
+                
+                alert("You can select/ unselect which categories to display by pressing the categories in the legend. By clicking the legend or hovering over the categories in the legend you can highlight a specific scenario");
+            }
+
+        </script>
+        
     
 </body>
 
