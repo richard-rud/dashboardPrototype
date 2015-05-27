@@ -1389,7 +1389,7 @@ var colorScale = d3.scale.linear()
   
   var color = d3.scale.ordinal()
   .domain([1,2,3])
-  .range(['#bdbdbd','#737373','#252525']);
+  .range(['#e41a1c','#ff7f00','#4daf4a']);
 
 
 

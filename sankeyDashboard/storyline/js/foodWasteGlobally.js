@@ -18,7 +18,7 @@ var chart = c3.generate({
         position: 'bottom'
     },
     color: {
-        pattern: ['#ffffff', '#969696']
+        pattern: ['#4daf4a','#984ea3']
     },
      bar: {
         width: {

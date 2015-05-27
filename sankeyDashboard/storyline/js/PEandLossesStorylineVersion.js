@@ -8,20 +8,18 @@
 var chart = c3.generate({
     size: {
         height: 400,
-        width: 1000
+        width: 800
     },
     bindto: '#stackedBarPEuse',
     data: {
         x : 'x',
         columns: [
             ['x', 'Process energy inputs'],
-            ['PE Phosphate mining',99700],
-            ['PE Fertilizer production',52600],
-            ['PE Plant production',960000],
-            ['PE Animal Husbandry',2995000],
-            ['PE Food processing',10000000],
-            ['PE Biogas Production',7130],
-            ['PE Mineral fertilizer',7130]
+            ['PE Fertilizer production',0.2],
+            ['PE Plant production',1],
+            ['PE Animal Husbandry',3],
+            ['PE Food processing',10],
+            ['PE Biogas Production',0.1],
         ],
         type: 'bar',
         order: 'none'
@@ -48,7 +46,9 @@ var chart = c3.generate({
         },
     },
     color: {
-        pattern: ['#ffffff', '#d9d9d9', '#bdbdbd', '#969696', '#737373', '#525252', '#252525']
+        //pattern: ['#ffffff', '#d9d9d9', '#bdbdbd', '#969696', '#737373', '#525252', '#252525']
+        pattern: ['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00']
+
     }
 
 });

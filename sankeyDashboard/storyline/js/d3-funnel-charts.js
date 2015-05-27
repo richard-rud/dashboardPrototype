@@ -85,7 +85,7 @@
 
     // Automatically generates colors for each trapezoid in funnel
     var colorScale = d3.scale.ordinal()
-      .range(["#ffffff", "#ffffff", "#969696", "#ffffff", "#ffffff"]);
+      .range(["#984ea3", "#984ea3", "#4daf4a", "#984ea3", "#984ea3"]);
 
     var paths = this._createPaths();
 
