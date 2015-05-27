@@ -39,7 +39,7 @@ var chart = c3.generate({
     },
     tooltip: {
         format: {
-            title: function (d) { return 'Usage of wet organic waste for energy'; }
+            title: function (d) { return 'Amount of wet organic waste in Norway'; }
         }
     },
     grid: {
