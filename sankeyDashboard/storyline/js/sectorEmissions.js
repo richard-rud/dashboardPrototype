@@ -1,7 +1,7 @@
     var chart = c3.generate({
     size: {
-        height: 500,
-        width: 1000
+        height: 400,
+        width: 800
     },
     bindto: '#emissionsPie',
     data: {
