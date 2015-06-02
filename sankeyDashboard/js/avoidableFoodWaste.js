@@ -11,15 +11,16 @@ var chart = c3.generate({
     data: {
         columns: [
             
-            ['Frozen food',1.632,0.035,0.127,18.712],
-            ['Fresh fruit and vegetables',1.484,0,3.396,9.85],
-            ['Fresk bakery goods',15.05,0.443,13.81,0],
+            ['Frozen food',1.632,0.035,0.127,0],
+            ['Fresh fruit and vegetables',1.484,0,3.396,8.733],
+            ['Fresk bakery goods',15.05,0.443,13.81,43.623],
             ['Fresh finished food and sausages',0.952,0,2.728,0],
-            ['Fresh fish',0.098,0.016,0.384,5.189],
-            ['Fresh meat',0.643,0.072,0.947,0],
-            ['Egg',0,0,0.459,7.347],
-            ['Dairy',0.764,0.322,4.161,0],
-            ['Dried food',12.613,0.171,2.692,75.967],
+            ['Fresh fish',0.098,0.016,0.384,0],
+            ['Fresh meat',0.643,0.072,0.947,5.19],
+            ['Egg',0,0,0.459,0],
+            ['Dairy',0.764,0.322,4.161,8.199],
+            ['Dried food',12.613,0.171,2.692,0],
+            ['Other',0,0,0,25.898],
 
             /*
             ['Frozen food',1632,35,127,18712],
@@ -46,7 +47,7 @@ var chart = c3.generate({
         ],
         type: 'bar',
         groups: [
-            ['Frozen food', 'Fresh fruit and vegetables','Fresk bakery goods','Fresh finished food and sausages','Fresh fish','Fresh meat','Egg','Dairy','Dried food']
+            ['Frozen food', 'Fresh fruit and vegetables','Fresk bakery goods','Fresh finished food and sausages','Fresh fish','Fresh meat','Egg','Dairy','Dried food','Other']
         ],
         order: 'desc'
     },
@@ -71,7 +72,7 @@ var chart = c3.generate({
         }
     },
     color: {
-        pattern: ['#d9d9d9','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69','#fccde5','#8dd3c7']
+        pattern: ['#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69','#fccde5','#d9d9d9','#bc80bd']
     },
 });
 
