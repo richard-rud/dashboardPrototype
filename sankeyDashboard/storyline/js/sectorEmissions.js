@@ -7,14 +7,14 @@
     data: {
         
         columns: [
-            ['Oil and gas extraction', 13.8],
-            ['Industry and mining', 12.1],
-            ['Energy supply', 1.8],
-            ['Heating in other industries and households', 1.5],
-            ['Road traffic', 10.1],
-            ['Aviation, marine, fishing, motorized equipment and more', 7],
-            ['Agriculture', 4.7],
-            ['Other sources', 2.9],
+            ['Oil and gas extraction', 27.3],
+            ['Industry and mining', 22.3],
+            ['Energy supply', 3.1],
+            ['Heating in other industries and households', 2.2],
+            ['Road traffic', 19],
+            ['Aviation, marine, fishing, motorized equipment and more', 11.7],
+            ['Agriculture', 8.8],
+            ['Other sources', 5.6],
         ],
         type : 'pie',
         onclick: function (d, i) { console.log("onclick", d, i); },
@@ -30,4 +30,6 @@
         pattern: ['#984ea3','#984ea3','#984ea3','#984ea3','#984ea3','#984ea3','#4daf4a','#984ea3']
     }
 });
+
+
 
