@@ -1,0 +1,262 @@
+
+#showInfo {
+  height: 160px;
+  width: 410px;
+  margin: 20px;
+  background-color: white;
+  border: none;
+  border-style: groove;
+
+  /*Positioning the sankey*/
+  position: absolute;
+  left: 1000px;
+  top: 0px;
+}
+
+.btn {
+margin-top: 10px;
+margin-bottom: 10px;
+margin-left:10px;
+}
+
+line {
+  stroke-opacity: .5;
+}
+
+path {
+  stroke-opacity: .6;
+}
+
+path:hover {
+  stroke-opacity: .1;
+}
+
+line:hover {
+  stroke-opacity: 1;
+}
+
+#sankeyContent_P {
+  width: 1450px;
+  height: 700px;
+  margin-top: 10px;
+  margin-left: 5px;
+  padding-left: 20px;
+}
+
+#sankeyContent_E {
+  width: 1450px;
+  height: 700px;
+  margin-top: 10px;
+  margin-left: 5px;
+  padding-left: 20px;
+
+}
+
+#processText {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/*
+.horizontalGrid {
+   background-image: url(grid.svg);
+}
+
+*/
+
+/*
+
+
+
+.horizontalGrid {
+  color: white;
+  background: linear-gradient(
+    to bottom,
+    #ffffff 90%,
+    #f0f0f0 10%
+  );
+  background-size: 100% 10px;
+} 
+
+*/
+
+
+.row {
+  float:left;
+}
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: black;
+  color: #fff;
+  border-radius: 2px;
+}
+
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+.row, .header { 
+    clear: left; 
+    font-size: 12px; 
+    line-height: 18px; 
+    height: 18px; 
+}
+
+.row:nth-child(odd) { 
+    background: rgba(0,0,0,0.2); 
+}
+
+.header { 
+    font-weight: bold; 
+}
+
+.cell { 
+    float: left; 
+    overflow: hidden; 
+    white-space: nowrap; 
+    width: 170px; 
+    height: 18px; 
+    color: black ;}
+
+.col-0 { 
+    width: 170px; 
+}
+
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.header {
+    background-color: grey;
+}
+
+.header.cell, .header .cell {
+    color: black;
+}
+
+#problemShifting {
+  width: 1300px;
+  height: 100%;
+  margin: 20px;
+}
+
+/*
+#grid {
+  width: 1360px;
+  height: 100%;
+}
+*/
+
+#containerBar {
+  width: 1500px;
+  height: 100%;
+}
+
+#accordion {
+  width: 1500px;
+}
+
+#avoidableFoodWasteContainer {
+  width: 1200px;
+  height: 100%;
+  padding: 2%;
+  margin-left: 5%;
+} 
+
+#navBar{
+  position: fixed;
+  right: 0;
+  top: 0%;
+  width: 100%;
+  background-color: grey;
+  z-index: 1;
+}
+
+#mainContent {
+  margin-top: 5em;
+  width: 1400px;
+  margin-left: 10px;
+}
+
+#introJS_intro {
+  width: 0px;
+  height: 0px;
+  margin-left:200px;
+}
+
+/* Legend for the sankey diagrams */
+
+.my-legend {
+    position: absolute;
+    margin-top: -60px;
+    margin-left:1235px;
+  }
+
+.my-legend .legend-title {
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 90%;
+  }
+
+.my-legend .legend-scale ul {
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 0;
+    float: left;
+    list-style: none;
+  }
+
+.my-legend .legend-scale ul li {
+    font-size: 80%;
+    list-style: none;
+    margin-left: 0;
+    line-height: 18px;
+    margin-bottom: 2px;
+  }
+
+.my-legend ul.legend-labels li span {
+    display: block;
+    float: left;
+    height: 16px;
+    width: 30px;
+    margin-right: 5px;
+    margin-left: 0;
+    opacity: .6;  
+  }
+
+.my-legend .legend-source {
+    font-size: 70%;
+    color: #999;
+    clear: both;
+  }
+
+.my-legend a {
+    color: #777;
+  }
+
+#checkboxGrid {
+  margin: 10px;
+}
+
+input {
+  color: red;
+}
